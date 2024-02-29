@@ -1,0 +1,35 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Hotel from "./pages/hotel/Hotel";
+import List from "./pages/list/List";
+import Destination from "./pages/destinations/Destination";
+import { useEffect, useState } from "react";
+import Loader from "./components/loader/Loader";
+
+function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fakeDataFetch = () => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
+    };
+    fakeDataFetch();
+  });
+
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/hotels" element={<List />} />
+        <Route path="/hotels/:id" element={<Hotel />} />
+        <Route path="/destinations" element={<Destination />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;

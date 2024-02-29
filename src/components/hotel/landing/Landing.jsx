@@ -1,0 +1,223 @@
+import React from "react";
+import bgVideo from "../../../assets/bg.mp4";
+import { motion, spring } from "framer-motion";
+import { Link } from "react-scroll";
+import { Cursor, useTypewriter } from "react-simple-typewriter";
+import "./landing.css";
+import {Button,Modal,Box,Typography  } from "@mui/material";
+import Login from "../Login/Register";
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: {lg:'42%',sm:'41%'},
+  bgcolor: 'background.paper',
+  p: 4,
+  borderRadius:'16px'
+};
+
+const Main = () => {
+  const [text] = useTypewriter({
+    words: [
+      "Hotels",
+      "Vehicles",
+      "Tour Packages",
+      "Travel Partners",
+      "Tour Guides",
+      "Gifts and Souvenirs",
+    ],
+    loop: {},
+    typeSpeed: 120,
+    deleteSpeed: 80,
+  });
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  return (
+    <div className="main">
+      <div className="overlay"></div>
+      <video src={bgVideo} autoPlay loop muted />
+      <div className="content">
+        <motion.h1
+          initial={{ y: "-2rem", opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, type: spring }}
+          className="title"
+        >
+          Holiday Sri
+        </motion.h1>
+        <p className="desc">
+          Find <span>{text}</span>
+          <Cursor />
+        </p>
+        <div className="navbar">
+          <div className="navContainer">
+            <div className="navItems">
+              <Link
+                to="hotels"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Hotels
+              </Link>
+              <Link
+                to="vehicles"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Vehicles
+              </Link>
+              <Link
+                to="tour-packages"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Tour Packages
+              </Link>
+              <Link
+                to="travel-partner"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Travel Partner
+              </Link>
+              <Link
+                to="tour-guide"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Tour Guide
+              </Link>
+              <Link
+                to="market-place"
+                spy={true}
+                smooth={true}
+                duration={500}
+                className="navButton"
+              >
+                Market Place
+              </Link>
+            </div>
+            <Button
+          onClick={handleOpen}
+            variant="outlined"
+            sx={{
+              color: "white",
+              borderColor: "white",
+              borderRadius: 300,
+              height: "30px",
+              marginTop: "5px",
+              marginLeft:'30px',
+              "&:hover": {
+                color: "48BB78",
+                boxShadow: "none",
+                borderColor: "#48BB78",
+              },
+            }}
+          >
+            Login 
+          </Button>
+          </div>
+          
+        </div>
+        <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Login/>
+        </Box>
+      </Modal>
+        <div className="hamburgerMenu">
+          <Link
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Login 
+          </Link>
+          <Link
+            to="hotels"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Hotels
+          </Link>
+          <Link
+            to="vehicles"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Vehicles
+          </Link>
+          <Link
+            to="tour-packages"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Tour Packages
+          </Link>
+          <Link
+            to="travel-partner"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Travel Partner
+          </Link>
+          <Link
+            to="tour-guide"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Tour Guide
+          </Link>
+          <Link
+            to="market-place"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className="glass"
+          >
+            Market Place
+          </Link>
+        </div>
+      
+        <div className="travelAgent">
+          <p className="travelAgentDesc">Be a travel agent and earn money!</p>
+          <div className="travelAgentButtonWrap">
+            <button className="travelAgentButton">Local Travel Agent</button>|
+            <button className="travelAgentButton">Foreign Travel Agent</button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  );
+};
+
+export default Main;
