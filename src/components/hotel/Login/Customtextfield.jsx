@@ -34,7 +34,7 @@ const Customtextfield = ( props) => {
           <Typography
             sx={{
                 fontSize:'16px',
-              color:color|| "#47464F",
+              color:color|| "black",
               marginBottom: "12px",
               textAlign: "left",
             }}
