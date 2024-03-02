@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
+import Register from "./components/hotel/Register/Register";
 import Destination from "./pages/destinations/Destination";
 import { useEffect, useState } from "react";
 import Loader from "./components/loader/Loader";
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
       </Routes>

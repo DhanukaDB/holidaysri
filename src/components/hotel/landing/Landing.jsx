@@ -4,20 +4,26 @@ import { motion, spring } from "framer-motion";
 import { Link } from "react-scroll";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import "./landing.css";
-import {Button,Modal,Box,Typography  } from "@mui/material";
-import Login from "../Login/Register";
+import { Button, Modal, Box, Typography, Grid } from "@mui/material";
+import Login from "../Login/Login";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: {lg:'42%',sm:'41%'},
-  bgcolor: 'background.paper',
-  p: 4,
-  borderRadius:'16px'
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { lg: "42%", sm: "41%" },
+  borderRadius: "30px",
+  border: "1px solid black",
 };
-
+const underline = {
+  underlineOnHover: {
+    textDecoration: "none",
+    color: "inherit",
+    borderBottom: "1px solid transparent",
+    transition: "border-bottom 0.3s ease",
+  },
+};
 const Main = () => {
   const [text] = useTypewriter({
     words: [
@@ -111,45 +117,92 @@ const Main = () => {
               </Link>
             </div>
             <Button
-          onClick={handleOpen}
-            variant="outlined"
-            sx={{
-              color: "white",
-              borderColor: "white",
-              borderRadius: 300,
-              height: "30px",
-              marginTop: "5px",
-              marginLeft:'30px',
-              "&:hover": {
-                color: "48BB78",
-                boxShadow: "none",
-                borderColor: "#48BB78",
-              },
-            }}
-          >
-            Login 
-          </Button>
+              onClick={handleOpen}
+              variant="outlined"
+              sx={{
+                color: "white",
+                borderColor: "white",
+                borderRadius: 300,
+                height: "30px",
+                marginTop: "5px",
+                marginLeft: "30px",
+                "&:hover": {
+                  color: "48BB78",
+                  boxShadow: "none",
+                  borderColor: "#48BB78",
+                },
+              }}
+            >
+              Login
+            </Button>
           </div>
-          
         </div>
         <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Login/>
-        </Box>
-      </Modal>
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Grid
+              sx={{
+                position: "absolute",
+                zIndex: 2,
+                marginTop: "10px",
+                marginLeft: "93%",
+              }}
+            >
+              <svg
+                onClick={handleClose}
+                style={{ cursor: "pointer" }}
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="14" cy="14" r="14" fill="#2A2A2A" />
+                <path
+                  d="M19 9L9 19M9 9L19 19"
+                  stroke="#FFF7F7"
+                  stroke-width="1.21875"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="14" cy="14" r="11.5" stroke="#FBF8F8" />
+              </svg>
+            </Grid>
+            <Login onClose={handleClose} />
+            <Typography
+              sx={{
+                position: "absolute",
+                zIndex: 3,
+                color: "black",
+                fontSize: "16px",
+                marginTop: "-93px",
+                marginLeft: "47%",
+              }}
+            >
+              New to HolidaySri?{" "}
+              <a
+                href="/Register"
+                style={underline.underlineOnHover}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderBottom = "1px solid #000";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderBottom = "1px solid transparent";
+                }}
+              >
+                {" "}
+                Join with us{" "}
+              </a>{" "}
+            </Typography>
+          </Box>
+        </Modal>
         <div className="hamburgerMenu">
-          <Link
-            spy={true}
-            smooth={true}
-            duration={500}
-            className="glass"
-          >
-            Login 
+          <Link spy={true} smooth={true} duration={500} className="glass">
+            Login
           </Link>
           <Link
             to="hotels"
@@ -206,7 +259,7 @@ const Main = () => {
             Market Place
           </Link>
         </div>
-      
+
         <div className="travelAgent">
           <p className="travelAgentDesc">Be a travel agent and earn money!</p>
           <div className="travelAgentButtonWrap">
@@ -215,7 +268,6 @@ const Main = () => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };
