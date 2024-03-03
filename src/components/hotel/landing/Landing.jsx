@@ -16,14 +16,7 @@ const style = {
   borderRadius: "30px",
   border: "1px solid black",
 };
-const underline = {
-  underlineOnHover: {
-    textDecoration: "none",
-    color: "inherit",
-    borderBottom: "1px solid transparent",
-    transition: "border-bottom 0.3s ease",
-  },
-};
+
 const Main = () => {
   const [text] = useTypewriter({
     words: [
@@ -173,37 +166,16 @@ const Main = () => {
               </svg>
             </Grid>
             <Login onClose={handleClose} />
-            <Typography
-              sx={{
-                position: "absolute",
-                zIndex: 3,
-                color: "black",
-                fontSize: "16px",
-                marginTop: "-93px",
-                marginLeft: "47%",
-              }}
-            >
-              New to HolidaySri?{" "}
-              <a
-                href="/Register"
-                style={underline.underlineOnHover}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.borderBottom = "1px solid #000";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.borderBottom = "1px solid transparent";
-                }}
-              >
-                {" "}
-                Join with us{" "}
-              </a>{" "}
-            </Typography>
+           
           </Box>
         </Modal>
         <div className="hamburgerMenu">
-          <Link spy={true} smooth={true} duration={500} className="glass">
+          <a href="/login" style={{textDecoration:'none'}}>
+          <div  spy={true} smooth={true} duration={500} className="glass">
             Login
-          </Link>
+          </div>
+            </a>    
+          
           <Link
             to="hotels"
             spy={true}
