@@ -17,8 +17,8 @@ const LoginForm = () => {
     <div className="loginform" style={{ width: {lg:'300px',xs:'200px'}, marginLeft:{ lg:'50px',xs:'10px'},marginTop:{xs:'30%',lg:'0px'} }}>
       <Typography sx={{ color: 'black', fontSize: '32px', fontWeight: '550' }}>Login</Typography>
       <div>
-        <Customtextfield color='black' label="Email" marginTop="8px" width={{ lg: '74%' }} />
-        <Customtextfield color='black' label="Password" marginTop="16px" width={{ lg: '74%' }} />
+        <Customtextfield color='black' label="Email" marginTop="8px" width={{ lg: '74%',xs:'100%' }} />
+        <Customtextfield color='black' label="Password" marginTop="16px" width={{ lg: '74%',xs:'100%' }} />
       </div>
       <Button
               variant="outlined"
