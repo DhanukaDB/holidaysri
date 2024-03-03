@@ -1,5 +1,6 @@
 import React from "react";
 import bgVideo from "../../../assets/bg.mp4";
+import Hsllogo from "../../../assets/Hsllogo.png";
 import { motion, spring } from "framer-motion";
 import { Link } from "react-scroll";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
@@ -39,12 +40,16 @@ const Main = () => {
       <div className="overlay"></div>
       <video src={bgVideo} autoPlay loop muted />
       <div className="content">
+
+      
+
         <motion.h1
           initial={{ y: "-2rem", opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, type: spring }}
           className="title"
         >
+          
           Holiday Sri
         </motion.h1>
         <p className="desc">
@@ -107,7 +112,8 @@ const Main = () => {
                 className="navButton"
               >
                 Market Place
-              </Link>
+              </Link>    
+            
             </div>
             <Button
               onClick={handleOpen}
@@ -169,6 +175,7 @@ const Main = () => {
            
           </Box>
         </Modal>
+        
         <div className="hamburgerMenu">
           <a href="/login" style={{textDecoration:'none'}}>
           <div  spy={true} smooth={true} duration={500} className="glass">
@@ -230,6 +237,10 @@ const Main = () => {
           >
             Market Place
           </Link>
+        </div>
+
+        <div className="Mainlogo">
+        <img className="logoimg" src={Hsllogo} alt="" />
         </div>
 
         <div className="travelAgent">

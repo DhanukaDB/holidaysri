@@ -12,6 +12,15 @@ body {
     width: 100%;
     height: 100vh;
 }
+.Mainlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.logoimg{
+    width: 45%;
+}
 
 video {
     width: 100%;
