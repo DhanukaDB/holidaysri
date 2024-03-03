@@ -7,6 +7,7 @@ import Destination from "./pages/destinations/Destination";
 import { useEffect, useState } from "react";
 import Loader from "./components/loader/Loader";
 import LoginMobile from "./components/hotel/Login/LoginMobile";
+import Seller from "./pages/Seller/Seller";
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
         <Route path="/hotels" element={<List />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginMobile />} />
-
+        <Route path="/seller" element={<Seller />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
       </Routes>
