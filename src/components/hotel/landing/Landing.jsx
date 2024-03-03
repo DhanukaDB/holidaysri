@@ -1,6 +1,6 @@
 import React from "react";
 import bgVideo from "../../../assets/bg.mp4";
-import Hsllogo from "../../../assets/Hsllogo.png";
+import Hsllogo from "../../../assets/Hslogotow.png";
 import { motion, spring } from "framer-motion";
 import { Link } from "react-scroll";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
