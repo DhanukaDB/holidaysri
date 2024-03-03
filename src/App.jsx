@@ -6,6 +6,8 @@ import Register from "./components/hotel/Register/Register";
 import Destination from "./pages/destinations/Destination";
 import { useEffect, useState } from "react";
 import Loader from "./components/loader/Loader";
+import LoginMobile from "./components/hotel/Login/LoginMobile";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +29,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<LoginMobile />} />
+
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
       </Routes>

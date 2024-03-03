@@ -3,6 +3,7 @@ import { Typography, Grid } from "@mui/material";
 import Customtextfield from "./Customtextfield";
 import LoginBackgroundvideo from "../../../assets/Login.gif";
 import "./login.css";
+import LoginForm from "./Loginform";
 
 const Login = ({ onClose }) => {
   const containerStyle = {
@@ -29,13 +30,7 @@ const Login = ({ onClose }) => {
         
 
       <div style={innerContainerStyle}>
-        <div className="loginform" width={{lg:'300px',marginLeft:'50px'}}>
-          <Typography sx={{ color: 'black', fontSize: '32px' ,fontWeight:'550'}}>Login</Typography>
-          <div>
-            <Customtextfield color='black' label="Email" marginTop="8px" width={{ lg: '74%' }} />
-            <Customtextfield color='black' label="Password" marginTop="16px" width={{ lg: '74%' }} />
-          </div>
-        </div>
+        <LoginForm/>
       </div>
     </div>
   );
