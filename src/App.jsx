@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Loader from "./components/loader/Loader";
 import LoginMobile from "./components/hotel/Login/LoginMobile";
 import Seller from "./pages/Seller/Seller";
+import Location from "./pages/Locations/Location";
+import LocalVehicleForm from "./components/agents/Local Agents/LocalVehicle";
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginMobile />} />
         <Route path="/seller" element={<Seller />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
       </Routes>
