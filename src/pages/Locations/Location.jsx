@@ -12,7 +12,7 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-const Seller = (props) => {
+const Location = (props) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -26,7 +26,72 @@ const Seller = (props) => {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>ADD SELLER</Button>
+
+<Box sx={{backgroundColor:'white', paddingBottom:'16px',marginBottom:'40px'}}>
+          <Customtextfield label="Location name" />
+          <Customtextfield label="District" />
+          <Customtextfield label="Province" />
+          <Customtextfield label="Distance from Colombo" />
+          <div>
+      <input
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        id="uploadImageInput"
+        onChange={handleFileChange}
+        multiple // Allow multiple file selection
+      />
+      <label htmlFor="uploadImageInput">
+        <Button
+          variant="outlined"
+          sx={{
+            color: 'black',
+            borderRadius: '30px',
+            borderColor: 'black',
+            '&:hover': {
+              color: 'black',
+              borderRadius: '30px',
+              borderColor: 'black',
+            },
+            marginTop: '16px',
+            marginBottom: '16px',
+          }}
+          component="span"
+        >
+          Upload images
+        </Button>
+      </label>
+
+      {/* Display selected images (if needed) */}
+      <div>
+        {images.map((image, index) => (
+          <img key={index} src={URL.createObjectURL(image)} alt={`Uploaded ${index}`} style={{ maxWidth: '100px', maxHeight: '100px', margin: '5px' }} />
+        ))}
+      </div>
+    </div>
+          <Customtextfield label="Description" />
+          <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "30px",
+              borderColor: "black",
+              boxShadow: "none",
+              width: { lg: "100%", xs: "100%" },
+              color: "black",
+              marginTop: "32px",
+              height: "48px",
+              "&:hover": {
+                backgroundColor: "black",
+                color: "white",
+                borderColor: "black",
+                boxShadow: "none",
+              },
+            }}
+          >
+            Add
+          </Button>
+        </Box>
+      <Button variant="contained" marginTop="40px" onClick={handleOpen}>ADD EVENt</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -34,10 +99,9 @@ const Seller = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Customtextfield label="Product name" />
-          <Customtextfield label="Product Category" />
-          <Customtextfield label="Product Type" />
-          <Customtextfield label="Price" />
+          <Customtextfield label="Location name" />
+          <Customtextfield label="Event name" />
+          <Customtextfield label="Nationality/Religion" />
           <div>
       <input
         type="file"
@@ -103,4 +167,4 @@ const Seller = (props) => {
   );
 };
 
-export default Seller;
+export default Location;

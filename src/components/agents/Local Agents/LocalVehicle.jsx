@@ -17,7 +17,7 @@ function LocalVehicleForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{backgroundColor:'white'}}>
       <div>
         <label>Vehicle Number:</label>
         <input type="text" value={vehicleNumber} onChange={(e) => setVehicleNumber(e.target.value)} />
