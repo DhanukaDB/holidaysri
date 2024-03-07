@@ -154,6 +154,9 @@ const Destination = () => {
               marginBottom:'32px'
             }}
           >
+            <Box marginBottom="16px">
+            <Button variant="outlined" sx={{color:'white',borderColor:'white',borderRadius:'30px',}}>View Events</Button>   <Button variant="outlined"  sx={{color:'white',borderColor:'white',borderRadius:'30px'}}>Find a Ride</Button>     
+            </Box>
             <Typography
               sx={{
                 color: "white",
@@ -175,9 +178,7 @@ const Destination = () => {
             >
               {description}
             </Typography>
-            <Box marginTop="8px">
-            <Button variant="outlined" sx={{color:'white',borderColor:'white',borderRadius:'30px',}}>View Events</Button>   <Button variant="outlined"  sx={{color:'white',borderColor:'white',borderRadius:'30px'}}>Find a Ride</Button>     
-            </Box>
+            
           </Box>
         </Grid>
       </Grid>
