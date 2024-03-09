@@ -23,51 +23,53 @@ const Home = () => {
   return (
     <div>
       <Landing />
-      <div className="hotel" id="hotels">
-        <Header />
+      <div className="main_container">
+        <div className="hotel" id="hotels">
+          <Header />
+        </div>
+        <div className="homeContainer">
+          <Featured />
+          <h1 className="homeTitle">Browse by property type</h1>
+          <PropertyList />
+          <h1 className="homeTitle">Homes guests love</h1>
+          <FeaturedProperties />
+        </div>
+        <div className="vehicle" id="vehicles">
+          <VehicleHeader />
+        </div>
+        <div className="vehicleContiner">
+          <FeaturedVehicle />
+          <h1 className="homeTitle">Browse by vehicle type</h1>
+          <VehicleList />
+        </div>
+        <div className="tourPackage" id="tour-packages">
+          <TourPackageHeader />
+        </div>
+        <div className="tourPackageContainer">
+          <TourPackageFeatured />
+        </div>
+        <div className="travelPartner" id="travel-partner">
+          <TravelPartnerHeader />
+        </div>
+        <div className="travelPartnerContainer">
+          <TravelPartnerFeatured />
+        </div>
+        <div className="tourGuide" id="tour-guide">
+          <TourGuideHeader />
+        </div>
+        <div className="tourGuideContainer">
+          <TourGuideFeatured />
+        </div>
+        <div className="marketplace" id="market-place">
+          <MarketPlaceHeader />
+        </div>
+        <div className="marketPlaceContainer">
+          <FeaturedMarketPlace />
+          <h1 className="homeTitle">Gifts guests love</h1>
+          <FeaturedMarket />
+        </div>
+        <MailList />
       </div>
-      <div className="homeContainer">
-        <Featured />
-        <h1 className="homeTitle">Browse by property type</h1>
-        <PropertyList />
-        <h1 className="homeTitle">Homes guests love</h1>
-        <FeaturedProperties />
-      </div>
-      <div className="vehicle" id="vehicles">
-        <VehicleHeader />
-      </div>
-      <div className="vehicleContiner">
-        <FeaturedVehicle />
-        <h1 className="homeTitle">Browse by vehicle type</h1>
-        <VehicleList />
-      </div>
-      <div className="tourPackage" id="tour-packages">
-        <TourPackageHeader />
-      </div>
-      <div className="tourPackageContainer">
-        <TourPackageFeatured />
-      </div>
-      <div className="travelPartner" id="travel-partner">
-        <TravelPartnerHeader />
-      </div>
-      <div className="travelPartnerContainer">
-        <TravelPartnerFeatured />
-      </div>
-      <div className="tourGuide" id="tour-guide">
-        <TourGuideHeader />
-      </div>
-      <div className="tourGuideContainer">
-        <TourGuideFeatured />
-      </div>
-      <div className="marketplace" id="market-place">
-        <MarketPlaceHeader />
-      </div>
-      <div className="marketPlaceContainer">
-        <FeaturedMarketPlace />
-        <h1 className="homeTitle">Gifts guests love</h1>
-        <FeaturedMarket />
-      </div>
-      <MailList />
       {/* <Footer /> */}
     </div>
   );
