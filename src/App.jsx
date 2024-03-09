@@ -10,6 +10,7 @@ import LoginMobile from "./components/hotel/Login/LoginMobile";
 import Seller from "./pages/Seller/Seller";
 import Location from "./pages/Locations/Location";
 import LocalVehicleForm from "./components/agents/Local Agents/LocalVehicle";
+import Events from "./pages/events/Events";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </BrowserRouter>
   );
