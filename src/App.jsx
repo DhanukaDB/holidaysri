@@ -11,6 +11,7 @@ import Seller from "./pages/Seller/Seller";
 import Location from "./pages/Locations/Location";
 import LocalVehicleForm from "./components/agents/Local Agents/LocalVehicle";
 import Events from "./pages/events/Events";
+import Vehicles from "./pages/vehicles/Vehicle";
 
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/destinations" element={<Destination />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/rides" element={<Vehicles />} />
+
       </Routes>
     </BrowserRouter>
   );
