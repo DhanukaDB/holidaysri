@@ -100,15 +100,19 @@ video {
 }
 
 .navbar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 100;
     height: 60px;
     display: flex;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.6);
+    transition: .4s;
+}
+.navbar:hover{
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .navContainer {

@@ -5,6 +5,14 @@
   align-items: center;
   gap: 30px;
 }
+.main_container{
+  background-image: url('../../assets/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
 
 .homeTitle {
   width: 1024px;
