@@ -39,7 +39,13 @@ const Events = () => {
       }}
     >
       <Grid item xs={12}>
+
+
+      <Box marginBottom="0px" marginTop='16px' marginLeft='32px'>
+            <a href="/destinations" style={{textDecoration:'none'}}><Button variant="outlined" sx={{color:'white',borderColor:'white',borderRadius:'30px',}}>Back</Button> </a>       
+            </Box>
         <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
+        
           <Typography
             sx={{
               color: "white",
