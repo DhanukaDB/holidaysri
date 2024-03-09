@@ -2,3 +2,52 @@ body {
     margin: 0;
     padding: 0;
 }
+/* styles.css */
+
+/* Local agend Dashboard css */
+/* Dashboard container */
+.dashboard-container {
+    display: flex;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #ccc;
+  }
+  
+  /* Main content */
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Section headings */
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Example section styling */
+  .section-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }

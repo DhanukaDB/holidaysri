@@ -246,8 +246,8 @@ const Main = () => {
         <div className="travelAgent">
           <p className="travelAgentDesc">Be a travel agent and earn money!</p>
           <div className="travelAgentButtonWrap">
-            <button className="travelAgentButton">Local Travel Agent</button>|
-            <button className="travelAgentButton">Foreign Travel Agent</button>
+            <a href="/local-dashboard" className="travelAgentButton">Local Travel Agent</a>|
+            <a href="/foreign-dashboard" className="travelAgentButton">Foreign Travel Agent</a>
           </div>
         </div>
       </div>
