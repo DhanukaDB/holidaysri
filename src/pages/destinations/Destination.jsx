@@ -155,7 +155,7 @@ const Destination = () => {
             }}
           >
             <Box marginBottom="16px">
-            <Button variant="outlined" sx={{color:'white',borderColor:'white',borderRadius:'30px',}}>View Events</Button>   <Button variant="outlined"  sx={{color:'white',borderColor:'white',borderRadius:'30px'}}>Find a Ride</Button>     
+            <a href="/events"><Button variant="outlined" sx={{color:'white',borderColor:'white',borderRadius:'30px',}}>View Events</Button> </a>  <Button variant="outlined"  sx={{color:'white',borderColor:'white',borderRadius:'30px'}}>Find a Ride</Button>     
             </Box>
             <Typography
               sx={{
