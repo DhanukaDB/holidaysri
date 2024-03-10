@@ -16,7 +16,7 @@ const Vehicle = () => {
   var eventsArray = [
     {
       image:
-        "https://fernandotravels.com.au/wp-content/uploads/2018/06/galle-fort.jpg",
+        "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&height=900&width=1600&fit=bounds",
       location: "GALLE",
       Vehiclecategory: "Car",
       description: "Toyota Luxsury car white color nice",
@@ -28,7 +28,7 @@ const Vehicle = () => {
     },
     {
       image:
-        "https://www.i-escape.com/image/hotel/why-house/overview/285321.jpg",
+        "https://carnetwork.s3.ap-southeast-1.amazonaws.com/file/f2269e4702154d59819c7d6626699d2c.jpg",
       location: "GALLE",
       Vehiclecategory: "van",
       description: "Description for Event 2",
@@ -40,7 +40,7 @@ const Vehicle = () => {
     },
     {
       image:
-        "https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg",
+        "https://www.pricelanka.lk/wp-content/uploads/2021/02/Toyota-Premio-1.png",
       location: "GALLE",
       Vehiclecategory: "Car",
       description: "Description for Event 3",
