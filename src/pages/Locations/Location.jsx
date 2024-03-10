@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, Typography, Modal, Grid } from "@mui/material";
 import Customtextfield from "../../components/hotel/Login/Customtextfield";
-
+import axios from "axios"; 
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,11 +21,40 @@ const Location = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [images, setImages] = useState([]);
-
+  const [locationName, setLocationName] = useState("");
+  const [district, setDistrict] = useState("");
+  const [province, setProvince] = useState("");
+  const [distanceFromColombo, setDistanceFromColombo] = useState("");
+  const [details, setDetails] = useState("");
+  
   const handleFileChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     // Handle the selected images, you may want to upload them or perform other actions
     setImages(selectedImages);
+  };
+
+
+  
+  const handleAddLocation = (e) => { 
+    e.preventDefault();
+    const newLocation ={
+      locationName,
+      district,
+      province,
+      distanceFromColombo,
+      details
+    }
+  
+    console.log(newLocation)  
+    //alert("Success");
+    axios.post("http://localhost:8000/location/add", newLocation).then(() => {
+         alert("The New Location was Successfully saved")
+        // history.push('/')
+        window.location = `/`;
+  
+     }).catch((err) =>{
+         alert(err)
+     })
   };
 
   return (
@@ -118,10 +147,12 @@ const Location = (props) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Customtextfield label="Location name" marginTop="8px" />
-            <Customtextfield label="District" marginTop="8px" />
-            <Customtextfield label="Province" marginTop="8px" />
-            <Customtextfield label="Distance from Colombo" marginTop="8px" />
+           
+            <Customtextfield label="Location name" value={locationName} onChange={(e) => setLocationName(e.target.value)} marginTop="8px" />
+            <Customtextfield label="District" value={district} onChange={(e) => setDistrict(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Province" value={province} onChange={(e) => setProvince(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Distance from Colombo" value={distanceFromColombo} onChange={(e) => setDistanceFromColombo(e.target.value)}  marginTop="8px" />
+            
             <div>
               <input
                 type="file"
@@ -167,8 +198,8 @@ const Location = (props) => {
                   />
                 ))}
               </div>
-            </div>
-            <Customtextfield label="Description" />
+            </div> 
+            <Customtextfield label="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
             <Button
               variant="outlined"
               onClick={handleCloselocation}
@@ -207,6 +238,7 @@ const Location = (props) => {
                   boxShadow: "none",
                 },
               }}
+              onClick={handleAddLocation}
             >
               Add Location
             </Button>
