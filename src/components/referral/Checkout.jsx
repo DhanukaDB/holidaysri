@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Box, Button, Typography, Modal, Grid } from "@mui/material";
+import Customtextfield from '../hotel/Login/Customtextfield';
 
 const CheckoutPage = () => {
   const [cart, setCart] = useState([]); // Assuming cart contains selected advertisements
@@ -56,11 +58,135 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div>
-      <h1>Checkout Page</h1>
+    <Grid
+    sx={{
+      backgroundImage:
+        'url("https://res.cloudinary.com/iplus/image/upload/v1709990615/pexels-alex-azabache-3723035_1_xs9aso.jpg")',
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      minHeight: "100vh",
+      paddingBottom: "16px",
+      paddingLeft: {lg:"70px",xs:'15%'},
+      paddingRight: {lg:"32px",xs:'16px'},
+      paddingTop:{lg:'10%',xs:'20%'}
+    }}
+  >     
+  <Box
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
+          padding: { lg: "24px", xs: "16px" },
+          borderRadius: "20px",
+          width:{lg:'50%',xs:'80%'}
+        }}
+      >
+        
+        <h1>Checkout Page</h1>
+        <div>
+        <Typography marginTop={{ lg: "16px", xs: "16px" }}>Cart Items</Typography>
+        {/* Render the list of cart items */}
+        <ul>
+          {cart.map(item => (
+            <li key={item._id}>{item.name} - ${item.amount}</li>
+          ))}
+        </ul>
+      </div>
+        <div>
+          <Customtextfield
+            marginTop={{ lg: "24px", xs: "24px" }}
+            value={totalAmount}
+          />
+
+<div>
+        <Customtextfield
+            label="Promo Code"
+            marginTop="16px"
+            type="text"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+          />
+      <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "30px",
+              borderColor: "white",
+              boxShadow: "none",
+              width: { lg: "220px", xs: "200px" },
+              backgroundColor: "black",
+              color: "white",
+              marginTop: { lg: "16px", xs: "20px" },
+              height: "32px",
+              "&:hover": {
+                backgroundColor: "black",
+                color: "white",
+                borderColor: "white",
+                boxShadow: "none",
+              },
+            }}
+            onClick={handleApplyPromoCode}
+          >
+            Apply Promo Code
+          </Button>
+
+        {promoCodeInfo && (
+          <p>You are eligible for the discount. User: {userName}</p>
+        )}
+        {discountPercentage === 0 && promoCodeInfo === null && (
+          <p>Invalid promo code.</p>
+        )}
+      </div>
+      <div>
+        <h2 style={{marginTop:'16px'}} >Summary</h2>
+        <p>Total Amount: ${totalAmount}</p>
+        <p>Payable Amount: ${payableAmount}</p>
+        <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "30px",
+              borderColor: "white",
+              boxShadow: "none",
+              width: { lg: "220px", xs: "200px" },
+              backgroundColor: "black",
+              color: "white",
+              marginTop: { lg: "16px", xs: "20px" },
+              height: "32px",
+              "&:hover": {
+                backgroundColor: "black",
+                color: "white",
+                borderColor: "white",
+                boxShadow: "none",
+              },
+            }}
+            onClick={handleCheckout}
+          >
+            Checkout
+          </Button>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+        </div>
+
+      </Box>
+  
+  {/* 
+  <h1>Checkout Page</h1>
       <div>
         <h2>Cart Items</h2>
-        {/* Render the list of cart items */}
         <ul>
           {cart.map(item => (
             <li key={item._id}>{item.name} - ${item.amount}</li>
@@ -94,7 +220,9 @@ const CheckoutPage = () => {
         <p>Payable Amount: ${payableAmount}</p>
         <button onClick={handleCheckout}>Checkout</button>
       </div>
-    </div>
+  */}
+   
+    </Grid>
   );
 };
 
