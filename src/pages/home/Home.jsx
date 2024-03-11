@@ -18,11 +18,12 @@ import TourGuideHeader from "../../components/tourGuide/header/TourGuideHeader";
 import TourGuideFeatured from "../../components/tourGuide/featured/TourGuideFeatured";
 import TourPackageHeader from "../../components/tourPackages/header/TourPackageHeader";
 import TourPackageFeatured from "../../components/tourPackages/tourPackageFeatured/TourPackageFeatured";
+import Homepagemmain from "../../components/hotel/landing/NewLanding"
 
 const Home = () => {
   return (
     <div>
-      <Landing />
+      <Homepagemmain />
       <div className="main_container">
         <div className="hotel" id="hotels">
           <Header />
