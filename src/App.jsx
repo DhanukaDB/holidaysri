@@ -16,6 +16,7 @@ import PurchasePromoCodePage from "./components/referral/purchasepromocode";
 import CheckoutPage from "./components/referral/Checkout";
 import LocalAgentDashboard from "./components/agents/Local Agents/localDashboard.";
 import ForeignAgentDashboard from "./components/agents/Foreign Agents/ForeignAgDashboard";
+import Newlanding from "./components/hotel/landing/NewLanding";
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
         <Route path="/rides" element={<Vehicles />} />
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
+        <Route path="/landing" element={<Newlanding />} />
+
 
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
