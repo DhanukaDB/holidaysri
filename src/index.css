@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #000000;
 }
 /* styles.css */
 
@@ -10,6 +11,7 @@ body {
     display: flex;
     height: 100%;
     min-height: 100vh;
+    font-family: 'Noto serif Sinhala',sans-serif;
   }
   .powermain{
     display: flex;
@@ -40,11 +42,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
   }
+  .logobox img{
+    width: 100px;
+  }
+
   .sidebar {
     width: 250px;
-    background-color: #01050aee;
+    background-color: #06101bee;
     padding: 10px;
   }
   
@@ -126,7 +131,7 @@ body {
   align-items: center;
   border-top: 1px solid rgba(255,255,255,0.5);
   border-left: 1px solid rgba(255,255,255,0.5);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
   cursor: pointer;
   transition: 0.4s;
 }
@@ -140,7 +145,7 @@ body {
 
 .v-cards .v-text-card .v-content h2{
   position: absolute;
-  top: -5px;
+  top: -100px;
   right: 30px;
   font-size: 8em;
   color: rgba(255,255,255,0.03);

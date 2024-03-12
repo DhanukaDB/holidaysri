@@ -3,10 +3,10 @@ import Img1 from '../../../assets/img1.jpg';
 import Img2 from '../../../assets/img2.jpg';
 import Img3 from '../../../assets/img3.jpg';
 import Img4 from '../../../assets/img4.jpg';
-import Logo from '../../../assets/Hslogotow.png';
-import './Newlanding.css';
+import Logo from '../../../assets/Hsllogo.png';
 import './Newlanding.css';
 import AOS from 'aos';
+import { Link } from "react-scroll";
 
 function Newlanding() {
     useEffect(() => {
@@ -41,7 +41,7 @@ function Newlanding() {
         const carouselDom = document.querySelector('.carousel');
         const SliderDom = carouselDom.querySelector('.carousel .list');
         const thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
-        // Declare variables before using them
+
 
         if (type === 'next') {
             SliderDom.appendChild(SliderItemsDom[0]);
@@ -66,26 +66,26 @@ function Newlanding() {
     }
     
     return (
-        <div data-aos="fade">
-            <header>
+        <div className='mainhomebg' data-aos="fade">
+            <div className='bgnheader'>
                 <div className='newnavbar'>
                     <div className='mainlogoo'>
                     <img src={Logo} alt="mainlogoo" />
                     </div>
                     <div>
-                    <a href="">Hotels</a>
-                    <a href="">Vehicles</a>
-                    <a href="">Tour Packages</a>
-                    <a href="">Travel Partner</a>
-                    <a href="">Tour Guide</a>
-                    <a href="">Market Place</a>
+                    <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
+                    <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
+                    <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
+                    <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
+                    <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
+                    <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
                     </div>
                     <div>
-                    <a href=""> <span>Sign &nbsp; ∎ &nbsp; Sign Up </span></a>
+                    <a href="/login"> <span>Sign &nbsp; ∎ &nbsp; Sign Up </span></a>
                     </div>
                     
                 </div>
-            </header>
+            </div>
 
             <div className="carousel">
                 <div className="list">
@@ -98,8 +98,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Be a travel agent and earn money!Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <button>Local Travel Agent</button>
-                                <button>Foreign Travel Agent</button>
+                                <a href="/local-dashboard">Local Travel Agent</a>
+                                <a href="/foreign-dashboard">Foreign Travel Agent</a>
                             </div>
                         </div>
                     </div>
@@ -111,8 +111,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <button>Book Vehicle</button>
-                                <button>View Products</button>
+                                <a>Book Vehicle</a>
+                                <a>View Products</a>
                             </div>
                         </div>
                     </div>
@@ -124,8 +124,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <button>Book your Hotel</button>
-                                <button>View Hotel</button>
+                                <a>Book your Hotel</a>
+                                <a>View Hotel</a>
                             </div>
                         </div>
                     </div>
@@ -137,8 +137,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <button>View Events</button>
-                                <button>Hire Guides</button>
+                                <a>View Events</a>
+                                <a>Hire Guides</a>
                             </div>
                         </div>
                     </div>
@@ -150,29 +150,29 @@ function Newlanding() {
                     <div className="item">
                         <img src={Img2} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Name Slider</div>
-                            <div className="description">Description</div>
+                            <div className="title">Book Vehicle</div>
+                            <div className="description">View Products</div>
                         </div>
                     </div>
                     <div className="item">
                         <img src={Img3} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Name Slider</div>
-                            <div className="description">Description</div>
+                            <div className="title">Book your Hotel</div>
+                            <div className="description">View Hotel</div>
                         </div>
                     </div>
                     <div className="item">
                         <img src={Img4} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Name Slider</div>
-                            <div className="description">Description</div>
+                            <div className="title">View Events</div>
+                            <div className="description">Hire Guides</div>
                         </div>
                     </div>
                     <div className="item">
                         <img src={Img1} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Name Slider</div>
-                            <div className="description">Description</div>
+                            <div className="title">Local Travel Agent</div>
+                            <div className="description">Foreign Travel Agent</div>
                         </div>
                     </div>
                     {/* Add more thumbnail items as needed */}
