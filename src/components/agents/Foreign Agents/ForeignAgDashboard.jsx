@@ -7,7 +7,7 @@ import { IoFastFoodSharp } from "react-icons/io5";
 import { MdEventAvailable } from "react-icons/md";
 
 
-const LocalAgentDashboard = () => {
+const ForeignAgentDashboard = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -282,4 +282,4 @@ const EarnsSection = () => {
   );
 };
 
-export default LocalAgentDashboard;
+export default ForeignAgentDashboard;
