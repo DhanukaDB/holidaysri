@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Hsllogo from '../../../assets/Hslogotow.png'
+import Hsllogo from '../../assets/Hsllogo.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaHotel, FaCar, FaPeopleArrows, FaMoneyBillTransfer} from "react-icons/fa6";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { MdEventAvailable } from "react-icons/md";
+import './Adminstyl.css';
 
 
-const ForeignAgentDashboard = () => {
+const AdmminPanel = () => {
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
@@ -19,7 +20,7 @@ const ForeignAgentDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="sidebar">
+      <div className="sidebarAdmin">
         <div className='logobox'>
         <img className="logoimg" src={Hsllogo} alt="" />
         </div>
@@ -31,9 +32,9 @@ const ForeignAgentDashboard = () => {
         <button onClick={() => handleOptionSelect('Earns')}><FaMoneyBillTransfer />&nbsp; Earns</button>
       </div>
         
-      <div className='powermain'>
+      <div className='Adminback'>
         <div className='dsbHeader'>
-            <h2>Foreign Travel Agent Dashboard</h2>
+            <h2>Admin Panel</h2>
         </div>
 
         <div className="main-content">
@@ -282,4 +283,4 @@ const EarnsSection = () => {
   );
 };
 
-export default ForeignAgentDashboard;
+export default AdmminPanel;
