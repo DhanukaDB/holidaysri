@@ -5,6 +5,7 @@ import 'aos/dist/aos.css';
 import { FaHotel, FaCar, FaPeopleArrows, FaMoneyBillTransfer} from "react-icons/fa6";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { MdEventAvailable } from "react-icons/md";
+import './Dashboard.css';
 
 
 const LocalAgentDashboard = () => {

@@ -1,7 +1,6 @@
 import Header from "../../components/hotel/header/Header";
 import MailList from "../../components/hotel/mailList/MailList";
 import PropertyList from "../../components/hotel/propertyList/PropertyList";
-import Landing from "../../components/hotel/landing/Landing";
 import Featured from "../../components/hotel/featured/Featured";
 import FeaturedProperties from "../../components/hotel/featuredProperties/FeaturedProperties";
 import Footer from "../../components/hotel/footer/Footer";
