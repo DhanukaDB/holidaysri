@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Hsllogo from '../../../assets/Hslogotow.png'
+import Hsllogo from '../../../assets/Hsllogo.png'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaHotel, FaCar, FaPeopleArrows, FaMoneyBillTransfer} from "react-icons/fa6";
