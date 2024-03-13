@@ -164,11 +164,13 @@ body {
   }
   
   .section-subtitle {
-    color: #afadad;
+    color: #cec8c8;
     font-size: var(--fs-5);
     text-transform: uppercase;
     font-family: var(--ff-montserrat);
     margin-bottom: 8px;
+    font-weight: 600;
+    -webkit-box-reflect: below -5px linear-gradient(transparent,rgba(0, 0, 0, 0.253));
   }
   
   .section-title { margin-bottom: 15px; }
@@ -435,7 +437,7 @@ body {
    * #POPULAR
   \*-----------------------------------*/
   
-  .popular { padding-block: var(--section-padding); background-color: rgba(188, 199, 209, 0.384); width: 100%; backdrop-filter: blur(10px);}
+  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.322); width: 100%; backdrop-filter: blur(11px);}
   
   .popular-list,
   .popular-list > li:not(:last-child) { margin-bottom: 30px; }
