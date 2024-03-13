@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Box, Button, Typography, Modal, Grid } from "@mui/material";
 import Customtextfield from "../../components/hotel/Login/Customtextfield";
 import axios from "axios"; 
@@ -26,6 +26,12 @@ const Location = (props) => {
   const [province, setProvince] = useState("");
   const [distanceFromColombo, setDistanceFromColombo] = useState("");
   const [details, setDetails] = useState("");
+  const [location, setLocation] = useState([]);
+  const [eventLocation, setEventLocation] = useState("");
+  const [eventName,setEventName] = useState("");
+  const [description,setDescription] = useState("");
+  const [event,setEvent] = useState([]);
+ 
   
   const handleFileChange = (event) => {
     const selectedImages = Array.from(event.target.files);
@@ -37,6 +43,8 @@ const Location = (props) => {
   
   const handleAddLocation = (e) => { 
     e.preventDefault();
+
+
     const newLocation ={
       locationName,
       district,
@@ -50,12 +58,96 @@ const Location = (props) => {
     axios.post("http://localhost:8000/location/add", newLocation).then(() => {
          alert("The New Location was Successfully saved")
         // history.push('/')
-        window.location = `/`;
+        window.location = `/location`;
   
      }).catch((err) =>{
          alert(err)
      })
   };
+  
+
+  useEffect(() => {
+    async function getAllLocations() {
+        try {
+            const res = await axios.get("http://localhost:8000/location/");
+            setLocation(res.data);
+        } catch (error) {
+            console.error("Error fetching Locations:", error);
+            alert("Error fetching Locations: " + error.message);
+        }
+    }
+    getAllLocations();
+}, []);
+
+
+
+function handleDeleteLocation(id){
+
+  const r = window.confirm ("Do you really want to Delete this Location?"); 
+  if(r ==true){
+      axios.delete(`http://localhost:8000/location/delete/${id}`).then ((res)=>{
+          alert("Delete Successfully");
+          window.location = `/location`;
+          setLocation()
+      })
+  }
+}
+
+
+
+
+const handleAddEvent = (e) => { 
+  e.preventDefault();
+
+
+  const newEvent ={
+    eventName,
+    eventLocation,
+    description
+    
+  }
+
+  console.log(newEvent)  
+  //alert("Success");
+  axios.post("http://localhost:8000/event/add", newEvent).then(() => {
+       alert("The New Event was Successfully saved")
+      // history.push('/')
+      window.location = `/location`;
+
+   }).catch((err) =>{
+       alert(err)
+   })
+};
+
+
+useEffect(() => {
+  async function getAllEvents() {
+      try {
+          const res = await axios.get("http://localhost:8000/event/");
+          setEvent(res.data);
+      } catch (error) {
+          console.error("Error fetching Events:", error);
+          alert("Error fetching Events: " + error.message);
+      }
+  }
+  getAllEvents();
+}, []);
+
+
+
+function handleDeleteEvent(id){
+
+const r = window.confirm ("Do you really want to Delete this Event?"); 
+if(r ==true){
+    axios.delete(`http://localhost:8000/event/delete/${id}`).then ((res)=>{
+        alert("Delete Successfully");
+        window.location = `/location`;
+        setEvent()
+    })
+}
+}
+
+
 
   return (
     <div style={{paddingTop: "16px", paddingBottom: "16px",backgroundImage:
@@ -251,8 +343,9 @@ const Location = (props) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Customtextfield label="Location name" marginTop="8px" />
-            <Customtextfield label="Event name" marginTop="8px" />
+        
+            <Customtextfield label="Location name" value={eventLocation} onChange={(e) => setEventLocation(e.target.value)}  marginTop="8px" />
+            <Customtextfield label="Event name"  value={eventName} onChange={(e) => setEventName(e.target.value)}  marginTop="8px" />
             <div>
               <input
                 type="file"
@@ -299,7 +392,7 @@ const Location = (props) => {
                 ))}
               </div>
             </div>
-            <Customtextfield label="Description" marginTop="8px" />
+            <Customtextfield label="Description"  value={description} onChange={(e) => setDescription(e.target.value)}  marginTop="8px" />
             <Button
               variant="outlined"
               onClick={handleClose}
@@ -338,6 +431,8 @@ const Location = (props) => {
                   boxShadow: "none",
                 },
               }}
+
+              onClick={handleAddEvent}
             >
               Add
             </Button>
@@ -360,7 +455,9 @@ const Location = (props) => {
           </Box>
           {/*.map start */}
           <>
+          {location.map(location => (
             <Box
+              key={location._id}
               border={3}
               sx={{
                 width: { lg: "1100px", xs: "280px" },
@@ -416,7 +513,8 @@ const Location = (props) => {
                       textAlign: "left",
                     }}
                   >
-                    location name
+                      Location Name: {location.locationName}
+                  
                   </Typography>
                   <Typography
                     sx={{
@@ -427,7 +525,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    District:
+                    District: {location.district}
                   </Typography>
                   <Typography
                     sx={{
@@ -438,7 +536,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Province:
+                    Province: {location.province}
                   </Typography>
                   <Typography
                     sx={{
@@ -449,7 +547,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Distace from Colombo:
+                    Distace from Colombo: {location.distanceFromColombo}
                   </Typography>
                   <Typography
                     sx={{
@@ -460,7 +558,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Description
+                    Description  {location.details}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -481,12 +579,14 @@ const Location = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                    onClick = {() =>handleDeleteLocation(location._id)}
                   >
                     Delete
                   </Button>
                 </Grid>
               </Grid>
             </Box>
+              ))}
           </>
           {/*.map ends */}
         </Grid>
@@ -506,8 +606,10 @@ const Location = (props) => {
             </Typography>
           </Box>
           {/*.map start */}
-          <>
+          <> 
+          {event.map(event => (
             <Box
+              key={event._id}
               border={3}
               sx={{
                 width: { lg: "1100px", xs: "280px" },
@@ -539,7 +641,7 @@ const Location = (props) => {
                       textAlign: "left",
                     }}
                   >
-                    location name
+                    Location Name:  {event.eventLocation}
                   </Typography>
                   <Typography
                     sx={{
@@ -550,7 +652,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    event name
+                    Event Name :  {event.eventName}
                   </Typography>
                   <Typography
                     sx={{
@@ -561,7 +663,7 @@ const Location = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    description
+                    Description:  {event.description}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -582,12 +684,14 @@ const Location = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                    onClick = {() =>handleDeleteEvent(event._id)}
                   >
                     Delete
                   </Button>
                 </Grid>
               </Grid>
             </Box>
+             ))}
           </>
           {/*.map ends */}
         </Grid>
