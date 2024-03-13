@@ -46,7 +46,7 @@ const tabLabels = [
   { label: "For Forigen Agent", index: 2 },
   { label: "For Adviser", index: 3 },
   { label: "Seller", index: 4 },
-
+  
 ];
 
 function TabPanel(props) {
