@@ -67,7 +67,7 @@ const LocalVehicleForm = (props) => {
   
     console.log(newVehicle)  
     //alert("Success");
-    axios.post("http://localhost:8000/vehicle/add", newVehicle).then(() => {
+    axios.post("https://holidaysri-backend.onrender.com/vehicle/add/", newVehicle).then(() => {
          alert("The New Vehicle was Successfully saved")
         // history.push('/')
         window.location = `/`;
