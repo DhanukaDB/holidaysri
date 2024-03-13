@@ -129,11 +129,12 @@ body {
   }
   
   .btn-primary {
-    background: #042b24;
+    background: #05382f;
   }
   
   .btn-primary:is(:hover, :focus) {
     background: #05332ba2;
+    font-weight: 500;
   }
   
   .btn-secondary { border-color: var(--white); }
@@ -437,7 +438,7 @@ body {
    * #POPULAR
   \*-----------------------------------*/
   
-  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.322); width: 100%; backdrop-filter: blur(11px);}
+  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.384); width: 100%; backdrop-filter: blur(11px);}
   
   .popular-list,
   .popular-list > li:not(:last-child) { margin-bottom: 30px; }
