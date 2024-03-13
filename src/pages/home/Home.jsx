@@ -18,6 +18,8 @@ import TourGuideFeatured from "../../components/tourGuide/featured/TourGuideFeat
 import TourPackageHeader from "../../components/tourPackages/header/TourPackageHeader";
 import TourPackageFeatured from "../../components/tourPackages/tourPackageFeatured/TourPackageFeatured";
 import Homepagemmain from "../../components/hotel/landing/NewLanding"
+import Newheader from "../../components/hotel/header/Newheader";
+import Newfeatured from "../../components/hotel/featured/Newfeatured";
 
 const Home = () => {
   return (
@@ -25,10 +27,10 @@ const Home = () => {
       <Homepagemmain />
       <div className="main_container">
         <div className="hotel" id="hotels">
-          <Header />
+          <Newheader />
         </div>
         <div className="homeContainer">
-          <Featured />
+          <Newfeatured />
           <h1 className="homeTitle">Browse by property type</h1>
           <PropertyList />
           <h1 className="homeTitle">Homes guests love</h1>
