@@ -1,5 +1,5 @@
 .homeContainer {
-  margin-top: 50px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,7 @@
     background-attachment: fixed;
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
+    font-family: Poppins;
 }
 
 .homeTitle {

@@ -1,12 +1,12 @@
-.header {
+/* .header {
   background-color: #276749;
   color: white;
   display: flex;
   justify-content: center;
   position: relative;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   z-index: 1;
 }
@@ -178,4 +178,6 @@
     font-size: 14px;
     margin: 20px;
   }
-}
+} */
+
+

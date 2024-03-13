@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, Modal, Grid } from "@mui/material";
 import Customtextfield from "../../hotel/Login/Customtextfield";
 import InputLabel from '@mui/material/InputLabel';
@@ -39,6 +39,8 @@ const LocalVehicleForm = (props) => {
  // const [gender, setGender] = useState("");
   const [description, setDescription] = useState("");
   const [promoCode, setPromoCode] = useState("");
+  const [vehicleDetails, setVehicleDetails] = useState([]);
+ 
   
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -65,7 +67,7 @@ const LocalVehicleForm = (props) => {
   
     console.log(newVehicle)  
     //alert("Success");
-    axios.post("http://localhost:8000/vehicle/add", newVehicle).then(() => {
+    axios.post("https://holidaysri-backend.onrender.com/vehicle/add/", newVehicle).then(() => {
          alert("The New Vehicle was Successfully saved")
         // history.push('/')
         window.location = `/`;
@@ -74,6 +76,36 @@ const LocalVehicleForm = (props) => {
          alert(err)
      })
   };
+
+
+
+
+   useEffect(() => {
+    async function getAllVehicles() {
+        try {
+            const res = await axios.get("http://localhost:8000/vehicle/");
+            setVehicleDetails(res.data);
+        } catch (error) {
+            console.error("Error fetching vehicles:", error);
+            alert("Error fetching vehicles: " + error.message);
+        }
+    }
+    getAllVehicles();
+}, []);
+
+
+
+function handleDeleteVehicle(id){
+
+  const r = window.confirm ("Do you really want to Delete this Vehicle?"); 
+  if(r ==true){
+      axios.delete(`http://localhost:8000/vehicle/delete/${id}`).then ((res)=>{
+          alert("Delete Successfully");
+          window.location = `/add-vehicle`;
+          setVehicleDetails()
+      })
+  }
+}
 
 
   return (
@@ -280,7 +312,10 @@ const LocalVehicleForm = (props) => {
           </Box>
           {/*.map start */}
           <>
+          
+          {vehicleDetails.map(vehicle => (
             <Box
+              key={vehicle._id}
               border={3}
               sx={{
                 width: { lg: "1100px", xs: "280px" },
@@ -294,8 +329,8 @@ const LocalVehicleForm = (props) => {
               <Grid container spacing={2}>
                 <Grid item xs={12} lg={3}>
                   <Box width={{ lg: "70%" }} height={{ lg: "70%" }}>
-                    <img
-                      src="https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg"
+                    <img 
+                      src={vehicle.images}
                       width="100%"
                       height="100%"
                       style={{ borderRadius: "30px" }}
@@ -312,7 +347,7 @@ const LocalVehicleForm = (props) => {
                       textAlign: "left",
                     }}
                   >
-                    vehicleNumber
+                    Vehicle Number: {vehicle.vehicleNumber}
                   </Typography>
                   <Typography
                     sx={{
@@ -323,7 +358,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Vehiclecategory
+                    Vehicle Category: {vehicle.Vehiclecategory}
                   </Typography>
                   <Typography
                     sx={{
@@ -334,7 +369,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    contactNumber
+                    Contact Number: {vehicle.contactNumber}
                   </Typography>
                   <Typography
                     sx={{
@@ -345,7 +380,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    price
+                    Price : {vehicle.price}
                   </Typography>
                   <Typography
                     sx={{
@@ -356,7 +391,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    nic
+                    Nic : {vehicle.nic}
                   </Typography>
                   <Typography
                     sx={{
@@ -367,7 +402,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Gender
+                    Gender : {vehicle.gender}
                   </Typography>
                   <Typography
                     sx={{
@@ -378,7 +413,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    description
+                    Description: {vehicle.description}
                   </Typography>
                   <Typography
                     sx={{
@@ -389,7 +424,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    promoCode
+                    Promo Code : {vehicle.promoCode}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -399,6 +434,7 @@ const LocalVehicleForm = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                  
                   >
                     Edit
                   </Button>{" "}
@@ -410,12 +446,15 @@ const LocalVehicleForm = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                    onClick = {() =>handleDeleteVehicle(vehicle._id)}
                   >
+
                     Delete
                   </Button>
                 </Grid>
               </Grid>
             </Box>
+             ))}
           </>
           {/*.map ends */}
         </Grid>
