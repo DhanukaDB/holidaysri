@@ -1,10 +1,13 @@
 import React from 'react';
 import "./header.css";
+import AOS from 'aos';
 
 function TourSearch() {
+  AOS.init({ duration: 1000 });
+
   return (
     <section className="tour-search">
-      <div className="container">
+      <div className="container" data-aos="slide-up">
         <form action="" className="tour-search-form">
 
         

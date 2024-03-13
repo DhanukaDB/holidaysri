@@ -3,10 +3,13 @@ import img1 from '../../../assets/feimg1.jpg'
 import img2 from '../../../assets/feimg2.jpg'
 import img3 from '../../../assets/feimg3.jpg'
 import { FaStar } from "react-icons/fa";
+import AOS from 'aos';
 
 function PopularDestinations() {
+  AOS.init({ duration: 1000 });
+  
   return (
-    <section className="popular" id="destination">
+    <section className="popular" id="destination" data-aos="fade">
       <div className="container">
         <p className="section-subtitle">hOLIDAY SRI</p>
         <h2 className="h2 section-title">Discover your perfect escape</h2>
@@ -16,7 +19,7 @@ function PopularDestinations() {
         </p>
         <ul className="popular-list">
           <li>
-            <div className="popular-card">
+            <div className="popular-card" data-aos="slide-right">
               <figure className="card-img">
                 <img src={img1} alt="kandy" loading="lazy" />
               </figure>
@@ -43,7 +46,7 @@ function PopularDestinations() {
             </div>
           </li>
           <li>
-            <div className="popular-card">
+            <div className="popular-card" data-aos="slide-up">
               <figure className="card-img">
               <img src={img2} alt="Gale" loading="lazy" />
               </figure>
@@ -70,7 +73,7 @@ function PopularDestinations() {
             </div>
           </li>
           <li>
-            <div className="popular-card">
+            <div className="popular-card" data-aos="slide-left">
               <figure className="card-img">
               <img src={img3} alt="Colombo" loading="lazy" />
               </figure>

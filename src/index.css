@@ -155,7 +155,7 @@ body {
   }
   
   .h2,
-  .h3 { color: #ffffff;}
+  .h3 { color: #312b2b;}
   
   .h2 { font-size: var(--fs-2); }
   
@@ -165,7 +165,7 @@ body {
   }
   
   .section-subtitle {
-    color: #cec8c8;
+    color: #dbd4d4;
     font-size: var(--fs-5);
     text-transform: uppercase;
     font-family: var(--ff-montserrat);
@@ -177,7 +177,7 @@ body {
   .section-title { margin-bottom: 15px; }
   
   .section-text {
-    color: #c7ccca;
+    color: #d0d4d2;
     margin-bottom: 30px;
   }
   
@@ -438,7 +438,7 @@ body {
    * #POPULAR
   \*-----------------------------------*/
   
-  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.384); width: 100%; backdrop-filter: blur(11px);}
+  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.459); width: 100%; backdrop-filter: blur(11px);}
   
   .popular-list,
   .popular-list > li:not(:last-child) { margin-bottom: 30px; }
