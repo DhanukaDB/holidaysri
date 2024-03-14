@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
 }
 .main_container{
   background-image: url('../../assets/background.jpeg');
@@ -18,7 +17,8 @@
 .homeTitle {
   width: 1024px;
   font-size: 20px;
-  color: white;
+  color: rgb(245, 240, 240);
+  padding: 25px 0px 25px 0px;
 }
 
 .vehicleContiner {

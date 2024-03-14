@@ -349,10 +349,10 @@ a{
         font-size: 30px;
     }
 }
-span{
+.newnavbar span{
     color: #b5f3e4;
     transition: .2s;
 }
-span:hover{
+.newnavbar span:hover{
     color: #fbfffe;
 }
