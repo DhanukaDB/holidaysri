@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Destination = () => {
   const { id } = useParams();
-  const gridRef = useRef(null); 
+  const gridRef = useRef(null);
   const [location, setLocation] = useState(null);
 
   useEffect(() => {
@@ -37,7 +37,8 @@ const Destination = () => {
       const progress = elapsed / duration;
 
       if (gridElement) {
-        gridElement.scrollLeft = progress * (gridElement.scrollWidth - gridElement.clientWidth);
+        gridElement.scrollLeft =
+          progress * (gridElement.scrollWidth - gridElement.clientWidth);
 
         if (progress < 1) {
           animationFrameId = requestAnimationFrame(startAnimation);
@@ -149,11 +150,131 @@ const Destination = () => {
             </Box>
           </Grid>
         </Box>
+        <Grid
+          container
+          spacing={3}
+          marginLeft={{ lg: "30px" }}
+          marginTop={{ lg: "30px" }}
+        >
+          <Grid
+            item
+            lg={1}
+            sx={{
+              borderColor: "white",
+            }}
+          >
+            <Link to={`/events/${id}`} style={{ textDecoration: "none" }}>
+              <Box
+                border={2}
+                sx={{
+                  height: "100px",
+                  width: "170px",
+                  color: "black",
+                  borderColor: "white",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  borderRadius: "16px",
+                  padding: "30px",
+                  paddingTop:"38px"
+                }}
+              >
+                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
+                  View Events
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
+
+          <Grid
+            item
+            lg={1}
+            marginLeft={{ lg: "64px" }}
+            borderRadius="16px"
+            sx={{
+              borderColor: "white",
+            }}
+          >
+            <Link to={`/rides`} style={{ textDecoration: "none" }}>
+              <Box
+                border={2}
+                sx={{
+                  height: "100px",
+                  width: "170px",
+                  color: "black",
+                  borderColor: "white",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  borderRadius: "16px",
+                  padding: "34px",
+                }}
+              >
+                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
+                  Find a Ride
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
+          <Grid
+            item
+            lg={1}
+            marginLeft={{ lg: "64px" }}
+            borderRadius="16px"
+            sx={{
+              borderColor: "white",
+            }}
+          >
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <Box
+                border={2}
+                sx={{
+                  height: "100px",
+                  width: "170px",
+                  color: "black",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  borderColor: "white",
+                  borderRadius: "16px",
+                  padding: "28px",
+                }}
+              >
+                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
+                  Find a Tour Guide
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
+          <Grid
+            item
+            lg={1}
+            marginLeft={{ lg: "64px" }}
+            borderRadius="16px"
+            sx={{
+              borderColor: "white",
+            }}
+          >
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <Box
+                border={2}
+                sx={{
+                  height: "100px",
+                  width: "170px",
+                  color: "black",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  borderColor: "white",
+                  borderRadius: "16px",
+                  padding: "28px",
+                }}
+              >
+                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
+                  Find a Tour Guide
+                </Typography>
+              </Box>
+            </Link>
+          </Grid>
+        </Grid>
+
         <center>
           <Box
             border={3}
             sx={{
-              width: { lg: "850px", xs: "280px" },
+              width: { lg: "1050px", xs: "280px" },
               borderColor: "black",
               borderRadius: "30px",
               backgroundColor: "rgba(48, 103, 84, 0.5)",
@@ -163,31 +284,6 @@ const Destination = () => {
               marginBottom: "32px",
             }}
           >
-            <Link to={`/events/${id}`} style={{ textDecoration: "none" }}>
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  borderColor: "white",
-                  borderRadius: "30px",
-                }}
-              >
-                View Events
-              </Button>
-            </Link>
-            <Link to={`/rides`} style={{ textDecoration: "none" }}>
-              <Button
-                variant="outlined"
-                sx={{
-                  color: "white",
-                  borderColor: "white",
-                  borderRadius: "30px",
-                  marginLeft: "30px",
-                }}
-              >
-                Find a Ride
-              </Button>
-            </Link>
             <Typography
               sx={{
                 color: "white",
