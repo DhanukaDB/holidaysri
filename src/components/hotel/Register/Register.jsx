@@ -87,21 +87,24 @@ const Register = (props) => {
   };
 
   return (
-    <div
-      style={{
+    <Grid
+      sx={{
         backgroundImage: `url(${Background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         height: "100%",
-        margin: 0,
+        paddingBottom:'24px'
       }}
     >
       <Grid
-        paddingTop={{ lg: "5%" }}
-        paddingBottom={{ lg: "5%" }}
+        paddingTop={{ lg: "7%",xs:'4%' }}
+        paddingBottom={{ lg: "5%",xs:'4%'  }}
         width={{ lg: "1150px" }}
-        paddingLeft={{ lg: "25%" }}
+        height={{lg:'100%',xs:'100vh'}}
+        paddingLeft={{ lg: "25%" ,xs:'4%' }}
+        paddingRight={{ lg: "0px" ,xs:'4%' }}
+        marginBottom={{xs:'80%',lg:'0px'}}
       >
         <Grid className="registerform">
           <a href="/">
@@ -389,7 +392,7 @@ const Register = (props) => {
           </Grid>{" "}
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 
