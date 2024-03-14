@@ -47,8 +47,8 @@ function App() {
         <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/all-locations" element={<AllLocation />} />
-        <Route path="/destination" element={<Destination />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/destination/:id" element={<Destination />} />
+        <Route path="/events/:id" element={<Events />} />
         <Route path="/rides" element={<Vehicles />} />
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
