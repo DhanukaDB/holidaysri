@@ -11,7 +11,7 @@ const Events = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/location/get/${id}`);
+        const response = await axios.get(`https://holidaysri-backend.onrender.com/location/get/${id}`);
         setLocation(response.data.location);
       } catch (error) {
         console.error("Error fetching location:", error);
@@ -25,7 +25,7 @@ const Events = () => {
   useEffect(() => {
     async function getAllEventsByLocation() {
       try {
-        const res = await axios.get(`http://localhost:8000/event/getEventsByLocation/${id}`);
+        const res = await axios.get(`https://holidaysri-backend.onrender.com/event/getEventsByLocation/${id}`);
         setEvents(res.data);
       } catch (error) {
         console.error("Error fetching events:", error);

@@ -11,7 +11,7 @@ const Destination = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/location/get/${id}`);
+        const response = await axios.get(`https://holidaysri-backend.onrender.com/location/get/${id}`);
         setLocation(response.data.location);
       } catch (error) {
         console.error("Error fetching location:", error);
