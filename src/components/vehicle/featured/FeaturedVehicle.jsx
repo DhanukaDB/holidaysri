@@ -1,23 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./featuredVehicle.css";
 import { useRef } from "react";
+import AOS from 'aos';
 
 const FeaturedVehicle = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0, 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  AOS.init({ duration: 1000 });
+
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgress,
-        opacity: opacityProgress,
-      }}
-      className="car-featured"
+    <div
+      className="car-featured" data-aos="slide-right"
     >
       <div className="featuredItem">
         <img
@@ -53,7 +44,7 @@ const FeaturedVehicle = () => {
           <h2>532 taxis</h2>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

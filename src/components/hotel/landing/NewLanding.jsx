@@ -74,11 +74,12 @@ function Newlanding() {
                     </div>
                     <div>
                     <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
-                    <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
                     <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
+                    <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
                     <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
                     <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
                     <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
+                    <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
                     </div>
                     <div>
                     <a href="/login"> <span>Sign &nbsp; ∎ &nbsp; Sign Up </span></a>

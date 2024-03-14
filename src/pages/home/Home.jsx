@@ -22,6 +22,8 @@ import Newheader from "../../components/hotel/header/Newheader";
 import Newfeatured from "../../components/hotel/featured/Newfeatured";
 import Newprpetylist from "../../components/hotel/propertyList/Newpropetylist";
 import Tourpacnew from "../../components/tourPackages/tourPackageFeatured/Tourpacnew";
+import Contact from "../../components/hotel/mailList/contact";
+import Gallery from "../../components/hotel/mailList/Galary";
 
 const Home = () => {
   return (
@@ -34,8 +36,6 @@ const Home = () => {
         <div className="homeContainer">
           <Newfeatured />
           <Newprpetylist />
-          {/* <h1 className="homeTitle">Homes guests love</h1>
-          <FeaturedProperties /> */}
         </div>
         <div className="tourPackage" id="tour-packages">
           <Tourpacnew />
@@ -43,40 +43,37 @@ const Home = () => {
         <div className="vehicle" id="vehicles">
           <VehicleHeader />
         </div>
-        <div className="vehicleContiner">
+        <div className="vehicleContiner" data-aos="fade">
           <FeaturedVehicle />
-          <h1 className="homeTitle">Browse by vehicle type</h1>
+          <h1 className="homeTitle">Browse by vehicle type :</h1>
           <VehicleList />
-        </div>
-        <div className="tourPackage" id="tour-packages">
-          <TourPackageHeader />
-        </div>
-        <div className="tourPackageContainer">
-          <TourPackageFeatured />
         </div>
         <div className="travelPartner" id="travel-partner">
           <TravelPartnerHeader />
         </div>
-        <div className="travelPartnerContainer">
+        <div className="travelPartnerContainer" data-aos="fade">
           <TravelPartnerFeatured />
         </div>
         <div className="tourGuide" id="tour-guide">
           <TourGuideHeader />
         </div>
-        <div className="tourGuideContainer">
+        <div className="tourGuideContainer" data-aos="fade">
           <TourGuideFeatured />
         </div>
         <div className="marketplace" id="market-place">
           <MarketPlaceHeader />
         </div>
-        <div className="marketPlaceContainer">
+        <div className="marketPlaceContainer" data-aos="fade">
           <FeaturedMarketPlace />
           <h1 className="homeTitle">Gifts guests love</h1>
           <FeaturedMarket />
         </div>
-        <MailList />
-      </div>
-      {/* <Footer /> */}
+        <div className="Ctgalary" id="CT-Gallery">
+          <Contact />
+          <Gallery />
+          </div>
+        </div>
+      <Footer />
     </div>
   );
 };

@@ -156,7 +156,7 @@ body {
   }
   
   .h2,
-  .h3 { color: #2a2d41;}
+  .h3 { color: #f7f7fa;}
   
   .h2 { font-size: var(--fs-2); }
   
@@ -183,8 +183,8 @@ body {
   }
   
   .card-text {
-    color: var(--black-coral);
-    font-size: var(--fs-5);
+    color: #e2dfdf;
+    font-size: 14px;
   }
   
   
@@ -439,7 +439,7 @@ body {
    * #POPULAR
   \*-----------------------------------*/
   
-  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.459); width: 100%; backdrop-filter: blur(11px);}
+  .popular { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.212); width: 100%; backdrop-filter: blur(8px);}
   
   .popular-list,
   .popular-list > li:not(:last-child) { margin-bottom: 30px; }
@@ -470,13 +470,14 @@ body {
     bottom: 20px;
     left: 20px;
     right: 20px;
-    background: var(--white);
+    background: #1110106c;
     border-radius: var(--radius-25);
     padding: 20px;
     transition: .2s;
+    backdrop-filter: blur(11px);
   }
   .popular-card .card-content:hover{
-    background-color: rgba(240, 248, 255, 0.849);
+    background-color: rgba(75, 76, 77, 0.199);
   }
   
   
@@ -497,7 +498,7 @@ body {
   }
   
   .popular-card .card-subtitle {
-    color: var(--blue-ncs);
+    color: #d0ddf0;
     font-size: var(--fs-6);
     text-transform: uppercase;
     margin-bottom: 8px;
@@ -517,16 +518,21 @@ body {
    * #PACKAGE
   \*-----------------------------------*/
   
-  .package { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.459); width: 100%; backdrop-filter: blur(11px); }
+  .package { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.212); width: 100%; backdrop-filter: blur(8px); }
   
   .package-list { margin-bottom: 40px; }
   
   .package-list > li:not(:last-child) { margin-bottom: 30px; }
   
   .package-card {
-    background: var(--cultured);
+    background: #fffffe28;
     overflow: hidden;
     border-radius: 15px;
+    transition: .3s;
+  }
+  .package-card:hover{
+    transform: scale(1.05);
+    background: #16161650;
   }
   
   .package-card .card-banner { height: 250px; }
@@ -635,7 +641,12 @@ body {
    * #GALLERY
   \*-----------------------------------*/
   
-  .gallery { padding-block: var(--section-padding); }
+  .gallery { 
+    padding-block: var(--section-padding); 
+    background-color: rgba(210, 221, 233, 0.212); 
+    width: 100%; 
+    backdrop-filter: blur(8px); 
+  }
   
   .gallery-list {
     display: grid;
@@ -667,7 +678,7 @@ body {
   \*-----------------------------------*/
   
   .cta {
-    background: var(--bright-navy-blue);
+    background: hsla(214, 20%, 21%, 0.678);
     padding-block: var(--section-padding);
   }
   
@@ -684,14 +695,14 @@ body {
   \*-----------------------------------*/
   
   .footer-top {
-    background: var(--gunmetal);
+    background: #0c1929;
     padding-block: var(--section-padding);
     color: var(--gainsboro);
   }
   
   .footer-brand { margin-bottom: 30px; }
   
-  .footer-brand img { width: 180px; }
+  .footer-brand img { width: 100px; }
   
   .footer-brand .logo { margin-bottom: 20px; }
   
@@ -760,7 +771,7 @@ body {
   .footer-form .btn { width: 100%; }
   
   .footer-bottom {
-    --gunmetal: hsl(205, 36%, 17%);
+    --gunmetal: hsla(204, 29%, 17%, 0.637);
     background: var(--gunmetal);
     padding-block: 20px;
     text-align: center;

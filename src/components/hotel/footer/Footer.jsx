@@ -1,52 +1,70 @@
-import "./footer.css";
+import React from 'react';
+import img1 from '../../../assets/Hsllogo.png';
 
-const Footer = () => {
+function Footer() {
   return (
-    <div className="footer">
-      <div className="fLists">
-        <ul className="fList">
-          <li className="fListItem">Countries</li>
-          <li className="fListItem">Regions</li>
-          <li className="fListItem">Cities</li>
-          <li className="fListItem">Districts</li>
-          <li className="fListItem">Airports</li>
-          <li className="fListItem">Hotels</li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Homes </li>
-          <li className="fListItem">Apartments </li>
-          <li className="fListItem">Resorts </li>
-          <li className="fListItem">Villas</li>
-          <li className="fListItem">Hostels</li>
-          <li className="fListItem">Guest houses</li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Unique places to stay </li>
-          <li className="fListItem">Reviews</li>
-          <li className="fListItem">Unpacked: Travel articles </li>
-          <li className="fListItem">Travel communities </li>
-          <li className="fListItem">Seasonal and holiday deals </li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Car rental </li>
-          <li className="fListItem">Flight Finder</li>
-          <li className="fListItem">Restaurant reservations </li>
-          <li className="fListItem">Travel Agents </li>
-        </ul>
-        <ul className="fList">
-          <li className="fListItem">Curtomer Service</li>
-          <li className="fListItem">Partner Help</li>
-          <li className="fListItem">Careers</li>
-          <li className="fListItem">Sustainability</li>
-          <li className="fListItem">Press center</li>
-          <li className="fListItem">Safety Resource Center</li>
-          <li className="fListItem">Investor relations</li>
-          <li className="fListItem">Terms & conditions</li>
-        </ul>
+    <footer className="footer">
+      <div className="footer-top">
+        <div className="container">
+          <div className="footer-brand">
+            <a href="#" className="logo">
+              <img src={img1} alt="Tourly logo" />
+            </a>
+            <p className="footer-text">
+              Urna ratione ante harum provident, eleifend, vulputate molestiae proin fringilla, praesentium magna conubia at perferendis, pretium, aenean aut ultrices.
+            </p>
+          </div>
+          <div className="footer-contact">
+            <h4 className="contact-title">Contact Us</h4>
+            <p className="contact-text">
+              Feel free to contact and reach us !!
+            </p>
+            <ul>
+              <li className="contact-item">
+                <ion-icon name="call-outline"></ion-icon>
+                <a href="#" className="contact-link">+01 (112) 0000 90</a>
+              </li>
+              <li className="contact-item">
+                <ion-icon name="mail-outline"></ion-icon>
+                <a href="#" className="contact-link">info.holiday.com</a>
+              </li>
+              <li className="contact-item">
+                <ion-icon name="location-outline"></ion-icon>
+                <address>Colombo, Sri Lanka</address>
+              </li>
+            </ul>
+          </div>
+          <div className="footer-form">
+            <p className="form-text">
+              Subscribe our newsletter for more update & news !!
+            </p>
+            <form action="" className="form-wrapper">
+              <input type="email" name="email" className="input-field" placeholder="Enter Your Email" required />
+              <button type="submit" className="btn btn-secondary">Subscribe</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <div className="fText">Copyright © 2024 Holiday Sri.</div>
-    </div>
+      <div className="footer-bottom">
+        <div className="container">
+          <p className="copyright">
+            &copy; 2024 <a href="">Holiday-Sri</a>. All rights reserved
+          </p>
+          <ul className="footer-bottom-list">
+            <li>
+              <a href="#" className="footer-bottom-link">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="#" className="footer-bottom-link">Term & Condition</a>
+            </li>
+            <li>
+              <a href="#" className="footer-bottom-link">FAQ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
   );
-};
+}
 
 export default Footer;
