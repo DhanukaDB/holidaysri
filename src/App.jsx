@@ -18,6 +18,7 @@ import LocalAgentDashboard from "./components/agents/Local Agents/localDashboard
 import ForeignAgentDashboard from "./components/agents/Foreign Agents/ForeignAgDashboard";
 import Newlanding from "./components/hotel/landing/NewLanding";
 import AdmminPanel from "./components/Addmin/AdminPanel";
+import AllLocation from "./pages/alllocations/Locations";
 
 
 function App() {
@@ -45,7 +46,8 @@ function App() {
         <Route path="/location" element={<Location />} />
         <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
-        <Route path="/destinations" element={<Destination />} />
+        <Route path="/all-locations" element={<AllLocation />} />
+        <Route path="/destination" element={<Destination />} />
         <Route path="/events" element={<Events />} />
         <Route path="/rides" element={<Vehicles />} />
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
