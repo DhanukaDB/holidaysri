@@ -97,7 +97,7 @@
   position: relative;
   font-size: 16px;
   border-radius: .5em;
-  background: #4f525879;
+  background: #4f525888;
   border-bottom: 10px solid #1a63c2;
   border-top: 1px solid rgba(255, 255, 255, 0.359);
   border-left: 1px solid rgba(255, 255, 255, 0.359);
@@ -119,7 +119,7 @@
   transform: skew(25deg);
 }
 .myProgressBar-container i{
-  color: #1a63c2;
+  color: #115fc4;
   font-size: 3em;
   text-align: center;
 }
