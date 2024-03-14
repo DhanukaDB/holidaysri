@@ -1,24 +1,13 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./vehicleList.css";
 import { useRef } from "react";
+import AOS from 'aos';
 
 const VehicleList = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0, 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
+  AOS.init({ duration: 1000 });
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgress,
-        opacity: opacityProgress,
-      }}
-      className="vehicleList"
+    <div
+      className="vehicleList" data-aos="slide-down"
     >
       <div className="pListItem">
         <img
@@ -75,7 +64,7 @@ const VehicleList = () => {
           <h2>2331 sedans</h2>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

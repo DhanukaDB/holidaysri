@@ -82,8 +82,8 @@
 }
 .homeTitlen{
   width: 100%;
-  font-size: 20px;
-  color: rgb(245, 240, 240);
+  font-size: 23px;
+  color: rgb(221, 218, 218);
   padding: 20px 0px 20px 20px;
 }
 .myProgressBar-container{
@@ -92,13 +92,14 @@
   display: flex;
   flex-direction: column;
   color: #fff;
+  align-items: center;  
   justify-content: space-around;
   padding: 1em 0;
   position: relative;
   font-size: 16px;
   border-radius: .5em;
-  background: #4f525888;
-  border-bottom: 10px solid #1a63c2;
+  background: #4c4e5288;
+  border-bottom: 15px solid #325077;
   border-top: 1px solid rgba(255, 255, 255, 0.359);
   border-left: 1px solid rgba(255, 255, 255, 0.359);
   overflow: hidden;
@@ -115,7 +116,7 @@
   left: -50%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.047);
+  background: rgba(255, 255, 255, 0.082);
   transform: skew(25deg);
 }
 .myProgressBar-container i{
@@ -127,7 +128,7 @@
   display: grid;
   place-items: center;
   font-weight: 600;
-  font-size: 3em;
+  font-size: 1em;
 }
 .myProgressBar-container span.upnumsText{
   color: rgb(205, 199, 199);
@@ -136,6 +137,13 @@
   pad: 0.7em 0;
   font-weight: 400;
   line-height: 0;
+}
+.myProgressBar-container img{
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  opacity: 0.8;
+
 }
 
 @media screen and (max-width: 1024px){
@@ -165,7 +173,7 @@
       gap: 15px;
   }
   .myProgressBar-container{
-      height: 25vmin;
+      height: 50vmin;
       width: 80%;
       font-size: 8px;
   }
@@ -176,5 +184,5 @@
   justify-content: center;
 }
 .forPlussmark p{
-  font-size: 25px;
+  font-size: 15px;
 }

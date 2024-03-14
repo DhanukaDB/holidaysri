@@ -22,35 +22,47 @@
 }
 
 .vehicleContiner {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  padding-block: var(--section-padding); 
+  background-color: rgba(210, 221, 233, 0.212); 
+  width: 100%; 
+  backdrop-filter: blur(8px);
 }
 
 .marketPlaceContainer {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  padding-block: var(--section-padding); 
+  background-color: rgba(210, 221, 233, 0.212); 
+  width: 100%; 
+  backdrop-filter: blur(8px);
 }
 
 .travelPartnerContainer {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  padding-block: var(--section-padding); 
+  background-color: rgba(210, 221, 233, 0.212); 
+  width: 100%; 
+  backdrop-filter: blur(8px);
 }
 
 .tourGuideContainer {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  padding-block: var(--section-padding); 
+  background-color: rgba(210, 221, 233, 0.212); 
+  width: 100%; 
+  backdrop-filter: blur(8px);
 }
 
 .tourPackageContainer {
