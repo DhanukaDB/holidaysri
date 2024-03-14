@@ -55,7 +55,7 @@ const Location = (props) => {
   
     console.log(newLocation)  
     //alert("Success");
-    axios.post("http://localhost:8000/location/add", newLocation).then(() => {
+    axios.post("https://holidaysri-backend.onrender.com/location/add", newLocation).then(() => {
          alert("The New Location was Successfully saved")
         // history.push('/')
         window.location = `/location`;
@@ -69,7 +69,7 @@ const Location = (props) => {
   useEffect(() => {
     async function getAllLocations() {
         try {
-            const res = await axios.get("http://localhost:8000/location/");
+            const res = await axios.get("https://holidaysri-backend.onrender.com/location/");
             setLocation(res.data);
         } catch (error) {
             console.error("Error fetching Locations:", error);
@@ -85,7 +85,7 @@ function handleDeleteLocation(id){
 
   const r = window.confirm ("Do you really want to Delete this Location?"); 
   if(r ==true){
-      axios.delete(`http://localhost:8000/location/delete/${id}`).then ((res)=>{
+      axios.delete(`https://holidaysri-backend.onrender.com/location/delete/${id}`).then ((res)=>{
           alert("Delete Successfully");
           window.location = `/location`;
           setLocation()
@@ -109,7 +109,7 @@ const handleAddEvent = (e) => {
 
   console.log(newEvent)  
   //alert("Success");
-  axios.post("http://localhost:8000/event/add", newEvent).then(() => {
+  axios.post("https://holidaysri-backend.onrender.com/event/add", newEvent).then(() => {
        alert("The New Event was Successfully saved")
       // history.push('/')
       window.location = `/location`;
@@ -123,7 +123,7 @@ const handleAddEvent = (e) => {
 useEffect(() => {
   async function getAllEvents() {
       try {
-          const res = await axios.get("http://localhost:8000/event/");
+          const res = await axios.get("https://holidaysri-backend.onrender.com/event/");
           setEvent(res.data);
       } catch (error) {
           console.error("Error fetching Events:", error);
@@ -139,7 +139,7 @@ function handleDeleteEvent(id){
 
 const r = window.confirm ("Do you really want to Delete this Event?"); 
 if(r ==true){
-    axios.delete(`http://localhost:8000/event/delete/${id}`).then ((res)=>{
+    axios.delete(`https://holidaysri-backend.onrender.com/event/delete/${id}`).then ((res)=>{
         alert("Delete Successfully");
         window.location = `/location`;
         setEvent()
