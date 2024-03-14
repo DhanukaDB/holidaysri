@@ -154,7 +154,8 @@ const Destination = () => {
           container
           spacing={3}
           marginLeft={{ lg: "30px" }}
-          marginTop={{ lg: "30px" }}
+          paddingLeft={{xs:'8%',lg:'0px'}}
+          marginTop={{ lg: "30px",xs:'8px' }}
         >
           <Grid
             item
@@ -168,13 +169,13 @@ const Destination = () => {
                 border={2}
                 sx={{
                   height: "100px",
-                  width: "170px",
+                  width: {lg:"170px",xs:'140px'},
                   color: "black",
                   borderColor: "white",
                   backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderRadius: "16px",
                   padding: "30px",
-                  paddingTop:"38px"
+                  paddingTop:{lg:"38px",xs:'20px'}
                 }}
               >
                 <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
@@ -198,12 +199,13 @@ const Destination = () => {
                 border={2}
                 sx={{
                   height: "100px",
-                  width: "170px",
+                  width: {lg:"170px",xs:'140px'},
                   color: "black",
                   borderColor: "white",
                   backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderRadius: "16px",
-                  padding: "34px",
+                  padding: "30px",
+                  paddingTop:{lg:"38px",xs:'20px'}
                 }}
               >
                 <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
@@ -226,12 +228,13 @@ const Destination = () => {
                 border={2}
                 sx={{
                   height: "100px",
-                  width: "170px",
+                  width: {lg:"170px",xs:'140px'},
                   color: "black",
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderColor: "white",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderRadius: "16px",
-                  padding: "28px",
+                  padding: "16px",
+                  paddingTop:{lg:"16px",xs:'20px'}
                 }}
               >
                 <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
@@ -254,12 +257,13 @@ const Destination = () => {
                 border={2}
                 sx={{
                   height: "100px",
-                  width: "170px",
+                  width: {lg:"170px",xs:'140px'},
                   color: "black",
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderColor: "white",
+                  backgroundColor: "rgba(255, 255, 255, 0.5)",
                   borderRadius: "16px",
-                  padding: "28px",
+                  padding: "16px",
+                  paddingTop:{lg:"28px",xs:'20px'}
                 }}
               >
                 <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
@@ -279,7 +283,7 @@ const Destination = () => {
               borderRadius: "30px",
               backgroundColor: "rgba(48, 103, 84, 0.5)",
               padding: "24px",
-              marginLeft: "100px",
+              marginLeft: {lg:"100px"},
               marginTop: { lg: "32px", xs: "32px" },
               marginBottom: "32px",
             }}
