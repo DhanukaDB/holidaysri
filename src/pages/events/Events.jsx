@@ -52,7 +52,7 @@ const Events = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop='16px' marginLeft='32px'>
-          <a href="/destinations" style={{ textDecoration: 'none' }}>
+          <a href="/all-locations" style={{ textDecoration: 'none' }}>
             <Button variant="outlined" sx={{ color: 'white', borderColor: 'white', borderRadius: '30px' }}>Back</Button>
           </a>
         </Box>
@@ -84,17 +84,24 @@ const Events = () => {
               width: { lg: "1100px", xs: "300px" },
             }}
           >
-            <Typography
+            {events.length===0? <Typography
+              fontSize={{ lg: "24px", xs: "22px" }}
+              sx={{ color: "white" }}
+              marginTop="16px"
+            >
+              No Recent Events
+            </Typography>: <Typography
               fontSize={{ lg: "24px", xs: "22px" }}
               sx={{ color: "white" }}
               marginTop="16px"
             >
               Upcoming Recent Events
-            </Typography>
+            </Typography>}
+           
           </Box>
           {events.map((event) => (
             <Box
-              key={event._id} // Assuming you have a unique identifier like _id
+              key={event._id} 
               border={3}
               sx={{
                 width: { lg: "1100px", xs: "280px" },

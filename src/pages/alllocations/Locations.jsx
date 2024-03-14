@@ -39,7 +39,7 @@ const Locations = (props) => {
           borderRadius: "20px",
         }}
       >
-        <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
+        <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }} marginBottom={{lg:'16px'}}>
           <Typography
             sx={{
               color: "white",
@@ -80,8 +80,8 @@ const Locations = (props) => {
                       p: 2,
                     }}
                   >
-                    <Typography variant="h6">{location.locationName}</Typography>
-                    <Typography variant="body1">
+                    <Typography variant="h2">{location.locationName}</Typography>
+                    <Typography variant="h6">
                       {location.district} District
                     </Typography>
                   </Box>
