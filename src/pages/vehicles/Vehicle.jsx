@@ -72,7 +72,7 @@ const Vehicle = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href="/destinations" style={{ textDecoration: "none" }}>
+          <a href="/all-locations" style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{

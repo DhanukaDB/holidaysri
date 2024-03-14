@@ -19,6 +19,8 @@ import ForeignAgentDashboard from "./components/agents/Foreign Agents/ForeignAgD
 import Newlanding from "./components/hotel/landing/NewLanding";
 import AdmminPanel from "./components/Addmin/AdminPanel";
 import AllLocation from "./pages/alllocations/Locations";
+import Test from "./pages/destinations/Test";
+
 
 
 function App() {
@@ -54,8 +56,9 @@ function App() {
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
         <Route path="/landing" element={<Newlanding />} />
         <Route path="/admin" element={<AdmminPanel />} />
+        <Route path="/test" element={<Test />} />
 
-
+        
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
 
