@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
+    overflow-x: hidden;
 }
 :root {
 
@@ -139,7 +140,7 @@ body {
   
   .btn-secondary { border-color: var(--white); }
   
-  .btn-secondary:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
+  .btn-secondary:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.219); border: none; }
   
   .h1,
   .h2,
