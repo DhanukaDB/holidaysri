@@ -667,6 +667,10 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: .3s;
+  }
+  .gallery-image img:hover{
+    transform: scale(1.2);
   }
   
   
@@ -695,7 +699,7 @@ body {
   \*-----------------------------------*/
   
   .footer-top {
-    background: #0c1929;
+    background: #091420;
     padding-block: var(--section-padding);
     color: var(--gainsboro);
   }
@@ -771,7 +775,7 @@ body {
   .footer-form .btn { width: 100%; }
   
   .footer-bottom {
-    --gunmetal: hsla(204, 29%, 17%, 0.637);
+    --gunmetal: hsla(203, 32%, 11%, 0.637);
     background: var(--gunmetal);
     padding-block: 20px;
     text-align: center;
