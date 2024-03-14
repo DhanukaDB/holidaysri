@@ -21,6 +21,7 @@ import Homepagemmain from "../../components/hotel/landing/NewLanding"
 import Newheader from "../../components/hotel/header/Newheader";
 import Newfeatured from "../../components/hotel/featured/Newfeatured";
 import Newprpetylist from "../../components/hotel/propertyList/Newpropetylist";
+import Tourpacnew from "../../components/tourPackages/tourPackageFeatured/Tourpacnew";
 
 const Home = () => {
   return (
@@ -33,8 +34,11 @@ const Home = () => {
         <div className="homeContainer">
           <Newfeatured />
           <Newprpetylist />
-          <h1 className="homeTitle">Homes guests love</h1>
-          <FeaturedProperties />
+          {/* <h1 className="homeTitle">Homes guests love</h1>
+          <FeaturedProperties /> */}
+        </div>
+        <div className="tourPackage" id="tour-packages">
+          <Tourpacnew />
         </div>
         <div className="vehicle" id="vehicles">
           <VehicleHeader />

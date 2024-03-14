@@ -517,7 +517,7 @@ body {
    * #PACKAGE
   \*-----------------------------------*/
   
-  .package { padding-block: var(--section-padding); }
+  .package { padding-block: var(--section-padding); background-color: rgba(210, 221, 233, 0.459); width: 100%; backdrop-filter: blur(11px); }
   
   .package-list { margin-bottom: 40px; }
   
