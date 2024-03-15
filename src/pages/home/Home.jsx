@@ -46,8 +46,6 @@ const Home = () => {
         </div>
         <div className="vehicleContiner" data-aos="fade">
           <FeaturedVehicle />
-          <h1 className="homeTitle">Browse by vehicle type :</h1>
-          <VehicleList />
         </div>
         <div className="travelPartner" id="travel-partner">
           <TravelPartnerHeader />
