@@ -60,6 +60,7 @@ const LocalVehicleForm = (props) => {
     const newVehicle ={
       vehicleNumber,
       Vehiclecategory,
+      location,
       contactNumber,
       price,
       nic,
@@ -85,7 +86,7 @@ const LocalVehicleForm = (props) => {
    useEffect(() => {
     async function getAllVehicles() {
         try {
-            const res = await axios.get("http://localhost:8000/vehicle/");
+            const res = await axios.get("https://holidaysri-backend.onrender.com/vehicle/");
             setVehicleDetails(res.data);
         } catch (error) {
             console.error("Error fetching vehicles:", error);
@@ -101,7 +102,7 @@ function handleDeleteVehicle(id){
 
   const r = window.confirm ("Do you really want to Delete this Vehicle?"); 
   if(r ==true){
-      axios.delete(`http://localhost:8000/vehicle/delete/${id}`).then ((res)=>{
+      axios.delete(`https://holidaysri-backend.onrender.com/vehicle/delete/${id}`).then ((res)=>{
           alert("Delete Successfully");
           window.location = `/add-vehicle`;
           setVehicleDetails()
