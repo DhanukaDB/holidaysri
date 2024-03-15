@@ -22,6 +22,7 @@ import AllLocation from "./pages/alllocations/Locations";
 import Test from "./pages/destinations/Test";
 import AllVehicles from "./pages/vehicles/Allvehicles";
 import AddHotel from "./components/hotel/AddHotel/AddHotel";
+import Destination2 from "./pages/destinations/Destination2";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,14 +48,14 @@ function App() {
         <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/all-locations" element={<AllLocation />} />
-        <Route path="/destination/:id" element={<Destination />} />
+        <Route path="/destinationa/:id" element={<Destination />} />
         <Route path="/events/:id" element={<Events />} />
         <Route path="/rides" element={<Vehicles />} />
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
         <Route path="/landing" element={<Newlanding />} />
         <Route path="/admin" element={<AdmminPanel />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/destination/:id" element={<Destination2 />} />
         <Route path="/all-vehicles" element={<AllVehicles />} />
         <Route path="/addhotel" eliment={<AddHotel />} />
         
