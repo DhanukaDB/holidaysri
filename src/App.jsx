@@ -21,9 +21,8 @@ import AdmminPanel from "./components/Addmin/AdminPanel";
 import AllLocation from "./pages/alllocations/Locations";
 import Test from "./pages/destinations/Test";
 import AllVehicles from "./pages/vehicles/Allvehicles";
+import AddHotel from "./components/hotel/AddHotel/AddHotel";
 import Destination2 from "./pages/destinations/Destination2";
-
-
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +57,8 @@ function App() {
         <Route path="/admin" element={<AdmminPanel />} />
         <Route path="/destination/:id" element={<Destination2 />} />
         <Route path="/all-vehicles" element={<AllVehicles />} />
+        <Route path="/addhotel" eliment={<AddHotel />} />
+        
 
         
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />

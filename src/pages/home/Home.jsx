@@ -46,6 +46,7 @@ const Home = () => {
         </div>
         <div className="vehicleContiner" data-aos="fade">
           <FeaturedVehicle />
+          <VehicleList />
         </div>
         <div className="travelPartner" id="travel-partner">
           <TravelPartnerHeader />

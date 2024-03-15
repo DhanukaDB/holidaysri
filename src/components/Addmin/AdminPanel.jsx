@@ -7,6 +7,7 @@ import { IoFastFoodSharp } from "react-icons/io5";
 import { MdEventAvailable } from "react-icons/md";
 import './Adminstyl.css';
 import VehicleSections from '../agents/Local Agents/LocalVehicle'
+import Addhotel from '../hotel/AddHotel/AddHotel'
 
 const AdmminPanel = () => {
   useEffect(() => {
@@ -53,35 +54,8 @@ const AdmminPanel = () => {
 const HotelSection = () => {
   return (
     <div data-aos="zoom-in">
-      {/* Hotel section content */}
-      <h2>Hotels Section :</h2>
 
-      <section className='v-section'>
-      <div className='v-cards'>
-                        <div className='v-text-card'>
-                            <div className='v-content'>
-                                <h2>01</h2>
-                                
-                                <h3>Add Hotels</h3>
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sit dolor repellat ipsam natus rerum autem quis</h5>   
-                                <a href='#'>Add</a>
-                            </div>
-                        </div>
-
-                        <div className='v-text-card'>
-                            <div className='v-content'>
-                                <h2>02</h2>
-                                
-                                <h3>View Hotels</h3>
-                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, sit dolor repellat ipsam natus rerum autem quis</h5>   
-                                <a href='#'>View</a>
-                                </div>
-                        </div>
-
-                    </div>
-
-      </section>
-
+      < Addhotel />
       {/* Add more components and functionalities here */}
     </div>
   );
