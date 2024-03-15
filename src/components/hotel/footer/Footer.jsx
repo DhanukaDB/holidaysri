@@ -10,9 +10,7 @@ function Footer() {
             <a href="#" className="logo">
               <img src={img1} alt="Tourly logo" />
             </a>
-            <p className="footer-text">
-              Urna ratione ante harum provident, eleifend, vulputate molestiae proin fringilla, praesentium magna conubia at perferendis, pretium, aenean aut ultrices.
-            </p>
+            
           </div>
           <div className="footer-contact">
             <h4 className="contact-title">Contact Us</h4>
