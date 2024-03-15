@@ -2,7 +2,14 @@ import React, { useRef, useEffect, useState } from "react";
 import { Grid, Box, Typography, Button } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-
+const imageLinksArray = [
+  "https://fernandotravels.com.au/wp-content/uploads/2018/06/galle-fort.jpg",
+  "https://www.suryalanka.com/wp-content/uploads/2020/06/featured-img2.jpg",
+  "https://cf.bstatic.com/xdata/images/hotel/max1024x768/515879655.jpg?k=52a5b8217dcafb83c3cc6df570d1ffdb007e66254353089f45c1c8673648d0bf&o=&hp=1",
+  "https://www.attractionsinsrilanka.com/wp-content/uploads/2019/07/Galle-Fort-Beach.jpg",
+  "https://www.andbeyond.com/wp-content/uploads/sites/5/galle-sri-lanka-tuk-tuk1.jpg",
+  "https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg",
+];
 const Destination = () => {
   const { id } = useParams();
   const gridRef = useRef(null);
@@ -26,38 +33,64 @@ const Destination = () => {
   useEffect(() => {
     const gridElement = gridRef.current;
 
-    let animationFrameId;
-    let startTime;
-
-    const startAnimation = (timestamp) => {
-      if (!startTime) {
-        startTime = timestamp;
-      }
-      const elapsed = timestamp - startTime;
-      const progress = elapsed / duration;
-
+    const scrollRight = () => {
       if (gridElement) {
-        gridElement.scrollLeft =
-          progress * (gridElement.scrollWidth - gridElement.clientWidth);
+        gridElement.scrollLeft += 1;
 
-        if (progress < 1) {
-          animationFrameId = requestAnimationFrame(startAnimation);
-        } else {
-          // Restart animation
-          startTime = timestamp;
-          animationFrameId = requestAnimationFrame(startAnimation);
+        if (
+          gridElement.scrollLeft >=
+          gridElement.scrollWidth - gridElement.clientWidth
+        ) {
+          gridElement.scrollLeft = 0;
         }
+
+        requestAnimationFrame(scrollRight);
       }
     };
 
-    const duration = 6000; // Duration in milliseconds
-    animationFrameId = requestAnimationFrame(startAnimation);
+    const animationId = requestAnimationFrame(scrollRight);
 
-    // Clean up
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animationId);
     };
   }, []);
+
+  const renderLogos = () => {
+    const repetitions = 20;
+    let count = 0;
+    const logoElements = [];
+
+    while (count < repetitions) {
+      imageLinksArray.forEach((image, index) => {
+        logoElements.push(
+          <img
+            key={`${index}-${count}`}
+            src={image}
+            alt={`image${index + 1}`}
+            style={{
+              margin: "8px",
+              width: "90%",
+              height: "100%",
+              objectFit: "cover",
+              borderRadius: "30px",
+            }}
+          />
+        );
+      });
+
+      count++;
+    }
+
+    return <>{logoElements}</>;
+  };
+
+
+
+
+
+
+
+
 
   if (!location) {
     return <div>Loading...</div>;
@@ -79,13 +112,15 @@ const Destination = () => {
             sx={{
               color: "white",
               fontWeight: "700",
+              fontFamily: "mansalva",
               fontSize: { lg: "50px", xs: "32px" },
             }}
           >
-            Holiday Sri
+            {location.locationName}
           </Typography>
          
         </Box>
+
 
         <Box
           marginTop={{ lg: "32px", xs: "32px" }}
@@ -122,6 +157,67 @@ const Destination = () => {
                   height: { lg: "200px", xs: "150px" },
                 }}
               >
+                {renderLogos()}
+              </Grid>
+            </Box>
+          </Grid>
+        </Box>
+
+
+
+
+
+        <Box
+          marginTop={{ lg: "32px", xs: "32px" }}
+          sx={{
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            height: { lg: "250px" },
+            overflowX: "auto",
+            overflow: "hidden",
+            animation: "scrollRight 60s linear infinite",
+          }}
+        >
+          <Grid
+            container
+            sx={{
+              flexWrap: "nowrap",
+              display: "flex",
+            }}
+          >
+
+    <Grid
+              ref={gridRef}
+              sx={{
+                display: { xs: "flex", lg: "none" },
+                overflowX: "hidden", 
+                width: "100%",
+                marginLeft: "16px",
+                marginRight: "16px",
+               
+                "-webkit-overflow-scrolling": "touch",
+                animation: "scrollRight 60s linear infinite", 
+              }}
+            >
+              {renderLogos()}
+            </Grid>
+    {/*<Box
+              sx={{
+                backgroundColor: "rgba(0, 0, 0, 0.3)",
+                height: { lg: "250px", xs: "200px" },
+                overflowX: "auto",
+                overflow: "hidden",
+              }}
+              ref={gridRef}
+            >
+              <Grid
+                container
+                sx={{
+                  marginTop: { lg: "16px", xs: "16px" },
+                  flexWrap: "nowrap",
+                  display: "flex",
+                  height: { lg: "200px", xs: "150px" },
+                }}
+              >
                 {location.images.map((images, index) => (
                   <img
                     key={index}
@@ -137,7 +233,8 @@ const Destination = () => {
                   />
                 ))}
               </Grid>
-            </Box>
+            </Box> */}
+            
           </Grid>
         </Box>
         <Grid
@@ -149,7 +246,7 @@ const Destination = () => {
         >
           <Grid
             item
-            lg={1}
+            lg={2}
             sx={{
               borderColor: "white",
             }}
@@ -158,8 +255,8 @@ const Destination = () => {
               <Box
                 border={2}
                 sx={{
-                  height: "100px",
-                  width: {lg:"170px",xs:'140px'},
+                  height: "600px",
+                  width: {lg:"250px",xs:'140px'},
                   color: "black",
                   borderColor: "white",
                   backgroundColor: "rgba(255, 255, 255, 0.5)",
