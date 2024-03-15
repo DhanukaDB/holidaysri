@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, Modal, Grid } from "@mui/material";
 import Customtextfield from "../../hotel/Login/Customtextfield";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import axios from "axios"; // Import axios for making HTTP requests
+
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -28,13 +31,85 @@ const LocalVehicleForm = (props) => {
   const [images, setImages] = useState([]);
   const [gender, setGender] = React.useState('');
 
+  const [vehicleNumber, setVehicleNumber] = useState("");
+  const [Vehiclecategory, setVehiclecategory] = useState("");
+  const [location, setLocation] = useState("");
+
+  const [contactNumber, setContactNumber] = useState("");
+  const [price, setPrice] = useState("");
+  const [nic, setNic] = useState("");
+ // const [gender, setGender] = useState("");
+  const [description, setDescription] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [vehicleDetails, setVehicleDetails] = useState([]);
+ 
+  
   const handleChange = (event) => {
     setGender(event.target.value);
   };
+
   const handleFileChange = (event) => {
     const selectedImages = Array.from(event.target.files);
     setImages(selectedImages);
   };
+
+
+  
+  const handleAddVehicle = (e) => { 
+    e.preventDefault();
+    const newVehicle ={
+      vehicleNumber,
+      Vehiclecategory,
+      location,
+      contactNumber,
+      price,
+      nic,
+      description,
+      promoCode
+    }
+  
+    console.log(newVehicle)  
+    //alert("Success");
+    axios.post("https://holidaysri-backend.onrender.com/vehicle/add/", newVehicle).then(() => {
+         alert("The New Vehicle was Successfully saved")
+        // history.push('/')
+        window.location = `/`;
+  
+     }).catch((err) =>{
+         alert(err)
+     })
+  };
+
+
+
+
+   useEffect(() => {
+    async function getAllVehicles() {
+        try {
+            const res = await axios.get("https://holidaysri-backend.onrender.com/vehicle/");
+            setVehicleDetails(res.data);
+        } catch (error) {
+            console.error("Error fetching vehicles:", error);
+            alert("Error fetching vehicles: " + error.message);
+        }
+    }
+    getAllVehicles();
+}, []);
+
+
+
+function handleDeleteVehicle(id){
+
+  const r = window.confirm ("Do you really want to Delete this Vehicle?"); 
+  if(r ==true){
+      axios.delete(`https://holidaysri-backend.onrender.com/vehicle/delete/${id}`).then ((res)=>{
+          alert("Delete Successfully");
+          window.location = `/add-vehicle`;
+          setVehicleDetails()
+      })
+  }
+}
+
 
   return (
     <div
@@ -116,19 +191,21 @@ const LocalVehicleForm = (props) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <Customtextfield label="vehicle Number" marginTop="8px" />
-            <Customtextfield label="Vehicle Category" marginTop="8px" />
-            <Customtextfield label="contact Number" marginTop="8px" />
-            <Customtextfield label="price" marginTop="8px" />
-            <Customtextfield label="NIC" marginTop="8px" />
-            <Customtextfield label="price" marginTop="8px" />
-        <Typography marginTop="16px">Driver Gender</Typography>
+
+            <Customtextfield label="vehicle Number" value={vehicleNumber} onChange={(e) => setVehicleNumber(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Vehicle Category" value={Vehiclecategory} onChange={(e) => setVehiclecategory(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Location" value={location} onChange={(e) => setLocation(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Contact Number" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Price" value={price} onChange={(e) => setPrice(e.target.value)} marginTop="8px" />
+            <Customtextfield label="NIC" value={nic} onChange={(e) => setNic(e.target.value)} marginTop="8px" />
+            <Customtextfield label="PromoCode" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} marginTop="8px" />
+        <Typography marginTop="16px" >Driver Gender</Typography>
         <Select
         sx={{width:'60%',marginTop:'8px'}}
           id="demo-simple-select"
           value={gender}
           onChange={handleChange}
-        >
+        > 
           <MenuItem value={10}>Male</MenuItem>
           <MenuItem value={20}>Female</MenuItem>
         </Select>
@@ -178,7 +255,7 @@ const LocalVehicleForm = (props) => {
                 ))}
               </div>
             </div>
-            <Customtextfield label="Description" marginTop="8px" />
+            <Customtextfield label="Description" value={description} onChange={(e) => setDescription(e.target.value)} marginTop="8px" />
             <Button
               variant="outlined"
               onClick={handleClose}
@@ -217,6 +294,7 @@ const LocalVehicleForm = (props) => {
                   boxShadow: "none",
                 },
               }}
+              onClick={handleAddVehicle}
             >
               Add
             </Button>
@@ -238,7 +316,10 @@ const LocalVehicleForm = (props) => {
           </Box>
           {/*.map start */}
           <>
+          
+          {vehicleDetails.map(vehicle => (
             <Box
+              key={vehicle._id}
               border={3}
               sx={{
                 width: { lg: "1100px", xs: "280px" },
@@ -252,8 +333,8 @@ const LocalVehicleForm = (props) => {
               <Grid container spacing={2}>
                 <Grid item xs={12} lg={3}>
                   <Box width={{ lg: "70%" }} height={{ lg: "70%" }}>
-                    <img
-                      src="https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg"
+                    <img 
+                      src={vehicle.images}
                       width="100%"
                       height="100%"
                       style={{ borderRadius: "30px" }}
@@ -270,7 +351,7 @@ const LocalVehicleForm = (props) => {
                       textAlign: "left",
                     }}
                   >
-                    vehicleNumber
+                    Vehicle Number: {vehicle.vehicleNumber}
                   </Typography>
                   <Typography
                     sx={{
@@ -281,7 +362,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Vehiclecategory
+                    Vehicle Category: {vehicle.Vehiclecategory}
                   </Typography>
                   <Typography
                     sx={{
@@ -292,7 +373,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    contactNumber
+                    Contact Number: {vehicle.contactNumber}
                   </Typography>
                   <Typography
                     sx={{
@@ -303,7 +384,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    price
+                    Price : {vehicle.price}
                   </Typography>
                   <Typography
                     sx={{
@@ -314,7 +395,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    nic
+                    Nic : {vehicle.nic}
                   </Typography>
                   <Typography
                     sx={{
@@ -325,7 +406,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    Gender
+                    Gender : {vehicle.gender}
                   </Typography>
                   <Typography
                     sx={{
@@ -336,7 +417,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    description
+                    Description: {vehicle.description}
                   </Typography>
                   <Typography
                     sx={{
@@ -347,7 +428,7 @@ const LocalVehicleForm = (props) => {
                       marginTop: "8px",
                     }}
                   >
-                    promoCode
+                    Promo Code : {vehicle.promoCode}
                   </Typography>
                   <Button
                     variant="outlined"
@@ -357,6 +438,7 @@ const LocalVehicleForm = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                  
                   >
                     Edit
                   </Button>{" "}
@@ -368,12 +450,15 @@ const LocalVehicleForm = (props) => {
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                    onClick = {() =>handleDeleteVehicle(vehicle._id)}
                   >
+
                     Delete
                   </Button>
                 </Grid>
               </Grid>
             </Box>
+             ))}
           </>
           {/*.map ends */}
         </Grid>

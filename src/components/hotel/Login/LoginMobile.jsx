@@ -32,7 +32,7 @@ const LoginMobile = ({  }) => {
                   backgroundColor: "black",
                   boxShadow: "none",
                 },
-                marginLeft:'10%'
+                marginLeft:{xs:'10%',lg:'0px'}
               }}
             >
               Back

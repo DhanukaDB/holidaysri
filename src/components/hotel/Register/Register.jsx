@@ -42,11 +42,11 @@ CustomTabPanel.propTypes = {
 };
 const tabLabels = [
   { label: "For Customer", index: 0 },
-  { label: "For Local Agent", index: 1 },
-  { label: "For Forigen Agent", index: 2 },
-  { label: "For Adviser", index: 3 },
-  { label: "Seller", index: 4 },
-  
+  { label: "For Agent", index: 1 },
+  { label: "For Advisor", index: 2 },
+  { label: "Seller", index: 3 },
+  { label: "For Tour Guid", index: 4 },
+  { label: "For Travel Partner", index: 5 },
 ];
 
 function TabPanel(props) {
@@ -72,7 +72,8 @@ const Register = (props) => {
   const { size, state, ...rest } = props;
   const [value, setValue] = React.useState(0);
   const [image, setImage] = useState(null);
-  const [role, setRole] = useState('For Customer');
+  const [role, setRole] = useState("For Customer");
+  const [subrole, setSubRole] = useState("For Forigen Agent");
 
   const handleFileChange = (event) => {
     const selectedImage = event.target.files[0];
@@ -86,24 +87,26 @@ const Register = (props) => {
   };
 
   return (
-    <div
-      style={{
+    <Grid
+      sx={{
         backgroundImage: `url(${Background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
-        height: '100vh',
-        margin: 0,
-        paddingTop: {lg:"6%",xs:'3%'},
-        paddingLeft: {lg:"4%",xs:'3%'},
-        paddingRight:{lg:"8%",xs:'3%'},
-        paddingBottom:{lg:'4%',xs:'4%'}
+        height: "100%",
+        paddingBottom:'24px'
       }}
     >
-      <Grid container className="registerform"  marginLeft={{lg:'32px',xs:'8px'}}
-    paddingBottom= {{lg:'32px',xs:'16px'}}
-    marginBottom= {{lg:'40px',xs:'32px'}}>
-        <Grid item xs={12} sm={12} md={8}>
+      <Grid
+        paddingTop={{ lg: "7%",xs:'4%' }}
+        paddingBottom={{ lg: "5%",xs:'4%'  }}
+        width={{ lg: "1150px" }}
+        height={{lg:'100%',xs:'100vh'}}
+        paddingLeft={{ lg: "25%" ,xs:'4%' }}
+        paddingRight={{ lg: "0px" ,xs:'4%' }}
+        marginBottom={{xs:'80%',lg:'0px'}}
+      >
+        <Grid className="registerform">
           <a href="/">
             <Button
               variant="contained"
@@ -170,23 +173,106 @@ const Register = (props) => {
             ))}
           </Tabs>
           <Grid paddingLeft={{ lg: "32px" }}>
-            {role === "For Local Agent" && (
+            <Customtextfield
+              label="Name"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
+            {role === "For Agent" && <>
+            
+            <Typography marginTop="20px">Select</Typography>
+            <Grid container marginTop={{ lg: "12px", xs: "12px" }}>
+              <Grid item xs="auto">
+                <Box
+                  onClick={() => {
+                    setSubRole("For Forigen Agent");
+                  }}
+                  border={1}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: {
+                      xs: "255px",
+                      lg: "200px",
+                    },
+                    height: {
+                      xs: "48px",
+                      lg: "48px",
+                    },
+                    borderColor:
+                    subrole === "For Forigen Agent" ? "Black" : "Black",
+                    borderRadius: "13px",
+                    backgroundColor:
+                    subrole === "For Forigen Agent" ? "black" : "#FFFFFF",
+                    cursor: "pointer",
+                    marginTop: { lg: "0px", xs: "0px" },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: subrole === "For Forigen Agent" ? "white" : "black",
+                    }}
+                  >
+                    Forigen Agent
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item marginLeft={{ lg: "12px" }}>
+                <Box
+                  onClick={() => {
+                    setSubRole("For Local Agent");
+                  }}
+                  border={1}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: {
+                      xs: "255px",
+                      lg: "200px",
+                    },
+                    height: {
+                      xs: "48px",
+                      lg: "48px",
+                    },
+                    borderColor: subrole === "For Local Agent" ? "black" : "black",
+                    borderRadius: "13px",
+                    backgroundColor:
+                    subrole === "For Local Agent" ? "black" : "#FFFFFF",
+                    cursor: "pointer",
+                    marginTop: { lg: "0px", xs: "16px" },
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      color: subrole === "For Local Agent" ? "white" : "black",
+                    }}
+                  >
+                    Local Agent
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
+            {subrole === "For Local Agent" && (
               <Customtextfield
                 label="NIC"
                 marginTop="16px"
                 marginBottom="16px"
-                width={{lg:'115%',xs:'110%'}}
+                width={{ lg: "115%", xs: "110%" }}
               />
             )}
-            {role === "For Forigen Agent" && (
+            {subrole === "For Forigen Agent" && (
               <Customtextfield
                 label="Passport Number"
                 marginTop="16px"
                 marginBottom="16px"
-                width={{lg:'115%',xs:'110%'}}
+                width={{ lg: "115%", xs: "110%" }}
               />
             )}
-            {(role === "For Forigen Agent" || role === "For Local Agent") && (
+            {(subrole === "For Forigen Agent" || subrole === "For Local Agent") && (
               <div>
                 <input
                   type="file"
@@ -197,17 +283,21 @@ const Register = (props) => {
                 />
                 <label htmlFor="uploadImageInput">
                   <Button
-                    sx={{
+                  variant="outlined"
+                  sx={{
+                    color: "black",
+                    borderColor:"black",
+                    marginTop:'16px',
+                    "&:hover": {
                       color: "black",
-
-                      "&:hover": {
-                        color: "black",
-                      },
+                      borderColor:"black",
+                    },
+                    
                     }}
                     component="span"
                   >
                     Upload image of{" "}
-                    {role === "For Local Agent" ? (
+                    {subrole === "For Local Agent" ? (
                       <>NIC Front/Back</>
                     ) : (
                       <>Passport</>
@@ -217,17 +307,75 @@ const Register = (props) => {
                 {image && <p>Selected Image: {image.name}</p>}
               </div>
             )}
-            <Customtextfield label="Name" marginTop="16px" width={{lg:'115%',xs:'110%'}}/>
-            <Customtextfield label="Contact Number" marginTop="16px" width={{lg:'115%',xs:'110%'}}/>
-            <Customtextfield label="Email" marginTop="16px" width={{lg:'115%',xs:'110%'}}/>
-            <Customtextfield label="Password" marginTop="16px" width={{lg:'115%',xs:'110%'}}/>
+
+            
+            </>}
+            
+            <Customtextfield
+              label="Email"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
+           
+            <Customtextfield
+              label="Contact Number"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
+
+{role === "For Tour Guid"  && (
+              <div>
+                <input
+                  type="file"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  id="uploadImageInput"
+                  onChange={handleFileChange}
+                />
+                <label htmlFor="uploadImageInput">
+                  <Button
+                  variant="outlined"
+                    sx={{
+                      color: "black",
+                      borderColor:"black",
+                      marginTop:'16px',
+                      "&:hover": {
+                        color: "black",
+                        borderColor:"black",
+                      },
+                    }}
+                    component="span"
+                  >
+                    Upload image of Guide Certificate
+                  </Button>
+                </label>
+                {image && <p>Selected Image: {image.name}</p>}
+                <Customtextfield
+              label="Experience"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
+            <Customtextfield
+              label="Destination"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
+              </div>
+              
+            )}
+            
+            <Customtextfield
+              label="Password"
+              marginTop="16px"
+              width={{ lg: "115%", xs: "110%" }}
+            />
             <Button
               variant="outlined"
               sx={{
                 borderRadius: "30px",
                 borderColor: "black",
                 boxShadow: "none",
-                width: {lg:"74%",xs:'100%'},
+                width: { lg: "100%", xs: "100%" },
                 color: "black",
                 marginTop: "32px",
                 height: "48px",
@@ -243,40 +391,8 @@ const Register = (props) => {
             </Button>
           </Grid>{" "}
         </Grid>
-        <Grid item xs={4} sm={4} display={{xs:'none',sm:'none', md:'block'}}>
-        {role != "For Local Agent" && role != "For Forigen Agent" && <>
-        <Box width={{ lg: "90%" }} sx={{marginLeft:'-100px',marginTop:'30%'}}>
-            <Box width={{lg:'500px'}} height={{lg:'1uto'}}>
-            {role === "For Customer" &&
-            <>
-            <img src={Customer} alt="customer" width='100%' height='100%'/>
-            </>}
-            {role === "For Adviser" &&
-            <>
-            <img src={Adviser} alt="adviser" width='100%' height='100%'/>
-            </>}
-            {role === "Seller" &&
-            <>
-            <img src={Seller} alt="seller" width='100%' height='100%'/>
-            </>}
-            </Box>
-          </Box></>}
-          {role === "For Local Agent" &&
-            <>
-              <Box width={{ lg: "90%" }} sx={{marginLeft:'-100px',marginTop:'50%'}}>
-              <img src={Localagent} alt="seller" width='100%' height='100%'/>
-              </Box>
-            
-            </>}
-            {role === "For Forigen Agent" &&
-            <>
-              <Box width={{ lg: "100%" }} sx={{marginLeft:'-100px',marginTop:'50%'}}>
-              <img src={Foreginagent} alt="seller" width='100%' height='100%'/>
-              </Box>
-            </>}
-        </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

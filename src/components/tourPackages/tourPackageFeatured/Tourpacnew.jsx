@@ -174,7 +174,8 @@ function PackageSection() {
           </li>
           
         </ul>
-        <button className="btn btn-primary">View All Packages</button>
+        {/*  <button className="btn btn-primary">View All Packages</button>*/}
+       
       </div>
     </section>
   );

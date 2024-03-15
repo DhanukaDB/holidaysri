@@ -10,9 +10,7 @@ function Footer() {
             <a href="#" className="logo">
               <img src={img1} alt="Tourly logo" />
             </a>
-            <p className="footer-text">
-              Urna ratione ante harum provident, eleifend, vulputate molestiae proin fringilla, praesentium magna conubia at perferendis, pretium, aenean aut ultrices.
-            </p>
+            
           </div>
           <div className="footer-contact">
             <h4 className="contact-title">Contact Us</h4>
@@ -22,11 +20,11 @@ function Footer() {
             <ul>
               <li className="contact-item">
                 <ion-icon name="call-outline"></ion-icon>
-                <a href="#" className="contact-link">+01 (112) 0000 90</a>
+                <a href="#" className="contact-link">+94 76 534 5234</a>
               </li>
               <li className="contact-item">
                 <ion-icon name="mail-outline"></ion-icon>
-                <a href="#" className="contact-link">info.holiday.com</a>
+                <a href="#" className="contact-link">info@holiday.com</a>
               </li>
               <li className="contact-item">
                 <ion-icon name="location-outline"></ion-icon>

@@ -18,6 +18,10 @@ import LocalAgentDashboard from "./components/agents/Local Agents/localDashboard
 import ForeignAgentDashboard from "./components/agents/Foreign Agents/ForeignAgDashboard";
 import Newlanding from "./components/hotel/landing/NewLanding";
 import AdmminPanel from "./components/Addmin/AdminPanel";
+import AllLocation from "./pages/alllocations/Locations";
+import Test from "./pages/destinations/Test";
+import AllVehicles from "./pages/vehicles/Allvehicles";
+
 
 
 function App() {
@@ -45,15 +49,18 @@ function App() {
         <Route path="/location" element={<Location />} />
         <Route path="/add-vehicle" element={<LocalVehicleForm />} />
         <Route path="/hotels/:id" element={<Hotel />} />
-        <Route path="/destinations" element={<Destination />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/all-locations" element={<AllLocation />} />
+        <Route path="/destination/:id" element={<Destination />} />
+        <Route path="/events/:id" element={<Events />} />
         <Route path="/rides" element={<Vehicles />} />
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
         <Route path="/landing" element={<Newlanding />} />
         <Route path="/admin" element={<AdmminPanel />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/all-vehicles" element={<AllVehicles />} />
 
-
+        
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
 

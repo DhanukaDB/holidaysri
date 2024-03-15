@@ -31,7 +31,7 @@ function PopularDestinations() {
                   <ion-icon name="star"><FaStar /></ion-icon>
                   <ion-icon name="star"><FaStar /></ion-icon>
                 </div>
-                <a href='/destinations'>
+                <a href='/destination/65f2c1bac6f9894f6cbc4627'>
                   <p className="card-subtitle">
                     <a href="#">123 properties</a>
                   </p>
@@ -58,7 +58,7 @@ function PopularDestinations() {
                   <ion-icon name="star"><FaStar /></ion-icon>
                   <ion-icon name="star"><FaStar /></ion-icon>
                 </div>
-                <a href='/destinations'>
+                <a href='/destination/65f3ffbd81282237adb179f8'>
                 <p className="card-subtitle">
                   <a href="#">256 properties</a>
                 </p>
@@ -85,7 +85,7 @@ function PopularDestinations() {
                   <ion-icon name="star"><FaStar /></ion-icon>
                   <ion-icon name="star"><FaStar /></ion-icon>
                 </div>
-                <a href='/destinations'>
+                <a href='/destination/65f3fe1081282237adb179f4'>
                 <p className="card-subtitle">
                   <a href="#">512 properties</a>
                 </p>
@@ -100,7 +100,10 @@ function PopularDestinations() {
             </div>
           </li>
         </ul>
+        <a href='/all-locations'>
         <button className="btn btn-primary">More destination</button>
+           </a>
+        
       </div>
     </section>
   );

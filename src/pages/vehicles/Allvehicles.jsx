@@ -13,7 +13,7 @@ const style = {
   borderRadius: 4,
   p: 4,
 };
-const Vehicle = () => {
+const Allvehicles = () => {
   const gridRef = useRef(null);
   var eventsArray = [
     {
@@ -83,7 +83,7 @@ const Vehicle = () => {
       container
       style={{
         backgroundImage:
-          'url("https://www.aman.com/sites/default/files/2021-02/Amangalla%2C%20India-%20Accommodation%2C%20landscape%2C%20ocean%2C%20sunset_1.jpg")',
+          'url("https://res.cloudinary.com/iplus/image/upload/v1709990615/pexels-alex-azabache-3723035_1_xs9aso.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
@@ -92,7 +92,7 @@ const Vehicle = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href="/all-locations" style={{ textDecoration: "none" }}>
+          <a href="/" style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -114,17 +114,6 @@ const Vehicle = () => {
             }}
           >
             Holiday Sri
-          </Typography>
-          <Typography
-            sx={{
-              color: "white",
-              fontFamily: "mansalva",
-              marginTop: "8px",
-              fontSize: { lg: "50px", xs: "32px" },
-              letterSpacing: "20px",
-            }}
-          >
-            GALLE
           </Typography>
         </Box>
 
@@ -295,4 +284,4 @@ const Vehicle = () => {
   );
 };
 
-export default Vehicle;
+export default Allvehicles;
