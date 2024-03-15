@@ -33,6 +33,8 @@ const LocalVehicleForm = (props) => {
 
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [Vehiclecategory, setVehiclecategory] = useState("");
+  const [location, setLocation] = useState("");
+
   const [contactNumber, setContactNumber] = useState("");
   const [price, setPrice] = useState("");
   const [nic, setNic] = useState("");
@@ -58,6 +60,7 @@ const LocalVehicleForm = (props) => {
     const newVehicle ={
       vehicleNumber,
       Vehiclecategory,
+      location,
       contactNumber,
       price,
       nic,
@@ -83,7 +86,7 @@ const LocalVehicleForm = (props) => {
    useEffect(() => {
     async function getAllVehicles() {
         try {
-            const res = await axios.get("http://localhost:8000/vehicle/");
+            const res = await axios.get("https://holidaysri-backend.onrender.com/vehicle/");
             setVehicleDetails(res.data);
         } catch (error) {
             console.error("Error fetching vehicles:", error);
@@ -99,7 +102,7 @@ function handleDeleteVehicle(id){
 
   const r = window.confirm ("Do you really want to Delete this Vehicle?"); 
   if(r ==true){
-      axios.delete(`http://localhost:8000/vehicle/delete/${id}`).then ((res)=>{
+      axios.delete(`https://holidaysri-backend.onrender.com/vehicle/delete/${id}`).then ((res)=>{
           alert("Delete Successfully");
           window.location = `/add-vehicle`;
           setVehicleDetails()
@@ -191,8 +194,9 @@ function handleDeleteVehicle(id){
 
             <Customtextfield label="vehicle Number" value={vehicleNumber} onChange={(e) => setVehicleNumber(e.target.value)} marginTop="8px" />
             <Customtextfield label="Vehicle Category" value={Vehiclecategory} onChange={(e) => setVehiclecategory(e.target.value)} marginTop="8px" />
-            <Customtextfield label="contact Number" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} marginTop="8px" />
-            <Customtextfield label="price" value={price} onChange={(e) => setPrice(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Location" value={location} onChange={(e) => setLocation(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Contact Number" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Price" value={price} onChange={(e) => setPrice(e.target.value)} marginTop="8px" />
             <Customtextfield label="NIC" value={nic} onChange={(e) => setNic(e.target.value)} marginTop="8px" />
             <Customtextfield label="PromoCode" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} marginTop="8px" />
         <Typography marginTop="16px" >Driver Gender</Typography>
