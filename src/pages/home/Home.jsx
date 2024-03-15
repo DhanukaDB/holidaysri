@@ -32,11 +32,13 @@ const Home = () => {
       <div className="main_container">
         {/*<div className="hotel" id="hotels">
           <Newheader />
-        </div> */}
-        
+        </div> */} 
         <div className="homeContainer">
           <Newfeatured />
-          <Newprpetylist />
+         <div className="hotel" id="hotels">
+         <Newprpetylist />
+          </div> 
+          
         </div>
         <div className="tourPackage" id="tour-packages">
           <Tourpacnew />
