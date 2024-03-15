@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Customtextfield from './Customtextfield';
 import "./login.css";
+import { signInWithGooglePopup } from '../Login/firebase'; // Import your Firebase authentication setup
 
 const LoginForm = () => {
     const underline = {
@@ -13,6 +14,10 @@ const LoginForm = () => {
           transition: "border-bottom 0.3s ease",
         },
       };
+      const handleGoogleSignIn = async () => {
+        const response = await signInWithGooglePopup();
+        console.log(response);
+    };
   return (
     <div className="loginform" style={{ width: {lg:'300px',xs:'200px'}, marginLeft:{ lg:'50px',xs:'10px'},marginTop:{xs:'30%',lg:'0px'} }}>
       <Typography sx={{ color: 'black', fontSize: '32px', fontWeight: '550' }}>Login</Typography>
@@ -39,6 +44,10 @@ const LoginForm = () => {
               }}
             >
               Login
+            </Button>
+            <Button type='outlined' size='medium' state='initial' margin='0px 0px 10px 260px' 
+              onClick={handleGoogleSignIn}>
+              logingoogle
             </Button>
             <Typography
               sx={{
