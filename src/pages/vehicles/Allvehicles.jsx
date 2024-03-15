@@ -105,17 +105,7 @@ const Allvehicles = () => {
             </Button>{" "}
           </a>
         </Box>
-        <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "700",
-              fontSize: { lg: "50px", xs: "32px" },
-            }}
-          >
-            Holiday Sri
-          </Typography>
-        </Box>
+       
 
         <Grid container justifyContent="center" alignItems="center">
           <Box
@@ -135,55 +125,41 @@ const Allvehicles = () => {
           {vehicleDetails.map((event, index) => {
             return (
               <Box
-                key={index}
-                border={3}
-                sx={{
-                  width: { lg: "1100px", xs: "280px" },
-                  borderColor: "black",
-                  borderRadius: "30px",
-                  backgroundColor: "rgba(48, 103, 84, 0.5)",
-                  padding: "24px",
-                  marginTop: { lg: "16px", xs: "16px" },
-                }}
-              >
-                <Grid container spacing={2}>
-                  <Grid item xs={12} lg={2}>
-                    <Box
-                      width={{ lg: "100%" }}
-                      height={{ lg: "100%", xs: "auto" }}
-                    >
-                      <img
+              key={event._id}
+              sx={{
+                width: { lg: "1100px", xs: "280px" },
+                borderColor: "black",
+                borderRadius: "30px",
+                backgroundColor: "rgba(255,255,255, 0.3)",
+                padding: "24px",
+                marginTop: { lg: "16px", xs: "16px" },
+              }}
+            >
+              <Grid container spacing={2}>
+                <Grid item xs={12} lg={4}>
+                  <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
+                  <img
                         src={event.images}
                         width="100%"
                         height="100%"
                         style={{ borderRadius: "30px" }}
-                        alt="image_1"
+                        alt="vehicle"
                       />
-                    </Box>
-                  </Grid>
-                  <Grid item xs={12} lg={10}>
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontWeight: "400",
-                        fontSize: { lg: "24px", xs: "20px" },
-                        textAlign: "left",
-                      }}
-                    >
-                      {event.Vehiclecategory}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: "white",
-                        fontWeight: "400",
-                        fontSize: { lg: "16px", xs: "16px" },
-                        textAlign: "left",
-                        marginTop: "8px",
-                      }}
-                    >
-                      {event.description}
-                    </Typography>
-                    <Button
+                  </Box>
+                </Grid>
+                <Grid item xs={12} lg={6}>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "24px", xs: "20px" },
+                      textAlign: "left",
+                    }}
+                  >
+                    {event.Vehiclecategory}
+                  </Typography>
+                  
+                  <Button
                       onClick={() => handleOpen(event)}
                       variant="outlined"
                       sx={{
@@ -195,9 +171,9 @@ const Allvehicles = () => {
                     >
                       View More
                     </Button>
-                  </Grid>
                 </Grid>
-              </Box>
+              </Grid>
+            </Box>
             );
           })}
           <Modal
