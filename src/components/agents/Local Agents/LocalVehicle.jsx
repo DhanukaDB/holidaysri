@@ -33,6 +33,8 @@ const LocalVehicleForm = (props) => {
 
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [Vehiclecategory, setVehiclecategory] = useState("");
+  const [location, setLocation] = useState("");
+
   const [contactNumber, setContactNumber] = useState("");
   const [price, setPrice] = useState("");
   const [nic, setNic] = useState("");
@@ -191,8 +193,9 @@ function handleDeleteVehicle(id){
 
             <Customtextfield label="vehicle Number" value={vehicleNumber} onChange={(e) => setVehicleNumber(e.target.value)} marginTop="8px" />
             <Customtextfield label="Vehicle Category" value={Vehiclecategory} onChange={(e) => setVehiclecategory(e.target.value)} marginTop="8px" />
-            <Customtextfield label="contact Number" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} marginTop="8px" />
-            <Customtextfield label="price" value={price} onChange={(e) => setPrice(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Location" value={location} onChange={(e) => setLocation(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Contact Number" value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} marginTop="8px" />
+            <Customtextfield label="Price" value={price} onChange={(e) => setPrice(e.target.value)} marginTop="8px" />
             <Customtextfield label="NIC" value={nic} onChange={(e) => setNic(e.target.value)} marginTop="8px" />
             <Customtextfield label="PromoCode" value={promoCode} onChange={(e) => setPromoCode(e.target.value)} marginTop="8px" />
         <Typography marginTop="16px" >Driver Gender</Typography>
