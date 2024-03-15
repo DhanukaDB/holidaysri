@@ -20,6 +20,7 @@ import Newlanding from "./components/hotel/landing/NewLanding";
 import AdmminPanel from "./components/Addmin/AdminPanel";
 import AllLocation from "./pages/alllocations/Locations";
 import Test from "./pages/destinations/Test";
+import AllVehicles from "./pages/vehicles/Allvehicles";
 
 
 
@@ -57,6 +58,7 @@ function App() {
         <Route path="/landing" element={<Newlanding />} />
         <Route path="/admin" element={<AdmminPanel />} />
         <Route path="/test" element={<Test />} />
+        <Route path="/all-vehicles" element={<AllVehicles />} />
 
         
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />

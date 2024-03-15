@@ -214,64 +214,8 @@ const Destination = () => {
               </Box>
             </Link>
           </Grid>
-          <Grid
-            item
-            lg={1}
-            marginLeft={{ lg: "64px" }}
-            borderRadius="16px"
-            sx={{
-              borderColor: "white",
-            }}
-          >
-            <Link to={`/`} style={{ textDecoration: "none" }}>
-              <Box
-                border={2}
-                sx={{
-                  height: "100px",
-                  width: {lg:"170px",xs:'140px'},
-                  color: "black",
-                  borderColor: "white",
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
-                  borderRadius: "16px",
-                  padding: "16px",
-                  paddingTop:{lg:"16px",xs:'20px'}
-                }}
-              >
-                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
-                  Find a Tour Guide
-                </Typography>
-              </Box>
-            </Link>
-          </Grid>
-          <Grid
-            item
-            lg={1}
-            marginLeft={{ lg: "64px" }}
-            borderRadius="16px"
-            sx={{
-              borderColor: "white",
-            }}
-          >
-            <Link to={`/`} style={{ textDecoration: "none" }}>
-              <Box
-                border={2}
-                sx={{
-                  height: "100px",
-                  width: {lg:"170px",xs:'140px'},
-                  color: "black",
-                  borderColor: "white",
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
-                  borderRadius: "16px",
-                  padding: "16px",
-                  paddingTop:{lg:"28px",xs:'20px'}
-                }}
-              >
-                <Typography sx={{ fontSize: "18px", textAlign: "center",fontWeight:'700' }}>
-                  Find a Tour Guide
-                </Typography>
-              </Box>
-            </Link>
-          </Grid>
+         
+          
         </Grid>
 
         <center>
