@@ -69,6 +69,8 @@ const Home = () => {
         </div>
         <div className="Ctgalary" id="CT-Gallery">
           <Contact />
+          </div>
+          <div className="Ctgalaryto" id="CT-Galleryto">
           <Gallery />
           </div>
         </div>
