@@ -24,4 +24,17 @@ const analytics = getAnalytics(app);
 const googleProvider = new GoogleAuthProvider();
 
 export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth);
+
+
+export const signInWithGooglePopup = async () => {
+  try {
+      const result = await signInWithPopup(auth, googleProvider);
+      // Successful sign-in
+      console.log("User signed in successfully:", result.user.displayName);
+      return result; // Return the result if needed
+  } catch (error) {
+      // Handle errors during sign-in
+      console.error("Error signing in with Google:", error);
+      throw error; // Rethrow the error if needed
+  }
+};

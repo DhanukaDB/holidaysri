@@ -15,8 +15,14 @@ const LoginForm = () => {
         },
       };
       const handleGoogleSignIn = async () => {
-        const response = await signInWithGooglePopup();
-        console.log(response);
+        try {
+            const response = await signInWithGooglePopup();
+            console.log(response);
+            window.location.href = '/all-locations';
+        } catch (error) {
+            console.error("Error signing in with Google", error);
+            // Handle error
+        }
     };
   return (
     <div className="loginform" style={{ width: {lg:'300px',xs:'200px'}, marginLeft:{ lg:'50px',xs:'10px'},marginTop:{xs:'30%',lg:'0px'} }}>
@@ -45,9 +51,27 @@ const LoginForm = () => {
             >
               Login
             </Button>
-            <Button type='outlined' size='medium' state='initial' margin='0px 0px 10px 260px' 
-              onClick={handleGoogleSignIn}>
-              logingoogle
+            <Button
+                variant="outlined"
+                size="medium"
+                sx={{
+                    borderRadius: "30px",
+                    borderColor: "black",
+                    boxShadow: "none",
+                    width: {lg:"100%",xs:'100%'},
+                    color: "black",
+                    marginTop: "10px",
+                    height: "48px",
+                    "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                    },
+                }}
+                onClick={handleGoogleSignIn}
+            >
+                Sign in with Google
             </Button>
             <Typography
               sx={{
