@@ -84,17 +84,7 @@ const Destination = () => {
           >
             Holiday Sri
           </Typography>
-          <Typography
-            sx={{
-              color: "white",
-              fontFamily: "mansalva",
-              marginTop: "8px",
-              fontSize: { lg: "50px", xs: "32px" },
-              letterSpacing: "20px",
-            }}
-          >
-            {location.locationName}
-          </Typography>
+         
         </Box>
 
         <Box

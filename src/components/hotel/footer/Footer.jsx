@@ -22,11 +22,11 @@ function Footer() {
             <ul>
               <li className="contact-item">
                 <ion-icon name="call-outline"></ion-icon>
-                <a href="#" className="contact-link">+01 (112) 0000 90</a>
+                <a href="#" className="contact-link">+94 76 534 5234</a>
               </li>
               <li className="contact-item">
                 <ion-icon name="mail-outline"></ion-icon>
-                <a href="#" className="contact-link">info.holiday.com</a>
+                <a href="#" className="contact-link">info@holiday.com</a>
               </li>
               <li className="contact-item">
                 <ion-icon name="location-outline"></ion-icon>
