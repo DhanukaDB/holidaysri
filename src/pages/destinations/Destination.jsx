@@ -153,7 +153,7 @@ const Destination = () => {
         <Grid
           container
           spacing={3}
-          marginLeft={{ lg: "30px" }}
+          marginLeft={{ lg: "16%" }}
           paddingLeft={{xs:'8%',lg:'0px'}}
           marginTop={{ lg: "30px",xs:'8px' }}
         >
@@ -217,6 +217,7 @@ const Destination = () => {
          
           
         </Grid>
+        
 
         <center>
           <Box
