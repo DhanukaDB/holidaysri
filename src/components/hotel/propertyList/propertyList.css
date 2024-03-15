@@ -105,7 +105,49 @@
   overflow: hidden;
   -webkit-box-reflect: below 1px linear-gradient(transparent,rgba(0, 0, 0, 0.103));
   transition: .4s;
+  
 }
+.myProgressBar-container:nth-child(1){
+  background-image: url(https://cf.bstatic.com/xdata/images/xphoto/square300/57584488.webp?k=bf724e4e9b9b75480bbe7fc675460a089ba6414fe4693b83ea3fdd8e938832a6&o=);
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+.myProgressBar-container:nth-child(2){
+  background-image: url(https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-apartments_300/9f60235dc09a3ac3f0a93adbc901c61ecd1ce72e.jpg);
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+.myProgressBar-container:nth-child(3){
+  background-image: url(https://cf.bstatic.com/static/img/theme-index/carousel_320x240/bg_resorts/6f87c6143fbd51a0bb5d15ca3b9cf84211ab0884.jpg);
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+.myProgressBar-container:nth-child(4){
+  background-image: url(https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-villas_300/dd0d7f8202676306a661aa4f0cf1ffab31286211.jpg);
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+.myProgressBar-container:nth-child(5){
+  background-image: url(https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg);
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+}
+
 .myProgressBar-container:hover{
   transform: translateY(-10px);
 }
@@ -128,11 +170,11 @@
   display: grid;
   place-items: center;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 2em;
 }
 .myProgressBar-container span.upnumsText{
-  color: rgb(205, 199, 199);
-  font-size: 1.2em;
+  color: rgb(226, 217, 217);
+  font-size: 1.5em;
   text-align: center;
   pad: 0.7em 0;
   font-weight: 400;
@@ -173,9 +215,9 @@
       gap: 15px;
   }
   .myProgressBar-container{
-      height: 50vmin;
+      height: 25vmin;
       width: 80%;
-      font-size: 8px;
+      font-size: 14px;
   }
 }
 .forPlussmark{
@@ -184,5 +226,5 @@
   justify-content: center;
 }
 .forPlussmark p{
-  font-size: 15px;
+  font-size: 25px;
 }
