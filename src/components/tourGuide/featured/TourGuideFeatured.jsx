@@ -3,20 +3,8 @@ import "./tourGuideFeatured.css";
 import { useRef } from "react";
 
 const TourGuideFeatured = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0, 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgress,
-        opacity: opacityProgress,
-      }}
+    <div data-aos="flip-up"
       className="tourguidefeatured"
     >
       <div className="featuredItem">
@@ -30,7 +18,7 @@ const TourGuideFeatured = () => {
           <h2>123 people</h2>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

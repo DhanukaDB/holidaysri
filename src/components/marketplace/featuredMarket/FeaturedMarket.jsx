@@ -3,21 +3,9 @@ import { useRef } from "react";
 import "./featuredMarket.css";
 
 const FeaturedMarket = () => {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0, 1", "1.33 1"],
-  });
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
   return (
-    <motion.div
-      ref={ref}
-      style={{
-        scale: scaleProgress,
-        opacity: opacityProgress,
-      }}
-      className="fp"
+    <div
+      className="fp" data-aos="zoom-in-down"
     >
       <div className="fpItem">
         <img
@@ -75,7 +63,7 @@ const FeaturedMarket = () => {
           <span>Excellent</span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
