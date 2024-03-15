@@ -30,9 +30,10 @@ const Home = () => {
     <div>
       <Homepagemmain />
       <div className="main_container">
-        <div className="hotel" id="hotels">
+        {/*<div className="hotel" id="hotels">
           <Newheader />
-        </div>
+        </div> */}
+        
         <div className="homeContainer">
           <Newfeatured />
           <Newprpetylist />
