@@ -7,6 +7,7 @@ import Logo from '../../../assets/Hsllogo.png';
 import './Newlanding.css';
 import AOS from 'aos';
 import { Link } from "react-scroll";
+import { IoMdLogIn } from "react-icons/io";
 
 function Newlanding() {
     useEffect(() => {
@@ -79,10 +80,11 @@ function Newlanding() {
                     <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
                     <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
                     <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
-                    <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
+                    <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Contact</Link>
+                    <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
                     </div>
                     <div>
-                    <a href="/login"> <span>Sign &nbsp; ∎ &nbsp; Sign Up </span></a>
+                    <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>
                     </div>
                     
                 </div>

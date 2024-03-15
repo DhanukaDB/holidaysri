@@ -37,12 +37,10 @@ function App() {
     fakeDataFetch();
   });
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return  (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" exact element={isLoading ?( < Loader /> ) : < Home /> } />
         <Route path="/hotels" element={<List />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginMobile />} />
