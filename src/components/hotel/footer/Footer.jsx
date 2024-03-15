@@ -26,7 +26,7 @@ function Footer() {
               </li>
               <li className="contact-item">
                 <ion-icon name="mail-outline"></ion-icon>
-                <a href="#" className="contact-link">info.holiday.com</a>
+                <a href="#" className="contact-link">Info@holidaysri.com</a>
               </li>
               <li className="contact-item">
                 <ion-icon name="location-outline"></ion-icon>
