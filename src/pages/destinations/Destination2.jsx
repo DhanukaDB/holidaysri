@@ -17,7 +17,6 @@ const Destination2 = () => {
   };
   const imageUrls = [
     "https://res.cloudinary.com/iplus/image/upload/v1710534646/richard-de-ruijter-HoByPgtIbzk-unsplash_o1zbft.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710535018/drew-farwell-U27DA0ea1y8-unsplash_npvycm.jpg",
   ];
   const events = [
     "https://res.cloudinary.com/iplus/image/upload/v1710535203/sonika-agarwal-PWfWtwSwZdQ-unsplash_nvzize.jpg",
@@ -215,13 +214,18 @@ const Destination2 = () => {
             </Box>
           </Grid>
         </Box>
-
+        <Box
+        sx={{
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          margin: { lg: "40px", xs: "16px" },
+          padding: { lg: "24px", xs: "10px" },
+          borderRadius: "20px",
+        }}
+      >
         <Grid
           container
           spacing={3}
           marginLeft={{ lg: "5%" }}
-          paddingLeft={{ xs: "8%", lg: "0px" }}
-          marginTop={{ lg: "30px", xs: "8px" }}
         >
           <Grid
             item
@@ -313,7 +317,7 @@ const Destination2 = () => {
                   position: "relative",
                   overflow: "hidden",
                   cursor: "pointer",
-                  backgroundImage: `url("${imageUrls[currentImageIndex]}")`,
+                  backgroundImage: `url("${imageUrls}")`,
                   backgroundSize: "cover",
                   transition: "background-color 0.5s ease",
                 }}
@@ -495,7 +499,6 @@ const Destination2 = () => {
           container
           spacing={3}
           marginLeft={{ lg: "5%" }}
-          paddingLeft={{ xs: "8%", lg: "0px" }}
           marginTop={{ lg: "30px", xs: "8px" }}
         >
           <Grid
@@ -770,6 +773,8 @@ const Destination2 = () => {
 
 
 
+        </Box>
+        
 
 
 
