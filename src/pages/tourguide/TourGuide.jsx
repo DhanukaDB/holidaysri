@@ -56,7 +56,7 @@ const TourGuide = () => {
     <Grid container>
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href="/all-locations" style={{ textDecoration: "none" }}>
+          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
