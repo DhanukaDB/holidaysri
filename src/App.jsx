@@ -24,6 +24,7 @@ import AllVehicles from "./pages/vehicles/Allvehicles";
 import AddHotel from "./components/hotel/AddHotel/AddHotel";
 import Destination2 from "./pages/destinations/Destination2";
 import About from "./components/About/About";
+import Marcketplace from "./pages/marcketplace/Marcketplace";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,12 +56,13 @@ function App() {
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
         <Route path="/landing" element={<Newlanding />} />
-        <Route path="/admin" element={<AdmminPanel />} />
+        <Route path="/admin" element={<AdmminPanel />} />s
         <Route path="/destination/:id" element={<Destination2 />} />
         <Route path="/all-vehicles" element={<AllVehicles />} />
         <Route path="/addhotel" eliment={<AddHotel />} />
+
         <Route path="/about" element={<About />} />
-        
+        <Route path="/marcketplace" element={<Marcketplace/>} />
 
         
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />

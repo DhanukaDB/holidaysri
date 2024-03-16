@@ -119,7 +119,7 @@ const Locations = (props) => {
                   >
                     <Typography
                       sx={{
-                        fontSize: hoveredIndex === index ?{ lg:"34px",xs:'22px'} : {lg:"32px",xs:'20px'},fontFamily: "poppins",
+                        fontSize: hoveredIndex === index ?{ lg:"34px",xs:'16px'} : {lg:"32px",xs:'16px'},fontFamily: "poppins",
                         transition: "font-size 0.5s ease",
                       }}
                     >
@@ -127,7 +127,7 @@ const Locations = (props) => {
                     </Typography>
                     <Typography
                       sx={{
-                        fontSize: hoveredIndex === index ? {lg:"20px",xs:'16px'} : {lg:"14px",xs:'12px'},fontFamily: "poppins",
+                        fontSize: hoveredIndex === index ? {lg:"20px",xs:'14px'} : {lg:"14px",xs:'12px'},fontFamily: "poppins",
                         transition: "font-size 0.5s ease",
                       }}
                     >
