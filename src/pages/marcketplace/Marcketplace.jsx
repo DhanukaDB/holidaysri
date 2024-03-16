@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Grid, Box, Button, Typography, Modal } from "@mui/material";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -26,7 +27,9 @@ const survnior = [
 const Marcketplace = () => {
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
-
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get("id");
   const [vehicleDetails, setVehicleDetails] = useState([]);
   const [product, setproduct] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -54,7 +57,23 @@ const Marcketplace = () => {
     }
     getAllVehicles();
   }, []);
-
+  const [locationname, setlocationname] = useState("");
+  const [background, setbackground] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://holidaysri-backend.onrender.com/location/get/${id}`
+        );
+        setbackground(response.data.location.backgroundImage);
+        setlocationname(response.data.location.locationName);
+      } catch (error) {
+        console.error("Error fetching location:", error);
+        alert("Error fetching location: " + error.message);
+      }
+    };
+    fetchData();
+  }, [id]);
   const handleOpen = (product) => {
     setSelectedEvent(product);
     setOpen(true);
@@ -63,18 +82,35 @@ const Marcketplace = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [filteredProducts, setFilteredProducts] = useState(product);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-  const handleFilter = (category) => {
-    if (category === "all" || category === "") {
-      setFilteredProducts(product);
-    } else {
-      const filtered = product.filter(
-        (product) => product.category === category
-      );
-      setFilteredProducts(filtered);
-    }
-  };
+useEffect(() => {
+  // Initially, set filteredProducts to contain only "gift packs"
+  const defaultGiftPacks = product.filter(
+    (item) => item.category === "gift packs" && item.location === locationname
+  );
+  setFilteredProducts(defaultGiftPacks);
+}, [product, locationname]);
+
+const handleFilter = (category) => {
+  // Filter products based on the selected category
+  if (category === "gift packs") {
+    const giftpacks = product.filter(
+      (item) => item.category === "gift packs" && item.location === locationname
+    );
+    setFilteredProducts(giftpacks);
+  } else if (category === "collectibles") {
+    const collectibles = product.filter(
+      (item) => item.category === "collectibles" && item.location === locationname
+    );
+    setFilteredProducts(collectibles);
+  } else if (category === "souvenirs") {
+    const souvenirs = product.filter(
+      (item) => item.category === "souvenirs" && item.location === locationname
+    );
+    setFilteredProducts(souvenirs);
+  }
+};
   return (
     <Grid
       container
@@ -89,7 +125,7 @@ const Marcketplace = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href="/all-locations" style={{ textDecoration: "none" }}>
+          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -368,6 +404,16 @@ const Marcketplace = () => {
                   marginTop: { lg: "16px", xs: "16px" },
                 }}
               >
+                {product.length === 0 && (
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontSize: { lg: "20px", xs: "18px" },
+                    }}
+                  >
+                    No Added Produts, Come back soon :)
+                  </Typography>
+                )}
                 <Grid container spacing={2}>
                   <Grid item xs={12} lg={4}>
                     <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
