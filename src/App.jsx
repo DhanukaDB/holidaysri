@@ -23,6 +23,7 @@ import Test from "./pages/destinations/Test";
 import AllVehicles from "./pages/vehicles/Allvehicles";
 import AddHotel from "./components/hotel/AddHotel/AddHotel";
 import Destination2 from "./pages/destinations/Destination2";
+import About from "./components/About/About";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +59,7 @@ function App() {
         <Route path="/destination/:id" element={<Destination2 />} />
         <Route path="/all-vehicles" element={<AllVehicles />} />
         <Route path="/addhotel" eliment={<AddHotel />} />
+        <Route path="/about" element={<About />} />
         
 
         
