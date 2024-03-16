@@ -25,6 +25,8 @@ import AddHotel from "./components/hotel/AddHotel/AddHotel";
 import Destination2 from "./pages/destinations/Destination2";
 import Marcketplace from "./pages/marcketplace/Marcketplace";
 import Food from "./pages/foods/Foods";
+import TourGuide from "./pages/tourguide/TourGuide";
+import Partner from "./pages/partner/Partner";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -62,6 +64,8 @@ function App() {
         <Route path="/addhotel" eliment={<AddHotel />} />
         <Route path="/marcketplace" element={<Marcketplace/>} />
         <Route path="/food/:id/:locationName" element={<Food/>}/>
+        <Route path="/tourguide/:id/:locationName" element={<TourGuide/>}/>
+        <Route path="/partner/:id/:locationName" element={<Partner/>}/>
         
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
