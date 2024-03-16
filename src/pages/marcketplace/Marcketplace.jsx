@@ -83,11 +83,12 @@ const Marcketplace = () => {
     setOpen(false);
   };
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selected, setselected] = useState('');
 
 useEffect(() => {
   // Initially, set filteredProducts to contain only "gift packs"
   const defaultGiftPacks = product.filter(
-    (item) => item.category === "gift packs" && item.location === locationname
+    (item) => item.category != "food" && item.location === locationname
   );
   setFilteredProducts(defaultGiftPacks);
 }, [product, locationname]);
@@ -95,16 +96,19 @@ useEffect(() => {
 const handleFilter = (category) => {
   // Filter products based on the selected category
   if (category === "gift packs") {
+    setselected("gift packs");
     const giftpacks = product.filter(
       (item) => item.category === "gift packs" && item.location === locationname
     );
     setFilteredProducts(giftpacks);
   } else if (category === "collectibles") {
+    setselected("collectibles");
     const collectibles = product.filter(
       (item) => item.category === "collectibles" && item.location === locationname
     );
     setFilteredProducts(collectibles);
   } else if (category === "souvenirs") {
+    setselected("souvenirs");
     const souvenirs = product.filter(
       (item) => item.category === "souvenirs" && item.location === locationname
     );
@@ -388,7 +392,7 @@ const handleFilter = (category) => {
               <Typography
                 sx={{ color: "white", fontSize: { lg: "20px", xs: "18px" } }}
               >
-                No Added Produts, Come back later :)
+                No Added {selected}, Come back later :)
               </Typography>
             </Box>
           ) : (

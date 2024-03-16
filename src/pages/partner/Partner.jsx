@@ -21,7 +21,7 @@ const Partner = () => {
     async function getPartners() {
       try {
         const res = await axios.get(
-          "https://holidaysri-backend.onrender.com/api/guide/allGuideProfiles"
+          "https://holidaysri-backend.onrender.com/api/partner/allPartnerProfiles"
         );
         setPartners(res.data);
       } catch (error) {
@@ -51,12 +51,24 @@ const Partner = () => {
   const handleOpen = (partner) => {
     // Handle opening modal or any other action
   };
+  const filteredPartners = partners.filter(
+    (partner) => partner.location === locationName
+  );
 
   return (
-    <Grid container >
+    <Grid
+      container
+      sx={{
+        backgroundImage: location ? `url(${location.backgroundImage})` : "",
+        backgroundSize: "cover",
+        backgroundPosition: "bottom",
+        minHeight: "100vh",
+        paddingBottom: "16px",
+      }}
+    >
       <Grid item xs={12}>
-        <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href={`/destination/${id}`}  style={{ textDecoration: "none" }}>
+        <Box marginBottom="0px" marginTop="16px" marginLeft="16px">
+          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -69,38 +81,38 @@ const Partner = () => {
             </Button>{" "}
           </a>
         </Box>
-
-        <Grid container   sx={{
-              backgroundImage: location ? `url(${location.backgroundImage})` : "",
-              backgroundSize: "cover",
-              backgroundPosition: "bottom",
-              minHeight: "100vh",
-              paddingBottom: "16px",
-            }}>
-          <Box
-           
+        <Typography
+          fontSize={{ lg: "24px", xs: "18px" }}
+          sx={{ color: "white" }}
+          marginTop={{ lg: "16px", xs: "24px" }}
+          textAlign="center"
+        >
+          Travel partners to connect in {locationName}
+        </Typography>
+        <center>
+          <Grid
+            container
+            width={{ lg: "90%" }}
+            sx={{ marginTop: { lg: "32px", xs: "24px" } }}
+            spacing={2}
+            paddingLeft={{ lg: "0px", xs: "8px" }}
+            paddingRight={{ lg: "0px", xs: "8px" }}
           >
-            <Typography
-              fontSize={{ lg: "24px", xs: "22px" }}
-              sx={{ color: "white" }}
-              marginTop="16px"
-              textAlign="center"
-            >
-              Travel partners to connect in {locationName}
-            </Typography>
-
-            <Grid container 
-              spacing={4}
-              style={{
-                transform: hoveredIndex !== null ? "translateY(-10px)" : "",
-                transition: "transform 0.3s",
-              }} >
-              {partners.map((partner, index) => (
-                <Grid item xs={12} sm={6} md={3} lg={8} key={index} >
-                  <Box marginTop="20px" sx={{marginLeft :{lg:"30%" , sx:"0%"} , width :{lg:"900px", sx:"280px"}}}>
+            {filteredPartners.length > 0 ? (
+              filteredPartners.map((partner, index) => (
+                <Grid item xs={12} lg={3} key={index}>
+                  <Box
+                    marginTop="20px"
+                    sx={{
+                      marginLeft: { lg: "0%", sx: "0%" },
+                      width: { lg: "auto", sx: "280px" },
+                      transform: hoveredIndex === index && "translateY(-10px)",
+                      transition: "transform 0.3s",
+                      cursor: "default",
+                    }}
+                  >
                     <Card
                       sx={{
-                       
                         borderColor: "black",
                         borderRadius: "30px",
                         backgroundColor: "rgba(255,255,255, 0.3)",
@@ -116,24 +128,68 @@ const Partner = () => {
                         <Typography
                           variant="h5"
                           component="div"
+                          textAlign="left"
                           sx={{ color: "white" }}
                         >
                           Name: {partner.Name}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: "white" }}>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
                           Email: {partner.Email}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: "white" }}>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
                           Contact Number: {partner.contactNumber}
+                        </Typography>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
+                          Location: {partner.location}
                         </Typography>
                       </CardContent>
                     </Card>
                   </Box>
                 </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Grid>
+              ))
+            ) : (
+              <>
+                <Grid item xs={12} lg={8}>
+                  <Box
+                    marginTop={{ lg: "20px", xs: "0px" }}
+                    sx={{
+                      marginLeft: { lg: "50%", sx: "0%" },
+                      width: { lg: "auto", sx: "280px" },
+                      transition: "transform 0.3s",
+                      cursor: "default",
+                    }}
+                  >
+                    <Card
+                      sx={{
+                        borderColor: "black",
+                        borderRadius: "30px",
+                        backgroundColor: "rgba(255,255,255, 0.3)",
+                        padding: "32px",
+                      }}
+                      variant="outlined"
+                    >
+                      <Typography>
+                        Currently No partners in {locationName}
+                      </Typography>
+                    </Card>
+                  </Box>
+                </Grid>
+              </>
+            )}
+          </Grid>
+        </center>
       </Grid>
     </Grid>
   );

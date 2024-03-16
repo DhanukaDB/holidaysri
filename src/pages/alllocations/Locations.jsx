@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Grid, TextField } from "@mui/material";
+import { Box, Typography, Grid, TextField,Button } from "@mui/material";
 import Banner from "./Banner";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -44,8 +44,22 @@ const Locations = (props) => {
         minHeight: "100vh",
       }}
     >
+      
       <Banner />
-
+      <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+          <a href={`/`} style={{ textDecoration: "none" }}>
+            <Button
+              variant="outlined"
+              sx={{
+                color: "white",
+                borderColor: "white",
+                borderRadius: "30px",
+              }}
+            >
+              Back
+            </Button>{" "}
+          </a>
+        </Box>
       <Box
         sx={{
           backgroundColor: "rgba(0, 0, 0, 0.5)",

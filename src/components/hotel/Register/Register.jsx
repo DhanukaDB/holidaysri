@@ -94,17 +94,17 @@ const Register = (props) => {
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
         height: "100%",
-        paddingBottom:'24px'
+        paddingBottom: "24px",
       }}
     >
       <Grid
-        paddingTop={{ lg: "7%",xs:'4%' }}
-        paddingBottom={{ lg: "5%",xs:'4%'  }}
+        paddingTop={{ lg: "7%", xs: "4%" }}
+        paddingBottom={{ lg: "5%", xs: "4%" }}
         width={{ lg: "1150px" }}
-        height={{lg:'100%',xs:'100vh'}}
-        paddingLeft={{ lg: "25%" ,xs:'4%' }}
-        paddingRight={{ lg: "0px" ,xs:'4%' }}
-        marginBottom={{xs:'80%',lg:'0px'}}
+        height={{ lg: "100%", xs: "100vh" }}
+        paddingLeft={{ lg: "25%", xs: "4%" }}
+        paddingRight={{ lg: "0px", xs: "4%" }}
+        marginBottom={{ xs: "80%", lg: "0px" }}
       >
         <Grid className="registerform">
           <a href="/">
@@ -172,107 +172,344 @@ const Register = (props) => {
               />
             ))}
           </Tabs>
-          <Grid paddingLeft={{ lg: "32px" }}>
-            <Customtextfield
-              label="Name"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
-            {role === "For Agent" && <>
-            
-            <Typography marginTop="20px">Select</Typography>
-            <Grid container marginTop={{ lg: "12px", xs: "12px" }}>
-              <Grid item xs="auto">
-                <Box
-                  onClick={() => {
-                    setSubRole("For Forigen Agent");
-                  }}
-                  border={1}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: {
-                      xs: "255px",
-                      lg: "200px",
-                    },
-                    height: {
-                      xs: "48px",
-                      lg: "48px",
-                    },
-                    borderColor:
-                    subrole === "For Forigen Agent" ? "Black" : "Black",
-                    borderRadius: "13px",
-                    backgroundColor:
-                    subrole === "For Forigen Agent" ? "black" : "#FFFFFF",
-                    cursor: "pointer",
-                    marginTop: { lg: "0px", xs: "0px" },
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: subrole === "For Forigen Agent" ? "white" : "black",
-                    }}
-                  >
-                    Forigen Agent
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item marginLeft={{ lg: "12px" }}>
-                <Box
-                  onClick={() => {
-                    setSubRole("For Local Agent");
-                  }}
-                  border={1}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: {
-                      xs: "255px",
-                      lg: "200px",
-                    },
-                    height: {
-                      xs: "48px",
-                      lg: "48px",
-                    },
-                    borderColor: subrole === "For Local Agent" ? "black" : "black",
-                    borderRadius: "13px",
-                    backgroundColor:
-                    subrole === "For Local Agent" ? "black" : "#FFFFFF",
-                    cursor: "pointer",
-                    marginTop: { lg: "0px", xs: "16px" },
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: subrole === "For Local Agent" ? "white" : "black",
-                    }}
-                  >
-                    Local Agent
-                  </Typography>
-                </Box>
-              </Grid>
+          <CustomTabPanel value={value} index={0}>
+            <Grid paddingLeft={{ lg: "32px" }}>
+              <Customtextfield
+                label="Name"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Email"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  boxShadow: "none",
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
             </Grid>
-            {subrole === "For Local Agent" && (
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={1}>
+            <Grid paddingLeft={{ lg: "32px" }}>
               <Customtextfield
-                label="NIC"
+                label="Name"
                 marginTop="16px"
-                marginBottom="16px"
                 width={{ lg: "115%", xs: "110%" }}
               />
-            )}
-            {subrole === "For Forigen Agent" && (
+              {role === "For Agent" && (
+                <>
+                  <Typography marginTop="20px">Select</Typography>
+                  <Grid container marginTop={{ lg: "12px", xs: "12px" }}>
+                    <Grid item xs="auto">
+                      <Box
+                        onClick={() => {
+                          setSubRole("For Forigen Agent");
+                        }}
+                        border={1}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: {
+                            xs: "255px",
+                            lg: "200px",
+                          },
+                          height: {
+                            xs: "48px",
+                            lg: "48px",
+                          },
+                          borderColor:
+                            subrole === "For Forigen Agent" ? "Black" : "Black",
+                          borderRadius: "13px",
+                          backgroundColor:
+                            subrole === "For Forigen Agent"
+                              ? "black"
+                              : "#FFFFFF",
+                          cursor: "pointer",
+                          marginTop: { lg: "0px", xs: "0px" },
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color:
+                              subrole === "For Forigen Agent"
+                                ? "white"
+                                : "black",
+                          }}
+                        >
+                          Forigen Agent
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item marginLeft={{ lg: "12px" }}>
+                      <Box
+                        onClick={() => {
+                          setSubRole("For Local Agent");
+                        }}
+                        border={1}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: {
+                            xs: "255px",
+                            lg: "200px",
+                          },
+                          height: {
+                            xs: "48px",
+                            lg: "48px",
+                          },
+                          borderColor:
+                            subrole === "For Local Agent" ? "black" : "black",
+                          borderRadius: "13px",
+                          backgroundColor:
+                            subrole === "For Local Agent" ? "black" : "#FFFFFF",
+                          cursor: "pointer",
+                          marginTop: { lg: "0px", xs: "16px" },
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            color:
+                              subrole === "For Local Agent" ? "white" : "black",
+                          }}
+                        >
+                          Sri Lankan Agent
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  </Grid>
+                  {subrole === "For Local Agent" && (
+                    <Customtextfield
+                      label="NIC"
+                      marginTop="16px"
+                      marginBottom="16px"
+                      width={{ lg: "115%", xs: "110%" }}
+                    />
+                  )}
+                  {subrole === "For Forigen Agent" && (
+                    <Customtextfield
+                      label="Passport Number"
+                      marginTop="16px"
+                      marginBottom="16px"
+                      width={{ lg: "115%", xs: "110%" }}
+                    />
+                  )}
+                  {(subrole === "For Forigen Agent" ||
+                    subrole === "For Local Agent") && (
+                    <div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        id="uploadImageInput"
+                        onChange={handleFileChange}
+                      />
+                      <label htmlFor="uploadImageInput">
+                        <Button
+                          variant="outlined"
+                          sx={{
+                            color: "black",
+                            borderColor: "black",
+                            marginTop: "16px",
+                            "&:hover": {
+                              color: "black",
+                              borderColor: "black",
+                            },
+                          }}
+                          component="span"
+                        >
+                          Upload image of{" "}
+                          {subrole === "For Local Agent" ? (
+                            <>NIC Front/Back</>
+                          ) : (
+                            <>Passport</>
+                          )}
+                        </Button>
+                      </label>
+                      {image && <p>Selected Image: {image.name}</p>}
+                    </div>
+                  )}
+                </>
+              )}
               <Customtextfield
-                label="Passport Number"
+                label="Email"
                 marginTop="16px"
-                marginBottom="16px"
                 width={{ lg: "115%", xs: "110%" }}
               />
-            )}
-            {(subrole === "For Forigen Agent" || subrole === "For Local Agent") && (
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  boxShadow: "none",
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
+            </Grid>
+          </CustomTabPanel>
+          <CustomTabPanel value={value} index={2}>
+            <Grid paddingLeft={{ lg: "32px" }}>
+              <Customtextfield
+                label="Name"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Email"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  boxShadow: "none",
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
+            </Grid>
+          </CustomTabPanel>
+
+          <CustomTabPanel value={value} index={3}>
+            <Grid paddingLeft={{ lg: "32px" }}>
+              <Customtextfield
+                label="Name"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Email"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  boxShadow: "none",
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
+            </Grid>
+          </CustomTabPanel>
+
+          <CustomTabPanel value={value} index={4}>
+            <Grid paddingLeft={{ lg: "32px" }}>
+              <Customtextfield
+                label="Name"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Email"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
               <div>
                 <input
                   type="file"
@@ -283,65 +520,14 @@ const Register = (props) => {
                 />
                 <label htmlFor="uploadImageInput">
                   <Button
-                  variant="outlined"
-                  sx={{
-                    color: "black",
-                    borderColor:"black",
-                    marginTop:'16px',
-                    "&:hover": {
-                      color: "black",
-                      borderColor:"black",
-                    },
-                    
-                    }}
-                    component="span"
-                  >
-                    Upload image of{" "}
-                    {subrole === "For Local Agent" ? (
-                      <>NIC Front/Back</>
-                    ) : (
-                      <>Passport</>
-                    )}
-                  </Button>
-                </label>
-                {image && <p>Selected Image: {image.name}</p>}
-              </div>
-            )}
-
-            
-            </>}
-            
-            <Customtextfield
-              label="Email"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
-           
-            <Customtextfield
-              label="Contact Number"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
-
-{role === "For Tour Guid"  && (
-              <div>
-                <input
-                  type="file"
-                  accept="image/*"
-                  style={{ display: "none" }}
-                  id="uploadImageInput"
-                  onChange={handleFileChange}
-                />
-                <label htmlFor="uploadImageInput">
-                  <Button
-                  variant="outlined"
+                    variant="outlined"
                     sx={{
                       color: "black",
-                      borderColor:"black",
-                      marginTop:'16px',
+                      borderColor: "black",
+                      marginTop: "16px",
                       "&:hover": {
                         color: "black",
-                        borderColor:"black",
+                        borderColor: "black",
                       },
                     }}
                     component="span"
@@ -351,45 +537,89 @@ const Register = (props) => {
                 </label>
                 {image && <p>Selected Image: {image.name}</p>}
                 <Customtextfield
-              label="Experience"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
-            <Customtextfield
-              label="Destination"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
+                  label="Experience"
+                  marginTop="16px"
+                  width={{ lg: "115%", xs: "110%" }}
+                />
+                <Customtextfield
+                  label="Destination"
+                  marginTop="16px"
+                  width={{ lg: "115%", xs: "110%" }}
+                />
               </div>
-              
-            )}
-            
-            <Customtextfield
-              label="Password"
-              marginTop="16px"
-              width={{ lg: "115%", xs: "110%" }}
-            />
-            <Button
-              variant="outlined"
-              sx={{
-                borderRadius: "30px",
-                borderColor: "black",
-                boxShadow: "none",
-                width: { lg: "100%", xs: "100%" },
-                color: "black",
-                marginTop: "32px",
-                height: "48px",
-                "&:hover": {
-                  backgroundColor: "black",
-                  color: "white",
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
                   borderColor: "black",
                   boxShadow: "none",
-                },
-              }}
-            >
-              Register
-            </Button>
-          </Grid>{" "}
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
+            </Grid>
+          </CustomTabPanel>
+
+          <CustomTabPanel value={value} index={5}>
+            <Grid paddingLeft={{ lg: "32px" }}>
+              <Customtextfield
+                label="Name"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Email"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+
+              <Customtextfield
+                label="Contact Number"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Customtextfield
+                label="Password"
+                marginTop="16px"
+                width={{ lg: "115%", xs: "110%" }}
+              />
+              <Button
+                variant="outlined"
+                sx={{
+                  borderRadius: "30px",
+                  borderColor: "black",
+                  boxShadow: "none",
+                  width: { lg: "100%", xs: "100%" },
+                  color: "black",
+                  marginTop: "32px",
+                  height: "48px",
+                  "&:hover": {
+                    backgroundColor: "black",
+                    color: "white",
+                    borderColor: "black",
+                    boxShadow: "none",
+                  },
+                }}
+              >
+                Register
+              </Button>
+            </Grid>
+          </CustomTabPanel>
         </Grid>
       </Grid>
     </Grid>

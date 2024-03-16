@@ -11,25 +11,25 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const TourGuide = () => {
-  const [guides, setGuides] = useState([]);
+  const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const { id, locationName } = useParams();
 
   useEffect(() => {
-    async function getGuides() {
+    async function getPartners() {
       try {
         const res = await axios.get(
-          "https://holidaysri-backend.onrender.com/guide/"
+          "https://holidaysri-backend.onrender.com/api/guide/allGuideProfiles"
         );
-        setGuides(res.data);
+        setPartners(res.data);
       } catch (error) {
-        console.error("Error fetching guides:", error);
-        alert("Error fetching guides: " + error.message);
+        console.error("Error fetching partners:", error);
+        alert("Error fetching partners: " + error.message);
       }
     }
-    getGuides();
+    getPartners();
   }, []);
 
   useEffect(() => {
@@ -48,14 +48,26 @@ const TourGuide = () => {
     fetchData();
   }, [id]);
 
-  const handleOpen = (guide) => {
+  const handleOpen = (partner) => {
     // Handle opening modal or any other action
   };
+  const filteredPartners = partners.filter(
+    (partner) => partner.location === locationName
+  );
 
   return (
-    <Grid container>
+    <Grid
+      container
+      sx={{
+        backgroundImage: location ? `url(${location.backgroundImage})` : "",
+        backgroundSize: "cover",
+        backgroundPosition: "bottom",
+        minHeight: "100vh",
+        paddingBottom: "16px",
+      }}
+    >
       <Grid item xs={12}>
-        <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+        <Box marginBottom="0px" marginTop="16px" marginLeft="16px">
           <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
@@ -69,91 +81,115 @@ const TourGuide = () => {
             </Button>{" "}
           </a>
         </Box>
-
-        <Grid container justifyContent="center"
-        ontainer style={{
-            backgroundImage: location ? `url(${location.backgroundImage})` : "",
-            backgroundSize: "cover",
-            backgroundPosition: "bottom",
-            minHeight: {lg:"30vh",xs:"10vh"},
-            paddingBottom: "16px",
-           
-          }}
+        <Typography
+          fontSize={{ lg: "24px", xs: "18px" }}
+          sx={{ color: "white" }}
+          marginTop={{ lg: "16px", xs: "24px" }}
+          textAlign="center"
         >
-          <Box
-            sx={{
-              width: { lg: "1100px", xs: "300px" },
-              minHeight: "100vh",
-              paddingBottom: "16px",
-            }}
+          Tour Guides to connect in {locationName}
+        </Typography>
+        <center>
+          <Grid
+            container
+            width={{ lg: "90%" }}
+            sx={{ marginTop: { lg: "32px", xs: "24px" } }}
+            spacing={2}
+            paddingLeft={{ lg: "0px", xs: "8px" }}
+            paddingRight={{ lg: "0px", xs: "8px" }}
           >
-            <Typography
-              fontSize={{ lg: "24px", xs: "22px" }}
-              sx={{ color: "white" }}
-              marginTop="16px"
-              marginBottom="16px"
-            >
-              Tour Guides in {locationName}
-            </Typography>
-          </Box>
-
-          <Box
-          style={{
-            backgroundImage:
-              'url("https://res.cloudinary.com/iplus/image/upload/v1710621250/pexels-filippo-peisino-2678301_njycll.jpg")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            minHeight: "100vh",
-            paddingBottom: "16px",
-          }}
-          >
-            <Grid
-              container
-              spacing={3}
-              style={{
-                transform: hoveredIndex !== null ? "translateY(-10px)" : "",
-                transition: "transform 0.3s",
-              }}
-            >
-              {guides.map((guide, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <Card
+            {filteredPartners.length > 0 ? (
+              filteredPartners.map((partner, index) => (
+                <Grid item xs={12} lg={3} key={index}>
+                  <Box
+                    marginTop="20px"
                     sx={{
-                      borderColor: "black",
-                      borderRadius: "30px",
-                      backgroundColor: "rgba(255,255,255, 0.3)",
+                      marginLeft: { lg: "0%", sx: "0%" },
+                      width: { lg: "auto", sx: "280px" },
+                      transform: hoveredIndex === index && "translateY(-10px)",
                       transition: "transform 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
+                      cursor: "default",
                     }}
-                    variant="outlined"
-                    onClick={() => handleOpen(guide)}
                   >
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ color: "white" }}
-                      >
-                        Name: {guide.name}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Email: {guide.email}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Contact Number: {guide.contactNumber}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Description: {guide.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                    <Card
+                      sx={{
+                        borderColor: "black",
+                        borderRadius: "30px",
+                        backgroundColor: "rgba(255,255,255, 0.3)",
+                        transition: "transform 0.3s",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
+                      }}
+                      variant="outlined"
+                      onClick={() => handleOpen(partner)}
+                    >
+                      <CardContent>
+                        <Typography
+                          variant="h5"
+                          component="div"
+                          textAlign="left"
+                          sx={{ color: "white" }}
+                        >
+                          Name: {partner.Name}
+                        </Typography>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
+                          Email: {partner.Email}
+                        </Typography>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
+                          Contact Number: {partner.contactNumber}
+                        </Typography>
+                        <Typography
+                          textAlign="left"
+                          variant="body2"
+                          sx={{ color: "white" }}
+                        >
+                          Location: {partner.location}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Box>
                 </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Grid>
+              ))
+            ) : (
+              <>
+                <Grid item xs={12} lg={8}>
+                  <Box
+                    marginTop={{ lg: "20px", xs: "0px" }}
+                    sx={{
+                      marginLeft: { lg: "50%", sx: "0%" },
+                      width: { lg: "auto", sx: "280px" },
+                      transition: "transform 0.3s",
+                      cursor: "default",
+                    }}
+                  >
+                    <Card
+                      sx={{
+                        borderColor: "black",
+                        borderRadius: "30px",
+                        backgroundColor: "rgba(255,255,255, 0.3)",
+                        padding: "32px",
+                      }}
+                      variant="outlined"
+                    >
+                      <Typography>
+                        Currently No Tour Guides in {locationName}
+                      </Typography>
+                    </Card>
+                  </Box>
+                </Grid>
+              </>
+            )}
+          </Grid>
+        </center>
       </Grid>
     </Grid>
   );
