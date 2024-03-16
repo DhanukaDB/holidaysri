@@ -132,25 +132,16 @@ function handleDeleteVehicle(id){
         }}
       >
         <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "700",
-              fontSize: { lg: "50px", xs: "32px" },
-            }}
-          >
-            Holiday Sri
-          </Typography>
+          
           <Typography
             sx={{
               color: "white",
               fontFamily: "mansalva",
-              marginTop: "8px",
               fontSize: { lg: "50px", xs: "18px" },
               letterSpacing: "20px",
             }}
           >
-            Add Local Vehicle
+            Add Local Vehicles
           </Typography>
         </Box>
         <Grid container justifyContent="center" alignItems="center">
