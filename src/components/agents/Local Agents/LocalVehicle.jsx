@@ -394,6 +394,17 @@ function handleDeleteVehicle(id){
                       marginTop: "8px",
                     }}
                   >
+                    Location: {vehicle.location}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "16px", xs: "16px" },
+                      textAlign: "left",
+                      marginTop: "8px",
+                    }}
+                  >
                     Contact Number: {vehicle.contactNumber}
                   </Typography>
                   <Typography

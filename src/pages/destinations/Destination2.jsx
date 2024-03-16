@@ -303,7 +303,7 @@ const Destination2 = () => {
               borderColor: "white",
             }}
           >
-            <Link to={`/rides`} style={{ textDecoration: "none" }}>
+            <Link to={`/rides?id=${id}`} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: { lg: "250px", xs: "150px" },
@@ -644,7 +644,7 @@ const Destination2 = () => {
               borderColor: "white",
             }}
           >
-            <Link to={`/marcketplace`} style={{ textDecoration: "none" }}>
+            <Link to={`/marcketplace?id=${id}`} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: { lg: "250px", xs: "150px" },

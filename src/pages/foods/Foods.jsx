@@ -16,7 +16,6 @@ const Food = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const { id, locationName } = useParams();
-
   useEffect(() => {
     async function getProducts() {
       try {
@@ -51,8 +50,8 @@ const Food = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const filterProducts = (category) => {
-    if (category === "food") {
-      const foods = products.filter((product) => product.category === "food");
+    if (category === "food" ) {
+      const foods = products.filter((product) => product.category === "food" && product.location === locationName);
       setFilteredProducts(foods);
     }
   };
@@ -73,7 +72,7 @@ const Food = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href="/all-locations" style={{ textDecoration: "none" }}>
+          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -103,19 +102,36 @@ const Food = () => {
                 color: "white",
                 fontFamily: "poppins",
                 marginTop: "8px",
-                fontSize: { lg: "50px", xs: "32px" },
-                paddingLeft:{lg:"450px",xs:"0"},
-                paddingTop:{lg:"80px",xs:"0"},
-                
+                fontSize: { lg: "50px", xs: "24px" },
+                paddingLeft:{lg:"450px",xs:"32px"},
+                paddingTop:{lg:"80px",xs:"32px"},
+                paddingBottom:{lg:'80px',xs:'32px'}
               }}
               
             >
               Foods All Around {locationName}
+              {filteredProducts.length === 0 && (
+            <Box
+              sx={{
+                borderColor: "black",
+                borderRadius: "30px",
+                backgroundColor: "rgba(255,255,255, 0.3)",
+                padding: "24px",
+                marginTop: { lg: "16px", xs: "16px" },
+              }}
+            >
+              <Typography
+                sx={{ color: "black", fontSize: { lg: "20px", xs: "18px" } }}
+              >
+                No Added Food Items 
+              </Typography>
+            </Box>
+            )}
             </Typography>
         
 
             </Grid>
-          
+            
             <Grid marginTop="20px" >
           <Box
           style={{
@@ -125,6 +141,8 @@ const Food = () => {
             backgroundPosition: "center",
             minHeight: "100vh",
             paddingBottom: "16px",
+            paddingLeft:{lg:"24px",xs:'8px'},
+            paddingRight:{lg:'24px',xs:'16px'}
           }}
           >
             <Grid
@@ -133,6 +151,7 @@ const Food = () => {
               style={{
                 transform: hoveredIndex !== null ? "translateY(-10px)" : "",
                 transition: "transform 0.3s",
+                cursor:'default',
               }}
             >
               {filteredProducts.map((product, index) => (
@@ -146,6 +165,8 @@ const Food = () => {
                       "&:hover": {
                         transform: "scale(1.05)",
                       },
+                      marginLeft:'8px',
+                      marginRight:'8px'
                     }}
                     variant="outlined"
                     onClick={() => handleOpen(product)}
@@ -165,7 +186,7 @@ const Food = () => {
                         component="div"
                         sx={{ color: "white" }}
                       >
-                        Name: {product.productName}
+                        Name: {product.productName}{product.location}
                       </Typography>
                       <Typography variant="body2" sx={{ color: "white" }}>
                         Description: {product.description}
