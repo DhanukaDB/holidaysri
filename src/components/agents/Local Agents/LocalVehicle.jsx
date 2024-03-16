@@ -30,6 +30,7 @@ const LocalVehicleForm = (props) => {
   const handleClose = () => setOpen(false);
   const [images, setImages] = useState([]);
   const [gender, setGender] = React.useState('');
+  const [editingVehicle, setEditingVehicle] = useState("");
 
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [Vehiclecategory, setVehiclecategory] = useState("");
@@ -53,11 +54,24 @@ const LocalVehicleForm = (props) => {
     setImages(selectedImages);
   };
 
+  const handleEdit = (vehicle) => {
+    setEditingVehicle(vehicle);
+    setVehicleNumber(vehicle.vehicleNumber);
+    setVehiclecategory(vehicle.Vehiclecategory);
+    setLocation(vehicle.location);
+    setContactNumber(vehicle.contactNumber);
+    setPrice(vehicle.price);
+    setNic(vehicle.nic);
+    setDescription(vehicle.description);
+    setPromoCode(vehicle.promoCode);
+    setGender(vehicle.gender);
+    setOpen(true);
+  };
 
-  
-  const handleAddVehicle = (e) => { 
+  const handleAddVehicle = (e) => {
     e.preventDefault();
-    const newVehicle ={
+  
+    const newVehicle = {
       vehicleNumber,
       Vehiclecategory,
       location,
@@ -65,21 +79,37 @@ const LocalVehicleForm = (props) => {
       price,
       nic,
       description,
-      promoCode
+      promoCode,
+      gender,
+    };
+  
+    if (editingVehicle) {
+      // If editing vehicle exists, update the existing vehicle
+      axios
+        .put(
+          `https://holidaysri-backend.onrender.com/vehicle/update/${editingVehicle._id}`,
+          newVehicle
+        )
+        .then(() => {
+          alert("The Vehicle was Successfully updated");
+          window.location.reload(); // Reload the page after update
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      // Otherwise, add a new vehicle
+      axios
+        .post("https://holidaysri-backend.onrender.com/vehicle/add", newVehicle)
+        .then(() => {
+          alert("The New Vehicle was Successfully saved");
+          window.location.reload(); // Reload the page after adding
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
-  
-    console.log(newVehicle)  
-    //alert("Success");
-    axios.post("https://holidaysri-backend.onrender.com/vehicle/add/", newVehicle).then(() => {
-         alert("The New Vehicle was Successfully saved")
-        // history.push('/')
-        window.location = `/`;
-  
-     }).catch((err) =>{
-         alert(err)
-     })
-  };
-
+  }
 
 
 
@@ -429,7 +459,9 @@ function handleDeleteVehicle(id){
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
-                  
+                    handleEdit
+                    onClick = {() => handleEdit(vehicle)}
+
                   >
                     Edit
                   </Button>{" "}
