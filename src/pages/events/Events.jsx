@@ -52,20 +52,12 @@ const Events = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop='16px' marginLeft='32px'>
-          <a href="/all-locations" style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" sx={{ color: 'white', borderColor: 'white', borderRadius: '30px' }}>Back</Button>
+          <a href={`/destination/${location._id}`} style={{ textDecoration: 'none' }}>
+            <Button variant="outlined" sx={{ color: 'white', borderColor: 'white', borderRadius: '30px' }}> Back</Button>
           </a>
         </Box>
-        <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "700",
-              fontSize: { lg: "50px", xs: "32px" },
-            }}
-          >
-            Holiday Sri
-          </Typography>
+        <Box textAlign="center" marginTop={{ lg: "2%", xs: "3%" }}>
+         
           <Typography
             sx={{
               color: "white",
@@ -86,12 +78,12 @@ const Events = () => {
           >
             {events.length===0? <Typography
               fontSize={{ lg: "24px", xs: "22px" }}
-              sx={{ color: "white" }}
+              sx={{ color: "white",fontFamily: "poppins" }}
               marginTop="16px"
             >
               No Recent Events
             </Typography>: <Typography
-              fontSize={{ lg: "24px", xs: "22px" }}
+              fontSize={{ lg: "24px", xs: "22px" ,fontFamily: "poppins"}}
               sx={{ color: "white" }}
               marginTop="16px"
             >
@@ -100,56 +92,56 @@ const Events = () => {
            
           </Box>
           {events.map((event) => (
-            <Box
-              key={event._id} 
-              border={3}
-              sx={{
-                width: { lg: "1100px", xs: "280px" },
-                borderColor: "black",
-                borderRadius: "30px",
-                backgroundColor: "rgba(48, 103, 84, 0.5)",
-                padding: "24px",
-                marginTop: { lg: "16px", xs: "16px" },
-              }}
-            >
-              <Grid container spacing={2}>
-                <Grid item xs={12} lg={2}>
-                  <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
-                    <img
-                      src={event.images}
-                      width="100%"
-                      height="100%"
-                      style={{ borderRadius: "30px" }}
-                      alt="Event"
-                    />
-                  </Box>
-                </Grid>
-                <Grid item xs={12} lg={10}>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "24px", xs: "20px" },
-                      textAlign: "left",
-                    }}
-                  >
-                    {event.eventName}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "16px", xs: "16px" },
-                      textAlign: "left",
-                      marginTop: "8px",
-                    }}
-                  >
-                    {event.description}
-                  </Typography>
-                </Grid>
+          <Box
+            key={event._id}
+            sx={{
+              width: { lg: "1100px", xs: "280px" },
+              borderColor: "black",
+              borderRadius: "30px",
+              backgroundColor: "rgba(255,255,255, 0.5)",
+             
+              padding: "24px",
+              marginTop: { lg: "16px", xs: "16px" },
+            }}
+          >
+            <Grid container spacing={2}>
+              <Grid item xs={12} lg={4}>
+                <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
+                  <img
+                    src={event.images}
+                    width="100%"
+                    height="100%"
+                    style={{ borderRadius: "10px" }}
+                    alt="Event"
+                  />
+                </Box>
               </Grid>
-            </Box>
-          ))}
+              <Grid item xs={12} lg={6}>
+                <Typography
+                  sx={{
+                    color: "black",
+                    fontWeight: "400",
+                    fontSize: { lg: "24px", xs: "20px" },
+                    textAlign: "left",
+                  }}
+                >
+                  {event.eventName}
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "black",
+                    fontWeight: "400",
+                    fontSize: { lg: "16px", xs: "16px" },
+                    textAlign: "left",
+                    marginTop: "8px",
+                  }}
+                >
+                  {event.description}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Box>
+        ))}
         </Grid>
       </Grid>
     </Grid>

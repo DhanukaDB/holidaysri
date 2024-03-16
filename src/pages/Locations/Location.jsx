@@ -15,6 +15,8 @@ const style = {
 };
 const Location = (props) => {
   const [openlocation, setOpenlocation] = React.useState(false);
+  const [editingLocation, setEditingLocation] = useState("");
+  const [editingEvent, setEditingEvent] = useState("");
   const handleOpenlocation = () => setOpenlocation(true);
   const handleCloselocation = () => setOpenlocation(false);
   const [open, setOpen] = React.useState(false);
@@ -43,27 +45,53 @@ const Location = (props) => {
   
   const handleAddLocation = (e) => { 
     e.preventDefault();
-
-
-    const newLocation ={
+  
+    const newLocation = {
       locationName,
       district,
       province,
       distanceFromColombo,
       details
+    };
+  
+    if (editingLocation) {
+      // If editing location exists, update the existing location
+      axios
+        .put(
+          `https://holidaysri-backend.onrender.com/location/updateLocation/${editingLocation._id}`,
+          newLocation
+        )
+        .then(() => {
+          alert("The Location was Successfully updated");
+          window.location.reload(); // Reload the page after update
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      // Otherwise, add a new location
+      axios
+        .post("https://holidaysri-backend.onrender.com/location/add", newLocation)
+        .then(() => {
+          alert("The New Location was Successfully saved");
+          window.location = `/location`;
+        })
+        .catch((err) => {
+          alert(err);
+        });
     }
-  
-    console.log(newLocation)  
-    //alert("Success");
-    axios.post("https://holidaysri-backend.onrender.com/location/add", newLocation).then(() => {
-         alert("The New Location was Successfully saved")
-        // history.push('/')
-        window.location = `/location`;
-  
-     }).catch((err) =>{
-         alert(err)
-     })
   };
+  const handleEditlocation = (location) => {
+    // Set editingLocation state and populate the input fields with existing details
+    setEditingLocation(location);
+    setLocationName(location.locationName);
+    setDistrict(location.district);
+    setProvince(location.province);
+    setDistanceFromColombo(location.distanceFromColombo);
+    setDetails(location.details);
+    setOpenlocation(true); // Open the modal for editing
+  };
+  
   
 
   useEffect(() => {
@@ -96,27 +124,50 @@ function handleDeleteLocation(id){
 
 
 
-const handleAddEvent = (e) => { 
+const handleEditEvent = (event) => {
+  // Set editingEvent state and populate the input fields with existing details
+  setEditingEvent(event);
+  setEventName(event.eventName);
+  setEventLocation(event.eventLocation);
+  setDescription(event.description);
+  setOpen(true); // Open the modal for editing
+};
+
+const handleAddEvent = (e) => {
   e.preventDefault();
 
-
-  const newEvent ={
+  const newEvent = {
     eventName,
     eventLocation,
-    description
-    
+    description,
+  };
+
+  if (editingEvent) {
+    // If editing event exists, update the existing event
+    axios
+      .put(
+        `https://holidaysri-backend.onrender.com/event/updateEvent/${editingEvent._id}`,
+        newEvent
+      )
+      .then(() => {
+        alert("The Event was Successfully updated");
+        window.location = `/location`; // Redirect to location page after update
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  } else {
+    // Otherwise, add a new event
+    axios
+      .post("https://holidaysri-backend.onrender.com/event/add", newEvent)
+      .then(() => {
+        alert("The New Event was Successfully saved");
+        window.location = `/location`; // Redirect to location page after adding
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
-
-  console.log(newEvent)  
-  //alert("Success");
-  axios.post("https://holidaysri-backend.onrender.com/event/add", newEvent).then(() => {
-       alert("The New Event was Successfully saved")
-      // history.push('/')
-      window.location = `/location`;
-
-   }).catch((err) =>{
-       alert(err)
-   })
 };
 
 
@@ -157,15 +208,6 @@ if(r ==true){
   minHeight: "100vh", }}>
       <Box sx={{backgroundColor: 'rgba(0, 0, 0, 0.8)',margin:{lg:'40px',xs:'16px'},padding:{lg:'24px',xs:'10px'},borderRadius:'20px'}}>
         <Box textAlign="center" marginTop={{ lg: "4%", xs: "4%" }}>
-          <Typography
-            sx={{
-              color: "white",
-              fontWeight: "700",
-              fontSize: { lg: "50px", xs: "32px" },
-            }}
-          >
-            Holiday Sri
-          </Typography>
           <Typography
             sx={{
               color: "white",
@@ -568,6 +610,8 @@ if(r ==true){
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                   
+                    onClick = {() =>handleEditlocation(location)}
                   >
                     Edit
                   </Button>{" "}
@@ -673,6 +717,7 @@ if(r ==true){
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
+                    onClick = {() =>handleEditEvent(event)}
                   >
                     Edit
                   </Button>{" "}

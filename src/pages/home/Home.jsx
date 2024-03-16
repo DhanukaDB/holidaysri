@@ -24,19 +24,18 @@ import Newprpetylist from "../../components/hotel/propertyList/Newpropetylist";
 import Tourpacnew from "../../components/tourPackages/tourPackageFeatured/Tourpacnew";
 import Contact from "../../components/hotel/mailList/contact";
 import Gallery from "../../components/hotel/mailList/Galary";
+import About from "../../components/About/About";
 
 const Home = () => {
   return (
     <div>
       <Homepagemmain />
       <div className="main_container">
-        {/*<div className="hotel" id="hotels">
-          <Newheader />
-        </div> */}
-        
-        <div className="homeContainer">
+        <div className="homeContainer" id="deswithhomecontainer">
           <Newfeatured />
-          <Newprpetylist />
+         <div className="hotels" id="hotels">
+         <Newprpetylist />
+          </div> 
         </div>
         <div className="tourPackage" id="tour-packages">
           <Tourpacnew />
@@ -46,6 +45,7 @@ const Home = () => {
         </div>
         <div className="vehicleContiner" data-aos="fade">
           <FeaturedVehicle />
+          <VehicleList />
         </div>
         <div className="travelPartner" id="travel-partner">
           <TravelPartnerHeader />
@@ -69,6 +69,8 @@ const Home = () => {
         </div>
         <div className="Ctgalary" id="CT-Gallery">
           <Contact />
+          </div>
+          <div className="Ctgalaryto" id="CT-Galleryto">
           <Gallery />
           </div>
         </div>
