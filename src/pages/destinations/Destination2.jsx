@@ -644,7 +644,7 @@ const Destination2 = () => {
               borderColor: "white",
             }}
           >
-            <Link to={``} style={{ textDecoration: "none" }}>
+            <Link to={`/marcketplace`} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: { lg: "250px", xs: "150px" },
