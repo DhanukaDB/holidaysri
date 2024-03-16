@@ -121,7 +121,7 @@ const LoginForm = () => {
                     color: "black",
                     fontSize: { lg: "16px", xs: '15px' },
                     marginTop: "8px",
-                    marginLeft: { lg: "47%", xs: '8px' },
+                    marginLeft: { lg: "40%", xs: '8px' },
                 }}
             >
                 New to HolidaySri?{" "}
