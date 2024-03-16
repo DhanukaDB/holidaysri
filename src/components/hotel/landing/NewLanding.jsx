@@ -74,7 +74,6 @@ function Newlanding() {
                     <img src={Logo} alt="mainlogoo" />
                     </div>
                     <div>
-                    <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">About</Link>
                     <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton">Destinations</Link>
                     <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
                     <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
@@ -84,6 +83,7 @@ function Newlanding() {
                     <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
                     <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Contact</Link>
                     <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
+                    <a href="/about" spy={true} smooth={true} duration={500} className="navButton">About</a>
                     </div>
                     <div>
                     <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>
