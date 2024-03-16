@@ -66,10 +66,12 @@ const Marcketplace = () => {
   const [filteredProducts, setFilteredProducts] = useState(product);
 
   const handleFilter = (category) => {
-    if (category === "all" || category === "" ) {
+    if (category === "all" || category === "") {
       setFilteredProducts(product);
     } else {
-      const filtered = product.filter(product => product.category === category);
+      const filtered = product.filter(
+        (product) => product.category === category
+      );
       setFilteredProducts(filtered);
     }
   };
@@ -335,8 +337,27 @@ const Marcketplace = () => {
               </Grid>
             </Grid>
           </Box>
-         
-      {filteredProducts.map((product, index) => (<Box
+
+          {filteredProducts.length === 0 ? (
+            <Box
+              key={product._id}
+              sx={{
+                borderColor: "black",
+                borderRadius: "30px",
+                backgroundColor: "rgba(255,255,255, 0.3)",
+                padding: "24px",
+                marginTop: { lg: "16px", xs: "16px" },
+              }}
+            >
+              <Typography
+                sx={{ color: "white", fontSize: { lg: "20px", xs: "18px" } }}
+              >
+                No Added Produts, Come back soon :)
+              </Typography>
+            </Box>
+          ) : (
+            filteredProducts.map((product, index) => (
+              <Box
                 key={product._id}
                 sx={{
                   width: { lg: "900px", xs: "280px" },
@@ -395,8 +416,10 @@ const Marcketplace = () => {
                     </Button>
                   </Grid>
                 </Grid>
-              </Box>))}
-         
+              </Box>
+            ))
+          )}
+
           <Modal
             open={open}
             onClose={handleClose}
