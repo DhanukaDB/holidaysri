@@ -53,7 +53,7 @@ const Events = () => {
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop='16px' marginLeft='32px'>
           <a href={`/destination/${location._id}`} style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" sx={{ color: 'white', borderColor: 'white', borderRadius: '30px' }}>Back</Button>
+            <Button variant="outlined" sx={{ color: 'white', borderColor: 'white', borderRadius: '30px' }}> Back</Button>
           </a>
         </Box>
         <Box textAlign="center" marginTop={{ lg: "2%", xs: "3%" }}>

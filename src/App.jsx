@@ -24,6 +24,7 @@ import AllVehicles from "./pages/vehicles/Allvehicles";
 import AddHotel from "./components/hotel/AddHotel/AddHotel";
 import Destination2 from "./pages/destinations/Destination2";
 import Marcketplace from "./pages/marcketplace/Marcketplace";
+import Food from "./pages/foods/Foods";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +61,7 @@ function App() {
         <Route path="/all-vehicles" element={<AllVehicles />} />
         <Route path="/addhotel" eliment={<AddHotel />} />
         <Route path="/marcketplace" element={<Marcketplace/>} />
-
+        <Route path="/food/:id/:locationName" element={<Food/>}/>
         
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
