@@ -74,6 +74,8 @@ function Newlanding() {
                     <img src={Logo} alt="mainlogoo" />
                     </div>
                     <div>
+                    <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">About</Link>
+                    <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton">Destinations</Link>
                     <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
                     <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
                     <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>

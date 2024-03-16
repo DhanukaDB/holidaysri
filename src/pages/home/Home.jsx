@@ -33,9 +33,9 @@ const Home = () => {
         {/*<div className="hotel" id="hotels">
           <Newheader />
         </div> */} 
-        <div className="homeContainer">
+        <div className="homeContainer" id="deswithhomecontainer">
           <Newfeatured />
-         <div className="hotel" id="hotels">
+         <div className="hotels" id="hotels">
          <Newprpetylist />
           </div> 
           
