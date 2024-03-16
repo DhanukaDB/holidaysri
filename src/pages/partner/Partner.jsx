@@ -11,25 +11,25 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Partner = () => {
-  const [partners, setpartners] = useState([]);
+  const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const { id, locationName } = useParams();
 
   useEffect(() => {
-    async function getpartners() {
+    async function getPartners() {
       try {
         const res = await axios.get(
-          "https://holidaysri-backend.onrender.com/partner/"
+          "https://holidaysri-backend.onrender.com/api/guide/allGuideProfiles"
         );
-        setpartners(res.data);
+        setPartners(res.data);
       } catch (error) {
         console.error("Error fetching partners:", error);
         alert("Error fetching partners: " + error.message);
       }
     }
-    getpartners();
+    getPartners();
   }, []);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Partner = () => {
   };
 
   return (
-    <Grid container>
+    <Grid container >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a href="/all-locations" style={{ textDecoration: "none" }}>
@@ -70,85 +70,65 @@ const Partner = () => {
           </a>
         </Box>
 
-        <Grid container justifyContent="center"
-         style={{
-            backgroundImage: location ? `url(${location.backgroundImage})` : "",
-            backgroundSize: "cover",
-            backgroundPosition: "bottom",
-            minHeight: {lg:"30vh",xs:"10vh"},
-            paddingBottom: "16px",
-           
-          }}
-        >
-          <Box
-            sx={{
-              width: { lg: "1100px", xs: "300px" },
+        <Grid container   sx={{
+              backgroundImage: location ? `url(${location.backgroundImage})` : "",
+              backgroundSize: "cover",
+              backgroundPosition: "bottom",
               minHeight: "100vh",
               paddingBottom: "16px",
-            }}
+            }}>
+          <Box
+           
           >
             <Typography
               fontSize={{ lg: "24px", xs: "22px" }}
               sx={{ color: "white" }}
               marginTop="16px"
-              marginBottom="16px"
+              textAlign="center"
             >
               Travel partners to connect in {locationName}
             </Typography>
-          </Box>
-        
-          <Box
-          style={{
-            backgroundImage:
-              'url("https://res.cloudinary.com/iplus/image/upload/v1710621648/pexels-tirachard-kumtanom-450062_dfbign.jpg")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            minHeight: "100vh",
-            paddingBottom: "16px",
-          }}
-          >
-            <Grid
-              container
-              spacing={3}
+
+            <Grid container 
+              spacing={4}
               style={{
                 transform: hoveredIndex !== null ? "translateY(-10px)" : "",
                 transition: "transform 0.3s",
-              }}
-            >
+              }} >
               {partners.map((partner, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <Card
-                    sx={{
-                      borderColor: "black",
-                      borderRadius: "30px",
-                      backgroundColor: "rgba(255,255,255, 0.3)",
-                      transition: "transform 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                    }}
-                    variant="outlined"
-                    onClick={() => handleOpen(partner)}
-                  >
-                    <CardContent>
-                      <Typography
-                        variant="h5"
-                        component="div"
-                        sx={{ color: "white" }}
-                      >
-                        Name: {partner.name}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Email: {partner.email}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Contact Number: {partner.contactNumber}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "white" }}>
-                        Description: {partner.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                <Grid item xs={12} sm={6} md={3} lg={8} key={index} >
+                  <Box marginTop="20px" sx={{marginLeft :{lg:"30%" , sx:"0%"} , width :{lg:"900px", sx:"280px"}}}>
+                    <Card
+                      sx={{
+                       
+                        borderColor: "black",
+                        borderRadius: "30px",
+                        backgroundColor: "rgba(255,255,255, 0.3)",
+                        transition: "transform 0.3s",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
+                      }}
+                      variant="outlined"
+                      onClick={() => handleOpen(partner)}
+                    >
+                      <CardContent>
+                        <Typography
+                          variant="h5"
+                          component="div"
+                          sx={{ color: "white" }}
+                        >
+                          Name: {partner.Name}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: "white" }}>
+                          Email: {partner.Email}
+                        </Typography>
+                        <Typography variant="body2" sx={{ color: "white" }}>
+                          Contact Number: {partner.contactNumber}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Box>
                 </Grid>
               ))}
             </Grid>
