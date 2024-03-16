@@ -388,7 +388,7 @@ const handleFilter = (category) => {
               <Typography
                 sx={{ color: "white", fontSize: { lg: "20px", xs: "18px" } }}
               >
-                No Added Produts, Come back soon :)
+                No Added Produts, Come back later :)
               </Typography>
             </Box>
           ) : (
