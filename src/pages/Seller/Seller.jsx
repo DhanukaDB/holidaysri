@@ -26,6 +26,7 @@ const style = {
 
 const Seller = (props) => {
   const [open, setOpen] = React.useState(false);
+  const [editingProduct, setEditingProduct] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [images, setImages] = useState([]);
@@ -66,21 +67,44 @@ const Seller = (props) => {
       contactNumber,
     };
 
-    console.log(newProduct);
-    //alert("Success");
-
-    axios
-      .post("https://holidaysri-backend.onrender.com/product/add", newProduct)
-      .then(() => {
-        alert("The New Product was Successfully saved");
-        // history.push('/')
-        window.location = `/`;
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    if (editingProduct) {
+      // If editing product exists, update the existing product
+      axios
+        .put(
+          `https://holidaysri-backend.onrender.com/product/updateProduct/${editingProduct._id}`,
+          newProduct
+        )
+        .then(() => {
+          alert("The Product was Successfully updated");
+          window.location.reload(); // Reload the page after update
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      // Otherwise, add a new product
+      axios
+        .post("https://holidaysri-backend.onrender.com/product/add", newProduct)
+        .then(() => {
+          alert("The New Product was Successfully saved");
+          window.location.reload(); // Reload the page after adding
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
   };
-
+  const handleEdit = (product) => {
+    // Set editingProduct state and populate the input fields with existing details
+    setEditingProduct(product);
+    setProductName(product.productName);
+    setCategory(product.category);
+    setLocation(product.location);
+    setDescription(product.description);
+    setPrice(product.price);
+    setContactNumber(product.contactNumber);
+    setOpen(true); // Open the modal for editing
+  };
   useEffect(() => {
     async function getAllVehicles() {
       try {
@@ -436,6 +460,7 @@ const Seller = (props) => {
                   borderRadius: "30px",
                   marginTop: "16px",
                 }}
+                onClick={() => handleEdit(product)}
               >
                 Edit
               </Button>{" "}
