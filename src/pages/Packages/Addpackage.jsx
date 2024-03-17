@@ -57,6 +57,7 @@ const handleEditEvent = (event) => {
   setOpen(true); // Open the modal for editing
 };
 
+
 const handleAddEvent = (e) => {
   e.preventDefault();
 
