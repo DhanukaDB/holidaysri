@@ -50,7 +50,7 @@ function Footer() {
           </p>
           <ul className="footer-bottom-list">
             <li>
-              <a href="#" className="footer-bottom-link">Privacy Policy</a>
+              <a href="/privecy-policy" className="footer-bottom-link">Privacy Policy</a>
             </li>
             <li>
               <a href="#" className="footer-bottom-link">Term & Condition</a>
