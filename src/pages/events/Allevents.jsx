@@ -4,33 +4,18 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Nav from "../Nav/Nav";
 
-const Events = () => {
-  const { id } = useParams();
+const Allevents = () => {
   const [events, setEvents] = useState([]);
   const [location, setLocation] = useState(null);
   const [loading, setLoding] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://holidaysri-backend.onrender.com/location/get/${id}`
-        );
-        setLocation(response.data.location);
-      } catch (error) {
-        console.error("Error fetching location:", error);
-        alert("Error fetching location: " + error.message);
-      }
-    };
 
-    fetchData();
-  }, [id]);
 
   useEffect(() => {
     async function getAllEventsByLocation() {
       try {
         const res = await axios.get(
-          `https://holidaysri-backend.onrender.com/event/getEventsByLocation/${id}`
+          `https://holidaysri-backend.onrender.com/event/`
         );
         setEvents(res.data);
         setLoding(false);
@@ -41,7 +26,7 @@ const Events = () => {
       }
     }
     getAllEventsByLocation();
-  }, [id]);
+  }, []);
 
   if (!location) {
     // If location is still loading, return a loading indicator or placeholder
@@ -182,4 +167,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default Allevents;

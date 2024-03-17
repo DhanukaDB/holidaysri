@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Nav from "../Nav/Nav";
 
 const style = {
   position: "absolute",
@@ -77,7 +78,9 @@ const Vehicle = () => {
   };
 
   return (
-    <Grid
+    <>
+     <Nav/>
+     <Grid
       container
       style={{
         backgroundImage: `url(${background})`,
@@ -87,6 +90,7 @@ const Vehicle = () => {
         paddingBottom: "16px",
       }}
     >
+     
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
@@ -314,6 +318,8 @@ const Vehicle = () => {
         </Grid>
       </Grid>
     </Grid>
+    </>
+    
   );
 };
 

@@ -12,7 +12,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Nav from "../Nav/Nav";
 
-const Partner = () => {
+const Allparnters = () => {
   const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -37,21 +37,7 @@ const Partner = () => {
     getPartners();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://holidaysri-backend.onrender.com/location/get/${id}`
-        );
-        setLocation(response.data.location);
-      } catch (error) {
-        console.error("Error fetching location:", error);
-        alert("Error fetching location: " + error.message);
-      }
-    };
 
-    fetchData();
-  }, [id]);
 
   const handleOpen = (partner) => {
     // Handle opening modal or any other action
@@ -62,20 +48,21 @@ const Partner = () => {
 
   return (
     <>
-    <Nav/>
-    <Grid
+      <Nav/>
+      <Grid
       container
       sx={{
-        backgroundImage: location ? `url(${location.backgroundImage})` : "",
+        backgroundImage: `url(${"https://res.cloudinary.com/iplus/image/upload/v1710580395/christoph-theisinger-9PPYa3LK6II-unsplash_frxn5m.jpg"})` ,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         minHeight: "100vh",
         paddingBottom: "16px",
       }}
     >
+      
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="16px">
-          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
+          <a href={`/`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -94,7 +81,7 @@ const Partner = () => {
           marginTop={{ lg: "16px", xs: "24px" }}
           textAlign="center"
         >
-          Travel partners to connect in {locationName}
+          All Travel partners
         </Typography>
         <center>
         {loading?<><CircularProgress sx={{color:'green',marginTop:'16px'}}/></>:<>
@@ -106,8 +93,8 @@ const Partner = () => {
             paddingLeft={{ lg: "0px", xs: "8px" }}
             paddingRight={{ lg: "0px", xs: "8px" }}
           >
-            {filteredPartners.length > 0 ? (
-              filteredPartners.map((partner, index) => (
+            {partners.length > 0 ? (
+              partners.map((partner, index) => (
                 <Grid item xs={12} lg={3} key={index}>
                   <Box
                     marginTop="20px"
@@ -208,4 +195,4 @@ const Partner = () => {
   );
 };
 
-export default Partner;
+export default Allparnters;

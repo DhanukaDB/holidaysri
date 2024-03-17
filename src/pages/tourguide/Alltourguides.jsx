@@ -12,7 +12,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import Nav from "../Nav/Nav";
 
-const Partner = () => {
+const Alltourguides = () => {
   const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -24,7 +24,7 @@ const Partner = () => {
     async function getPartners() {
       try {
         const res = await axios.get(
-          "https://holidaysri-backend.onrender.com/api/partner/allPartnerProfiles"
+          "https://holidaysri-backend.onrender.com/api/guide/allGuideProfiles"
         );
         setPartners(res.data);
         setLoding(false);
@@ -37,21 +37,7 @@ const Partner = () => {
     getPartners();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://holidaysri-backend.onrender.com/location/get/${id}`
-        );
-        setLocation(response.data.location);
-      } catch (error) {
-        console.error("Error fetching location:", error);
-        alert("Error fetching location: " + error.message);
-      }
-    };
-
-    fetchData();
-  }, [id]);
+  
 
   const handleOpen = (partner) => {
     // Handle opening modal or any other action
@@ -66,7 +52,7 @@ const Partner = () => {
     <Grid
       container
       sx={{
-        backgroundImage: location ? `url(${location.backgroundImage})` : "",
+        backgroundImage: `url(${"https://res.cloudinary.com/iplus/image/upload/v1710621250/pexels-filippo-peisino-2678301_njycll.jpg"})` ,
         backgroundSize: "cover",
         backgroundPosition: "bottom",
         minHeight: "100vh",
@@ -75,7 +61,7 @@ const Partner = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="16px">
-          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
+          <a href={`/`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -94,11 +80,11 @@ const Partner = () => {
           marginTop={{ lg: "16px", xs: "24px" }}
           textAlign="center"
         >
-          Travel partners to connect in {locationName}
+          All Tour Guides to connect 
         </Typography>
         <center>
-        {loading?<><CircularProgress sx={{color:'green',marginTop:'16px'}}/></>:<>
-        <Grid
+       {loading?<><CircularProgress sx={{color:'green',marginTop:'16px'}}/></>:<>
+       <Grid
             container
             width={{ lg: "90%" }}
             sx={{ marginTop: { lg: "32px", xs: "24px" } }}
@@ -106,8 +92,9 @@ const Partner = () => {
             paddingLeft={{ lg: "0px", xs: "8px" }}
             paddingRight={{ lg: "0px", xs: "8px" }}
           >
-            {filteredPartners.length > 0 ? (
-              filteredPartners.map((partner, index) => (
+             
+            {partners.length > 0 ? (
+              partners.map((partner, index) => (
                 <Grid item xs={12} lg={3} key={index}>
                   <Box
                     marginTop="20px"
@@ -123,7 +110,7 @@ const Partner = () => {
                       sx={{
                         borderColor: "black",
                         borderRadius: "30px",
-                        backgroundColor: "rgba(255,255,255, 0.3)",
+                        backgroundColor: "rgba(255,255,255, 0.5)",
                         transition: "transform 0.3s",
                         "&:hover": {
                           transform: "scale(1.05)",
@@ -137,28 +124,28 @@ const Partner = () => {
                           variant="h5"
                           component="div"
                           textAlign="left"
-                          sx={{ color: "white" }}
+                          sx={{ color: "black" }}
                         >
                           Name: {partner.Name}
                         </Typography>
                         <Typography
                           textAlign="left"
                           variant="body2"
-                          sx={{ color: "white" }}
+                          sx={{ color: "black" }}
                         >
                           Email: {partner.Email}
                         </Typography>
                         <Typography
                           textAlign="left"
                           variant="body2"
-                          sx={{ color: "white" }}
+                          sx={{ color: "black" }}
                         >
                           Contact Number: {partner.contactNumber}
                         </Typography>
                         <Typography
                           textAlign="left"
                           variant="body2"
-                          sx={{ color: "white" }}
+                          sx={{ color: "black" }}
                         >
                           Location: {partner.location}
                         </Typography>
@@ -189,7 +176,7 @@ const Partner = () => {
                       variant="outlined"
                     >
                       <Typography>
-                        Currently No partners in {locationName}
+                        Currently No Tour Guides 
                       </Typography>
                     </Card>
                   </Box>
@@ -197,15 +184,14 @@ const Partner = () => {
               </>
             )}
           </Grid>
-        
-        </>}
-          
+       </>}
+         
         </center>
       </Grid>
     </Grid>
     </>
-    
+   
   );
 };
 
-export default Partner;
+export default Alltourguides;

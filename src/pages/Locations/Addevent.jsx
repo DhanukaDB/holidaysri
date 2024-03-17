@@ -7,13 +7,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: { lg: 530, xs: 250 },
+  width: { lg: 630, xs: 250 },
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "8px",
   p: 4,
 };
-const Location = (props) => {
+const Addevent = (props) => {
   const [openlocation, setOpenlocation] = React.useState(false);
   const [editingLocation, setEditingLocation] = useState("");
   const [editingEvent, setEditingEvent] = useState("");
@@ -21,9 +21,7 @@ const Location = (props) => {
   const handleCloselocation = () => setOpenlocation(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false);
-    window.location.reload();
-  }
+  
   const [images, setImages] = useState([]);
   const [locationName, setLocationName] = useState("");
   const [district, setDistrict] = useState("");
@@ -35,7 +33,9 @@ const Location = (props) => {
   const [eventName,setEventName] = useState("");
   const [description,setDescription] = useState("");
   const [event,setEvent] = useState([]);
- 
+  const handleClose = () => {setOpen(false);
+    window.location.reload();
+  }
   
   const handleFileChange = (event) => {
     const selectedImages = Array.from(event.target.files);
@@ -76,7 +76,7 @@ const Location = (props) => {
         .post("https://holidaysri-backend.onrender.com/location/add", newLocation)
         .then(() => {
           alert("The New Location was Successfully saved");
-          window.location = `/location`;
+          window.location = `/add-event`;
         })
         .catch((err) => {
           alert(err);
@@ -117,7 +117,7 @@ function handleDeleteLocation(id){
   if(r ==true){
       axios.delete(`https://holidaysri-backend.onrender.com/location/delete/${id}`).then ((res)=>{
           alert("Delete Successfully");
-          window.location = `/location`;
+          window.location = `/add-event`;
           setLocation()
       })
   }
@@ -153,7 +153,7 @@ const handleAddEvent = (e) => {
       )
       .then(() => {
         alert("The Event was Successfully updated");
-        window.location = `/location`; // Redirect to location page after update
+        window.location = `/add-event`; // Redirect to location page after update
       })
       .catch((err) => {
         alert(err);
@@ -164,7 +164,7 @@ const handleAddEvent = (e) => {
       .post("https://holidaysri-backend.onrender.com/event/add", newEvent)
       .then(() => {
         alert("The New Event was Successfully saved");
-        window.location = `/location`; // Redirect to location page after adding
+        window.location = `/add-event`; // Redirect to location page after adding
       })
       .catch((err) => {
         alert(err);
@@ -194,7 +194,7 @@ const r = window.confirm ("Do you really want to Delete this Event?");
 if(r ==true){
     axios.delete(`https://holidaysri-backend.onrender.com/event/delete/${id}`).then ((res)=>{
         alert("Delete Successfully");
-        window.location = `/location`;
+        window.location = `/add-event`;
         setEvent()
     })
 }
@@ -219,7 +219,7 @@ if(r ==true){
               letterSpacing: "20px",
             }}
           >
-            Add Location or Event
+            Add Events
           </Typography>
         </Box>
         <Grid container justifyContent="center" alignItems="center">
@@ -229,28 +229,6 @@ if(r ==true){
             }}
             marginTop="40px"
           >
-            <Button
-              variant="outlined"
-              sx={{
-                borderRadius: "30px",
-                borderColor: "black",
-                boxShadow: "none",
-                width: { lg: "200px", xs: "48%" },
-                backgroundColor: "white",
-                color: "black",
-                marginTop: { lg: "32px", xs: "20px" },
-                height: "48px",
-                "&:hover": {
-                  backgroundColor: "white",
-                color: "black",
-                  borderColor: "black",
-                  boxShadow: "none",
-                },
-              }}
-              onClick={handleOpenlocation}
-            >
-              ADD LOCATION
-            </Button>{" "}
             <Button
               variant="outlined"
               sx={{
@@ -276,110 +254,6 @@ if(r ==true){
           </Box>
         </Grid>
 
-        <Modal
-          open={openlocation}
-          onClose={handleCloselocation}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-           
-            <Customtextfield label="Location name" value={locationName} onChange={(e) => setLocationName(e.target.value)} marginTop="8px" />
-            <Customtextfield label="District" value={district} onChange={(e) => setDistrict(e.target.value)} marginTop="8px" />
-            <Customtextfield label="Province" value={province} onChange={(e) => setProvince(e.target.value)} marginTop="8px" />
-            <Customtextfield label="Distance from Colombo" value={distanceFromColombo} onChange={(e) => setDistanceFromColombo(e.target.value)}  marginTop="8px" />
-            
-            <div>
-              <input
-                type="file"
-                accept="image/*"
-                style={{ display: "none" }}
-                id="uploadImageInput"
-                onChange={handleFileChange}
-                multiple // Allow multiple file selection
-              />
-              <label htmlFor="uploadImageInput">
-                <Button
-                  variant="outlined"
-                  sx={{
-                    color: "black",
-                    borderRadius: "30px",
-                    borderColor: "black",
-                    "&:hover": {
-                      color: "black",
-                      borderRadius: "30px",
-                      borderColor: "black",
-                    },
-                    marginTop: "16px",
-                    marginBottom: "16px",
-                  }}
-                  component="span"
-                >
-                  Upload images
-                </Button>
-              </label>
-
-              {/* Display selected images (if needed) */}
-              <div>
-                {images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={URL.createObjectURL(image)}
-                    alt={`Uploaded ${index}`}
-                    style={{
-                      maxWidth: "100px",
-                      maxHeight: "100px",
-                      margin: "5px",
-                    }}
-                  />
-                ))}
-              </div>
-            </div> 
-            <Customtextfield label="Details" value={details} onChange={(e) => setDetails(e.target.value)} />
-            <Button
-              variant="outlined"
-              onClick={handleCloselocation}
-              sx={{
-                borderRadius: "30px",
-                borderColor: "black",
-                boxShadow: "none",
-                width: { lg: "48%", xs: "48%" },
-                color: "black",
-                marginTop: "32px",
-                height: "48px",
-                "&:hover": {
-                  backgroundColor: "black",
-                  color: "white",
-                  borderColor: "black",
-                  boxShadow: "none",
-                },
-              }}
-            >
-              Cancel
-            </Button>{" "}
-            <Button
-              variant="outlined"
-              sx={{
-                borderRadius: "30px",
-                borderColor: "black",
-                boxShadow: "none",
-                width: { lg: "50%", xs: "50%" },
-                color: "black",
-                marginTop: "32px",
-                height: "48px",
-                "&:hover": {
-                  backgroundColor: "black",
-                  color: "white",
-                  borderColor: "black",
-                  boxShadow: "none",
-                },
-              }}
-              onClick={handleAddLocation}
-            >
-              Add Location
-            </Button>
-          </Box>
-        </Modal>
         <Modal
           open={open}
           onClose={handleClose}
@@ -483,159 +357,7 @@ if(r ==true){
           </Box>
         </Modal>
 
-        <Grid container justifyContent="center" alignItems="center">
-          <Box
-            sx={{
-              width: { lg: "1100px", xs: "300px" },
-            }}
-          >
-            <Typography
-              fontSize={{ lg: "24px", xs: "22px" }}
-              sx={{ color: "white" }}
-              marginTop="16px"
-            >
-              Locations:
-            </Typography>
-          </Box>
-          {/*.map start */}
-          <>
-          {location.map(location => (
-            <Box
-              key={location._id}
-              border={3}
-              sx={{
-                width: { lg: "1100px", xs: "280px" },
-                borderColor: "black",
-                borderRadius: "30px",
-                backgroundColor: "rgba(48, 103, 84, 0.5)",
-                padding: "24px",
-                marginTop: { lg: "16px", xs: "16px" },
-              }}
-            >
-              <Grid container spacing={2}>
-                <Grid item xs={12} lg={12}>
-                  <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
-                    <Grid container spacing={2}>
-                      {/*Image Array call*/}
-                      <Grid item xs={4} lg={2}>
-                        <img
-                          src="https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg"
-                          width="100%"
-                          height="100%"
-                          style={{ borderRadius: "4px" }}
-                          alt="image_1"
-                        />
-                      </Grid>
-                      <Grid item xs={4} lg={2}>
-                        <img
-                          src="https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg"
-                          width="100%"
-                          height="100%"
-                          style={{ borderRadius: "4px" }}
-                          alt="image_1"
-                        />
-                      </Grid>
-                      <Grid item xs={4} lg={2}>
-                        <img
-                          src="https://www.archaeology.lk/wp-content/uploads/2020/11/galle_fort_sri_lanka_aerial_view_buddhika_dilshan.jpg"
-                          width="100%"
-                          height="100%"
-                          style={{ borderRadius: "4px" }}
-                          alt="image_1"
-                        />
-                      </Grid>
-                      {/*Image Array end*/}
-                    </Grid>
-                  </Box>
-                </Grid>
-                <Grid item xs={12} lg={10}>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "24px", xs: "20px" },
-                      textAlign: "left",
-                    }}
-                  >
-                      Location Name: {location.locationName}
-                  
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "16px", xs: "16px" },
-                      textAlign: "left",
-                      marginTop: "8px",
-                    }}
-                  >
-                    District: {location.district}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "16px", xs: "16px" },
-                      textAlign: "left",
-                      marginTop: "8px",
-                    }}
-                  >
-                    Province: {location.province}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "16px", xs: "16px" },
-                      textAlign: "left",
-                      marginTop: "8px",
-                    }}
-                  >
-                    Distace from Colombo: {location.distanceFromColombo}
-                  </Typography>
-                  <Typography
-                    sx={{
-                      color: "white",
-                      fontWeight: "400",
-                      fontSize: { lg: "16px", xs: "16px" },
-                      textAlign: "left",
-                      marginTop: "8px",
-                    }}
-                  >
-                    Description  {location.details}
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "white",
-                      borderColor: "white",
-                      borderRadius: "30px",
-                      marginTop: "16px",
-                    }}
-                   
-                    onClick = {() =>handleEditlocation(location)}
-                  >
-                    Edit
-                  </Button>{" "}
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      color: "white",
-                      borderColor: "white",
-                      borderRadius: "30px",
-                      marginTop: "16px",
-                    }}
-                    onClick = {() =>handleDeleteLocation(location._id)}
-                  >
-                    Delete
-                  </Button>
-                </Grid>
-              </Grid>
-            </Box>
-              ))}
-          </>
-          {/*.map ends */}
-        </Grid>
+        
 
         <Grid container justifyContent="center" alignItems="center">
           <Box
@@ -648,10 +370,9 @@ if(r ==true){
               sx={{ color: "white" }}
               marginTop="32px"
             >
-              Events:
+              Added Events:
             </Typography>
           </Box>
-          {/*.map start */}
           <> 
           {event.map(event => (
             <Box
@@ -747,4 +468,4 @@ if(r ==true){
   );
 };
 
-export default Location;
+export default Addevent;

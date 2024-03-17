@@ -174,7 +174,10 @@ function PackageSection() {
           </li>
           
         </ul>
-        {/*  <button className="btn btn-primary">View All Packages</button>*/}
+        <a href='/all-packages'>
+        <button className="btn btn-primary">View All Packages</button>
+        </a>
+         
        
       </div>
     </section>

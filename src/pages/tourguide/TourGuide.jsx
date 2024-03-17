@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Nav from "../Nav/Nav";
 
 const TourGuide = () => {
   const [partners, setPartners] = useState([]);
@@ -60,6 +61,8 @@ const TourGuide = () => {
   );
 
   return (
+    <>
+    <Nav/>
     <Grid
       container
       sx={{
@@ -70,6 +73,7 @@ const TourGuide = () => {
         paddingBottom: "16px",
       }}
     >
+      
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="16px">
           <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
@@ -200,6 +204,8 @@ const TourGuide = () => {
         </center>
       </Grid>
     </Grid>
+    </>
+   
   );
 };
 

@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Nav from "../Nav/Nav";
 
 const Food = () => {
   const [products, setProducts] = useState([]);
@@ -86,6 +87,7 @@ const Food = () => {
            
           }}
           >
+            <Nav/>
          <Grid xs={12} marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button

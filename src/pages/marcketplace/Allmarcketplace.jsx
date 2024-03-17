@@ -25,7 +25,7 @@ const colo = [
 const survnior = [
   "https://res.cloudinary.com/iplus/image/upload/v1710579158/daniel-hooper-hQIJon1QhZ8-unsplash_oekny5.jpg",
 ];
-const Marcketplace = () => {
+const Allmarcketplace = () => {
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const location = useLocation();
@@ -62,25 +62,7 @@ const Marcketplace = () => {
   }, []);
   const [locationname, setlocationname] = useState("");
   const [background, setbackground] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://holidaysri-backend.onrender.com/location/get/${id}`
-        );
-        setbackground(response.data.location.backgroundImage);
-        setlocationname(response.data.location.locationName);
-      } catch (error) {
-        console.error("Error fetching location:", error);
-        alert("Error fetching location: " + error.message);
-      }
-    };
-    fetchData();
-  }, [id]);
-  const handleOpen = (product) => {
-    setSelectedEvent(product);
-    setOpen(true);
-  };
+  
 
   const handleClose = () => {
     setOpen(false);
@@ -91,7 +73,7 @@ const Marcketplace = () => {
 useEffect(() => {
   // Initially, set filteredProducts to contain only "gift packs"
   const defaultGiftPacks = product.filter(
-    (item) => item.category != "food" && item.location === locationname
+    (item) => item.category != "food"
   );
   setFilteredProducts(defaultGiftPacks);
 }, [product, locationname]);
@@ -101,24 +83,26 @@ const handleFilter = (category) => {
   if (category === "gift packs") {
     setselected("gift packs");
     const giftpacks = product.filter(
-      (item) => item.category === "gift packs" && item.location === locationname
+      (item) => item.category === "gift packs" 
     );
     setFilteredProducts(giftpacks);
   } else if (category === "collectibles") {
     setselected("collectibles");
     const collectibles = product.filter(
-      (item) => item.category === "collectibles" && item.location === locationname
+      (item) => item.category === "collectibles"
     );
     setFilteredProducts(collectibles);
   } else if (category === "souvenirs") {
     setselected("souvenirs");
     const souvenirs = product.filter(
-      (item) => item.category === "souvenirs" && item.location === locationname
+      (item) => item.category === "souvenirs" 
     );
     setFilteredProducts(souvenirs);
   }
 };
   return (
+    <>
+    <Nav/>
     <Grid
       container
       style={{
@@ -130,10 +114,9 @@ const handleFilter = (category) => {
         paddingBottom: "16px",
       }}
     >
-      <Nav/>
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
+          <a href={`/`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -550,7 +533,9 @@ const handleFilter = (category) => {
         </Grid>
       </Grid>
     </Grid>
+    </>
+    
   );
 };
 
-export default Marcketplace;
+export default Allmarcketplace;

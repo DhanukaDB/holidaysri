@@ -11,7 +11,8 @@ function TravelPartnerHeader() {
           Easily find your desired partner to travel.
           </p>
         </div>
-        <button className="btn btn-secondary">Find More</button>
+        <a href='/all-partners'>
+        <button className="btn btn-secondary">Find More</button></a>
       </div>
     </section>
   );
