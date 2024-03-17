@@ -7,7 +7,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: { lg: 530, xs: 250 },
+  width: { lg: 630, xs: 250 },
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "8px",
@@ -34,7 +34,7 @@ const Addevent = (props) => {
   const [description,setDescription] = useState("");
   const [event,setEvent] = useState([]);
   const handleClose = () => {setOpen(false);
- 
+    window.location.reload();
   }
   
   const handleFileChange = (event) => {
@@ -76,7 +76,7 @@ const Addevent = (props) => {
         .post("https://holidaysri-backend.onrender.com/location/add", newLocation)
         .then(() => {
           alert("The New Location was Successfully saved");
-          window.location = `/location`;
+          window.location = `/add-event`;
         })
         .catch((err) => {
           alert(err);
@@ -117,7 +117,7 @@ function handleDeleteLocation(id){
   if(r ==true){
       axios.delete(`https://holidaysri-backend.onrender.com/location/delete/${id}`).then ((res)=>{
           alert("Delete Successfully");
-          window.location = `/location`;
+          window.location = `/add-event`;
           setLocation()
       })
   }

@@ -28,7 +28,9 @@ const Seller = (props) => {
   const [open, setOpen] = React.useState(false);
   const [editingProduct, setEditingProduct] = useState("");
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false);
+    window.location.reload();
+  }
   const [images, setImages] = useState([]);
   const [productName, setProductName] = useState("");
   const [category, setCategory] = useState("food");
@@ -127,7 +129,7 @@ const Seller = (props) => {
         .delete(`https://holidaysri-backend.onrender.com/product/delete/${id}`)
         .then((res) => {
           alert("Delete Successfully");
-          window.location = `/seller`;
+          window.location.reload();
           setProducts();
         });
     }
