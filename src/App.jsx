@@ -32,6 +32,9 @@ import EventComponent from "./pages/Locations/Addevent";
 import Allparnters from "./pages/partner/Allparnters";
 import Alltourguides from "./pages/tourguide/Alltourguides";
 import Allmarcketplace from "./pages/marcketplace/Allmarcketplace";
+import Addpackage from "./pages/Packages/Addpackage";
+import Allpackages from "./pages/Packages/Allpackages";
+import Package from "./pages/Packages/package";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -68,7 +71,11 @@ function App() {
         <Route path="/all-vehicles" element={<AllVehicles />} />
         <Route path="/all-partners" element={<Allparnters />} />
         <Route path="/all-tourguides" element={<Alltourguides />} />
+        <Route path="/all-packages" element={<Allpackages />} />
+
         <Route path="/add-event" element={<EventComponent/>} />
+        <Route path="/add-package" element={<Addpackage/>} />
+
         <Route path="/addhotel" eliment={<AddHotel />} />
         <Route path="/about" element={<About />} />
         <Route path="/marcketplace" element={<Marcketplace/>} />
@@ -76,7 +83,8 @@ function App() {
         <Route path="/food/:id/:locationName" element={<Food/>}/>
         <Route path="/tourguide/:id/:locationName" element={<TourGuide/>}/>
         <Route path="/partner/:id/:locationName" element={<Partner/>}/>
-        
+        <Route path="/package" element={<Package/>} />
+
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
 

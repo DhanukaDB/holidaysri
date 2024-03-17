@@ -7,13 +7,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: { lg: 530, xs: 250 },
+  width: { lg: 630, xs: 250 },
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "8px",
   p: 4,
 };
-const Addevent = (props) => {
+const Addpackage = (props) => {
   const [openlocation, setOpenlocation] = React.useState(false);
   const [editingLocation, setEditingLocation] = useState("");
   const [editingEvent, setEditingEvent] = useState("");
@@ -22,19 +22,17 @@ const Addevent = (props) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   
-  const [images, setImages] = useState([]);
-  const [locationName, setLocationName] = useState("");
-  const [district, setDistrict] = useState("");
-  const [province, setProvince] = useState("");
-  const [distanceFromColombo, setDistanceFromColombo] = useState("");
-  const [details, setDetails] = useState("");
-  const [location, setLocation] = useState([]);
-  const [eventLocation, setEventLocation] = useState("");
-  const [eventName,setEventName] = useState("");
-  const [description,setDescription] = useState("");
+
   const [event,setEvent] = useState([]);
+  const [images, setImages] = useState([]);
+  const [packageName, setpackageName] = useState("");
+  const [category,setcategory,] = useState("");
+  const [location, setLocation] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [activities, setactivities] = useState("");
   const handleClose = () => {setOpen(false);
- 
+   
   }
   
   const handleFileChange = (event) => {
@@ -44,94 +42,18 @@ const Addevent = (props) => {
   };
 
 
-  
-  const handleAddLocation = (e) => { 
-    e.preventDefault();
-  
-    const newLocation = {
-      locationName,
-      district,
-      province,
-      distanceFromColombo,
-      details
-    };
-  
-    if (editingLocation) {
-      // If editing location exists, update the existing location
-      axios
-        .put(
-          `https://holidaysri-backend.onrender.com/location/updateLocation/${editingLocation._id}`,
-          newLocation
-        )
-        .then(() => {
-          alert("The Location was Successfully updated");
-          window.location.reload(); // Reload the page after update
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } else {
-      // Otherwise, add a new location
-      axios
-        .post("https://holidaysri-backend.onrender.com/location/add", newLocation)
-        .then(() => {
-          alert("The New Location was Successfully saved");
-          window.location = `/location`;
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
-  };
-  const handleEditlocation = (location) => {
-    // Set editingLocation state and populate the input fields with existing details
-    setEditingLocation(location);
-    setLocationName(location.locationName);
-    setDistrict(location.district);
-    setProvince(location.province);
-    setDistanceFromColombo(location.distanceFromColombo);
-    setDetails(location.details);
-    setOpenlocation(true); // Open the modal for editing
-  };
-  
-  
-
-  useEffect(() => {
-    async function getAllLocations() {
-        try {
-            const res = await axios.get("https://holidaysri-backend.onrender.com/location/");
-            setLocation(res.data);
-        } catch (error) {
-            console.error("Error fetching Locations:", error);
-            alert("Error fetching Locations: " + error.message);
-        }
-    }
-    getAllLocations();
-}, []);
-
-
-
-function handleDeleteLocation(id){
-
-  const r = window.confirm ("Do you really want to Delete this Location?"); 
-  if(r ==true){
-      axios.delete(`https://holidaysri-backend.onrender.com/location/delete/${id}`).then ((res)=>{
-          alert("Delete Successfully");
-          window.location = `/location`;
-          setLocation()
-      })
-  }
-}
-
 
 
 
 const handleEditEvent = (event) => {
-  // Set editingEvent state and populate the input fields with existing details
   setEditingEvent(event);
-  setEventName(event.eventName);
-  setEventLocation(event.eventLocation);
+  setpackageName(event.packageName);
+  setcategory(event.category);
+  setImages(event.images);
   setDescription(event.description);
+  setLocation(event.location);
+  setPrice(event.price);
+  setactivities(event.activities);
   setOpen(true); // Open the modal for editing
 };
 
@@ -139,21 +61,23 @@ const handleAddEvent = (e) => {
   e.preventDefault();
 
   const newEvent = {
-    eventName,
-    eventLocation,
+    category,
+    location,
     description,
+    price,
+    activities,
+    images
   };
 
   if (editingEvent) {
-    // If editing event exists, update the existing event
     axios
       .put(
-        `https://holidaysri-backend.onrender.com/event/updateEvent/${editingEvent._id}`,
+        `https://holidaysri-backend.onrender.com/package/updatePackage/${editingEvent._id}`,
         newEvent
       )
       .then(() => {
-        alert("The Event was Successfully updated");
-        window.location = `/add-event`; // Redirect to location page after update
+        alert("The Package was Successfully updated");
+        window.location = `/add-package`; 
       })
       .catch((err) => {
         alert(err);
@@ -161,10 +85,10 @@ const handleAddEvent = (e) => {
   } else {
     // Otherwise, add a new event
     axios
-      .post("https://holidaysri-backend.onrender.com/event/add", newEvent)
+      .post("https://holidaysri-backend.onrender.com/package/add", newEvent)
       .then(() => {
-        alert("The New Event was Successfully saved");
-        window.location = `/add-event`; // Redirect to location page after adding
+        alert("The New package was Successfully added");
+        window.location = `/add-package`; // Redirect to location page after adding
       })
       .catch((err) => {
         alert(err);
@@ -176,7 +100,7 @@ const handleAddEvent = (e) => {
 useEffect(() => {
   async function getAllEvents() {
       try {
-          const res = await axios.get("https://holidaysri-backend.onrender.com/event/");
+          const res = await axios.get("https://holidaysri-backend.onrender.com/package/");
           setEvent(res.data);
       } catch (error) {
           console.error("Error fetching Events:", error);
@@ -192,9 +116,9 @@ function handleDeleteEvent(id){
 
 const r = window.confirm ("Do you really want to Delete this Event?"); 
 if(r ==true){
-    axios.delete(`https://holidaysri-backend.onrender.com/event/delete/${id}`).then ((res)=>{
+    axios.delete(`https://holidaysri-backend.onrender.com/package/delete/${id}`).then ((res)=>{
         alert("Delete Successfully");
-        window.location = `/add-event`;
+        window.location = `/add-package`;
         setEvent()
     })
 }
@@ -219,7 +143,7 @@ if(r ==true){
               letterSpacing: "20px",
             }}
           >
-            Add Events
+            Add Packages
           </Typography>
         </Box>
         <Grid container justifyContent="center" alignItems="center">
@@ -249,7 +173,7 @@ if(r ==true){
               }}
               onClick={handleOpen}
             >
-              ADD EVENt
+              ADD PACKAGE
             </Button>
           </Box>
         </Grid>
@@ -262,8 +186,8 @@ if(r ==true){
         >
           <Box sx={style}>
         
-            <Customtextfield label="Location name" value={eventLocation} onChange={(e) => setEventLocation(e.target.value)}  marginTop="8px" />
-            <Customtextfield label="Event name"  value={eventName} onChange={(e) => setEventName(e.target.value)}  marginTop="8px" />
+            <Customtextfield label="Location " value={location} onChange={(e) => setLocation(e.target.value)}  marginTop="8px" />
+            <Customtextfield label="Package name"  value={packageName} onChange={(e) => setpackageName(e.target.value)}  marginTop="8px" />
             <div>
               <input
                 type="file"
@@ -271,7 +195,7 @@ if(r ==true){
                 style={{ display: "none" }}
                 id="uploadImageInput"
                 onChange={handleFileChange}
-                multiple // Allow multiple file selection
+                multiple 
               />
               <label htmlFor="uploadImageInput">
                 <Button
@@ -294,23 +218,15 @@ if(r ==true){
                 </Button>
               </label>
 
-              {/* Display selected images (if needed) */}
-              <div>
-                {images.map((image, index) => (
-                  <img
-                    key={index}
-                    src={URL.createObjectURL(image)}
-                    alt={`Uploaded ${index}`}
-                    style={{
-                      maxWidth: "100px",
-                      maxHeight: "100px",
-                      margin: "5px",
-                    }}
-                  />
-                ))}
-              </div>
+              
             </div>
+            <Customtextfield label="pack" placeholder="Example: 10 pack"  value={category} onChange={(e) => setcategory(e.target.value)}  marginTop="8px" />
+            <Customtextfield label="price"  value={price} onChange={(e) => setPrice(e.target.value)}  marginTop="8px" />
+
+            <Customtextfield label="Activities"  value={activities} onChange={(e) => setactivities(e.target.value)}  marginTop="8px" />
+
             <Customtextfield label="Description"  value={description} onChange={(e) => setDescription(e.target.value)}  marginTop="8px" />
+
             <Button
               variant="outlined"
               onClick={handleClose}
@@ -408,7 +324,7 @@ if(r ==true){
                       textAlign: "left",
                     }}
                   >
-                    Location Name:  {event.eventLocation}
+                    Location :  {event.location}
                   </Typography>
                   <Typography
                     sx={{
@@ -419,7 +335,40 @@ if(r ==true){
                       marginTop: "8px",
                     }}
                   >
-                    Event Name :  {event.eventName}
+                    Package Name :  {event.packageName}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "16px", xs: "16px" },
+                      textAlign: "left",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Pack  :  {event.category}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "16px", xs: "16px" },
+                      textAlign: "left",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Price  :  {event.price}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "16px", xs: "16px" },
+                      textAlign: "left",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Activities:  {event.activities}
                   </Typography>
                   <Typography
                     sx={{
@@ -468,4 +417,4 @@ if(r ==true){
   );
 };
 
-export default Addevent;
+export default Addpackage;
