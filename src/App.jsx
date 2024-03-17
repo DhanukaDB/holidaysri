@@ -34,7 +34,7 @@ import Alltourguides from "./pages/tourguide/Alltourguides";
 import Allmarcketplace from "./pages/marcketplace/Allmarcketplace";
 import Addpackage from "./pages/Packages/Addpackage";
 import Allpackages from "./pages/Packages/Allpackages";
-import Package from "./pages/Packages/package";
+import Packagedata from "./pages/Packages/Packagedata";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -83,7 +83,7 @@ function App() {
         <Route path="/food/:id/:locationName" element={<Food/>}/>
         <Route path="/tourguide/:id/:locationName" element={<TourGuide/>}/>
         <Route path="/partner/:id/:locationName" element={<Partner/>}/>
-        <Route path="/package" element={<Package/>} />
+        <Route path="/package" element={<Packagedata/>} />
 
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
