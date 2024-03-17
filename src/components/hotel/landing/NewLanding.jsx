@@ -65,6 +65,10 @@ function Newlanding() {
             next();
         }, timeAutoNext);
     }
+
+    // Check if authToken and userRole exist in localStorage
+    const authToken = localStorage.getItem("authToken");
+    const userRole = localStorage.getItem("userRole");
     
     return (
         <div className='mainhomebg' data-aos="fade">
@@ -86,7 +90,8 @@ function Newlanding() {
                     <a href="/about" spy={true} smooth={true} duration={500} className="navButton">About</a>
                     </div>
                     <div>
-                    <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>
+                        {/* Conditionally render the sign-in button */}
+                        {!authToken && !userRole && <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>}
                     </div>
                     
                 </div>

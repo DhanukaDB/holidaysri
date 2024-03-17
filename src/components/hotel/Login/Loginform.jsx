@@ -17,15 +17,17 @@ const LoginForm = () => {
     };
 
     const handleGoogleSignIn = async () => {
-        try {
-            const response = await signInWithGooglePopup();
-            console.log(response);
-            window.location.href = '/all-locations';
-        } catch (error) {
-            console.error("Error signing in with Google", error);
-            // Handle error
-        }
-    };
+      try {
+          const response = await signInWithGooglePopup();
+          console.log(response);
+          // Assuming the userRole is "user" for Google sign-in
+          localStorage.setItem("userRole", "user");
+          window.location.href = '/all-locations';
+      } catch (error) {
+          console.error("Error signing in with Google", error);
+          // Handle error
+      }
+  };
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -49,7 +51,7 @@ const LoginForm = () => {
         };
 
         try {
-            const res = await axois.post("http://localhost:8000/api/auth/userlogin", newUser);
+            const res = await axois.post("https://holidaysri-backend.onrender.com/api/auth/userlogin", newUser);
             alert("Login Success");
 
             localStorage.setItem("authToken", res.data.token);
