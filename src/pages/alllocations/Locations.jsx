@@ -3,6 +3,7 @@ import { Box, Typography, Grid, TextField,Button } from "@mui/material";
 import Banner from "./Banner";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Nav from "../Nav/Nav";
 
 const Locations = (props) => {
   const [location, setLocation] = useState([]);
@@ -44,7 +45,7 @@ const Locations = (props) => {
         minHeight: "100vh",
       }}
     >
-      
+      <Nav/>
       <Banner />
       <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a href={`/`} style={{ textDecoration: "none" }}>

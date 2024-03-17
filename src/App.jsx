@@ -28,6 +28,10 @@ import Marcketplace from "./pages/marcketplace/Marcketplace";
 import Food from "./pages/foods/Foods";
 import TourGuide from "./pages/tourguide/TourGuide";
 import Partner from "./pages/partner/Partner";
+import EventComponent from "./pages/Locations/Addevent";
+import Allparnters from "./pages/partner/Allparnters";
+import Alltourguides from "./pages/tourguide/Alltourguides";
+import Allmarcketplace from "./pages/marcketplace/Allmarcketplace";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -59,13 +63,16 @@ function App() {
         <Route path="/local-dashboard" element={<LocalAgentDashboard />} /> 
         <Route path="/foreign-dashboard" element={<ForeignAgentDashboard />} />
         <Route path="/landing" element={<Newlanding />} />
-        <Route path="/admin" element={<AdmminPanel />} />s
+        <Route path="/admin" element={<AdmminPanel />} />
         <Route path="/destination/:id" element={<Destination2 />} />
         <Route path="/all-vehicles" element={<AllVehicles />} />
+        <Route path="/all-partners" element={<Allparnters />} />
+        <Route path="/all-tourguides" element={<Alltourguides />} />
+        <Route path="/add-event" element={<EventComponent/>} />
         <Route path="/addhotel" eliment={<AddHotel />} />
-
         <Route path="/about" element={<About />} />
         <Route path="/marcketplace" element={<Marcketplace/>} />
+        <Route path="/all-marcketplace" element={<Allmarcketplace/>} />
         <Route path="/food/:id/:locationName" element={<Food/>}/>
         <Route path="/tourguide/:id/:locationName" element={<TourGuide/>}/>
         <Route path="/partner/:id/:locationName" element={<Partner/>}/>

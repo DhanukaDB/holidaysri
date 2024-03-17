@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Grid, Box, Button, Typography, Modal,CircularProgress } from "@mui/material";
 import axios from "axios";
+import Nav from "../Nav/Nav";
 
 const style = {
   position: "absolute",
@@ -15,39 +16,7 @@ const style = {
 };
 const Allvehicles = () => {
   const gridRef = useRef(null);
-  var eventsArray = [
-    {
-      image:
-        "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&height=900&width=1600&fit=bounds",
-      location: "GALLE",
-      Vehiclecategory: "Car",
-      description: "Toyota Luxsury car white color nice",
-      contactNumber: "0111111111",
-      price: "100000",
-      nic: "986464465V",
-      gender: "male",
-      promoCode: "ADHD",
-    },
-    {
-      image:
-        "https://carnetwork.s3.ap-southeast-1.amazonaws.com/file/f2269e4702154d59819c7d6626699d2c.jpg",
-      location: "GALLE",
-      Vehiclecategory: "van",
-      description: "Description for Event 2",
-      contactNumber: "0222222222",
-      price: "120000",
-      nic: "98622224465V",
-      gender: "female",
-      promoCode: "",
-    },
-    {
-      image:
-        "https://www.pricelanka.lk/wp-content/uploads/2021/02/Toyota-Premio-1.png",
-      location: "GALLE",
-      Vehiclecategory: "Car",
-      description: "Description for Event 3",
-    },
-  ];
+
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -82,6 +51,8 @@ const Allvehicles = () => {
   };
 
   return (
+    <>
+   <Nav/>
     <Grid
       container
       style={{
@@ -92,9 +63,9 @@ const Allvehicles = () => {
         minHeight: "100vh",
         paddingBottom: "16px",
       }}
-    >
+    > 
       <Grid item xs={12}>
-        <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+        <Box marginBottom="0px" marginLeft="32px" marginTop='16px'>
           <a href="/" style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
@@ -121,10 +92,9 @@ const Allvehicles = () => {
               sx={{ color: "white" }}
               marginTop="16px"
             >
-              Rides
+              All Vehicles
             </Typography>
           </Box>
-          {/* .filter((event) => event.location === "GALLE")*/}
           {vehicleDetails.map((event, index) => {
             return (
               <Box
@@ -133,7 +103,7 @@ const Allvehicles = () => {
                 width: { lg: "1100px", xs: "280px" },
                 borderColor: "black",
                 borderRadius: "30px",
-                backgroundColor: "rgba(255,255,255, 0.3)",
+                backgroundColor: "rgba(255,255,255, 0.5)",
                 padding: "24px",
                 marginTop: { lg: "16px", xs: "16px" },
               }}
@@ -150,10 +120,10 @@ const Allvehicles = () => {
                       />
                   </Box>
                 </Grid>
-                <Grid item xs={12} lg={6}>
+                <Grid item xs={12} lg={8}>
                   <Typography
                     sx={{
-                      color: "white",
+                      color: "black",
                       fontWeight: "400",
                       fontSize: { lg: "24px", xs: "20px" },
                       textAlign: "left",
@@ -161,13 +131,19 @@ const Allvehicles = () => {
                   >
                     {event.Vehiclecategory}
                   </Typography>
-                  
+                  <Typography
+                    id="modal-modal-description"
+                    color="black"
+                    sx={{ mt: 2 }}
+                  >
+                    {event.description}
+                  </Typography>
                   <Button
                       onClick={() => handleOpen(event)}
                       variant="outlined"
                       sx={{
-                        color: "white",
-                        borderColor: "white",
+                        color: "black",
+                        borderColor: "black",
                         borderRadius: "30px",
                         marginTop: "16px",
                       }}
@@ -230,13 +206,7 @@ const Allvehicles = () => {
                   >
                     Promo Code: {selectedEvent.promoCode}
                   </Typography>
-                  <Typography
-                    id="modal-modal-description"
-                    color="white"
-                    sx={{ mt: 2 }}
-                  >
-                    {selectedEvent.description}
-                  </Typography>
+                  
                   <Box
                     sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}
                   >
@@ -260,6 +230,8 @@ const Allvehicles = () => {
         </Grid>
       </Grid>
     </Grid>
+    </>
+    
   );
 };
 

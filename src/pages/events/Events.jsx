@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid, Box, Button, Typography, CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Nav from "../Nav/Nav";
 
 const Events = () => {
   const { id } = useParams();
@@ -57,6 +58,7 @@ const Events = () => {
         paddingBottom: "16px",
       }}
     >
+      <Nav/>
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a

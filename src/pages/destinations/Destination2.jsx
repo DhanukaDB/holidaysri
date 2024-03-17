@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Grid, Box, Button, Typography, Modal } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Nav from "../Nav/Nav";
 
 const Destination2 = () => {
   const { id } = useParams();
@@ -150,6 +151,7 @@ const Destination2 = () => {
         minHeight: "100vh",
       }}
     >
+      <Nav/>
       <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
         <a href="/all-locations" style={{ textDecoration: "none" }}>
           <Button
@@ -353,7 +355,7 @@ const Destination2 = () => {
                       transition: "font-size 0.5s ease",
                     }}
                   >
-                    Find a Ride
+                    Vehicles
                   </Typography>
                 </Box>
               </Box>
