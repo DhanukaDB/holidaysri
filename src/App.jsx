@@ -36,6 +36,7 @@ import Addpackage from "./pages/Packages/Addpackage";
 import Allpackages from "./pages/Packages/Allpackages";
 import Packagedata from "./pages/Packages/Packagedata";
 import HotelMain from "./components/hotel/AddHotel/HotelMain";
+import PrivecyPolicy from "./components/About/privecypolicy";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -73,6 +74,7 @@ function App() {
         <Route path="/all-partners" element={<Allparnters />} />
         <Route path="/all-tourguides" element={<Alltourguides />} />
         <Route path="/all-packages" element={<Allpackages />} />
+        <Route path="/privecy-policy" element={<PrivecyPolicy />} />
 
         <Route path="/add-event" element={<EventComponent/>} />
         <Route path="/add-package" element={<Addpackage/>} />
