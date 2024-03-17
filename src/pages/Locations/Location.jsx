@@ -21,7 +21,9 @@ const Location = (props) => {
   const handleCloselocation = () => setOpenlocation(false);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false);
+    window.location.reload();
+  }
   const [images, setImages] = useState([]);
   const [locationName, setLocationName] = useState("");
   const [district, setDistrict] = useState("");
