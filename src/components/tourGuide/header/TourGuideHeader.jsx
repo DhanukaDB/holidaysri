@@ -11,7 +11,8 @@ function TourGuideHeader() {
           Find the best ever tour guide for your travel experince.
           </p>
         </div>
-        <button className="btn btn-secondary">Find More</button>
+        <a href='/all-tourguides'>
+        <button className="btn btn-secondary">Find More</button></a>
       </div>
     </section>
   );
