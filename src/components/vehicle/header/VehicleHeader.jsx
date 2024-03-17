@@ -13,7 +13,7 @@ function VehicleHeader() {
           Great deals at great prices, from the biggest car hire companies...
           </p>
         </div>
-        <a href='/add-vehicle'>
+        <a href='/all-vehicles'>
         <button className="btn btn-secondary">View More</button></a>
       </div>
     </section>

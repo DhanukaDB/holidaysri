@@ -11,7 +11,8 @@ function MarketPlaceHeader() {
             All in one marketplace for your desired gift and souvenier items...
           </p>
         </div>
-        <button className="btn btn-secondary">View More</button>
+        <a href='/all-marcketplace'>
+        <button className="btn btn-secondary">View More</button></a>
       </div>
     </section>
   );
