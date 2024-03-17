@@ -39,13 +39,11 @@ const AddHotelForm = () => {
           <label htmlFor="category">Category:</label>
           <select id="category" name="category" value={formData.category} onChange={handleChange}>
             <option value="">Select Category</option>
-            <option value="hotelName">Hotel Name</option>
-            <option value="category">Category</option>
-            <option value="location">Location</option>
-            <option value="description">Description</option>
-            <option value="price">Price</option>
-            <option value="images">Images</option>
-            <option value="distance">Distance</option>
+            <option value="hotelName">hotels</option>
+            <option value="category">Appartments</option>
+            <option value="location">Resorts</option>
+            <option value="description">Villas</option>
+            <option value="price">Banglalows</option>
           </select>
         </div>
         <div className="form-group">
