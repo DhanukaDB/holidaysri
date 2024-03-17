@@ -12,11 +12,11 @@ import { IoMdLogIn } from "react-icons/io";
 function Newlanding() {
     useEffect(() => {
         AOS.init({ duration: 1000 });
-      }, []);
+    }, []);
 
     const [timeRunning, setTimeRunning] = useState(3000);
     const [timeAutoNext, setTimeAutoNext] = useState(7000);
-    let runTimeOut, runNextAuto; 
+    let runTimeOut, runNextAuto;
 
     useEffect(() => {
         const runNextAuto = setTimeout(() => {
@@ -24,7 +24,7 @@ function Newlanding() {
         }, timeAutoNext);
 
         return () => clearTimeout(runNextAuto);
-    }, [ timeAutoNext]);
+    }, [timeAutoNext]);
 
     const next = () => {
         showSlider('next');
@@ -33,8 +33,6 @@ function Newlanding() {
     const prev = () => {
         showSlider('prev');
     }
-
-    
 
     const showSlider = (type) => {
         let SliderItemsDom = document.querySelectorAll('.carousel .list .item');
@@ -58,42 +56,52 @@ function Newlanding() {
         runTimeOut = setTimeout(() => {
             carouselDom.classList.remove('next');
             carouselDom.classList.remove('prev');
-        }, timeRunning);   
-        
+        }, timeRunning);
+
         clearTimeout(runNextAuto);
         runNextAuto = setTimeout(() => {
             next();
         }, timeAutoNext);
     }
 
+    const handleSignout = () => {
+        // Remove userRole and authToken from localStorage
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userRole");
+        // Redirect to login page or any other page after signout
+        window.location.href = '/login';
+    }
+
     // Check if authToken and userRole exist in localStorage
     const authToken = localStorage.getItem("authToken");
     const userRole = localStorage.getItem("userRole");
-    
+
     return (
         <div className='mainhomebg' data-aos="fade">
             <div className='bgnheader'>
                 <div className='newnavbar'>
                     <div className='mainlogoo'>
-                    <img src={Logo} alt="mainlogoo" />
+                        <img src={Logo} alt="mainlogoo" />
                     </div>
                     <div>
-                    <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton">Destinations</Link>
-                    <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
-                    <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
-                    <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
-                    <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
-                    <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
-                    <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
-                    <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Contact</Link>
-                    <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
-                    <a href="/about" spy={true} smooth={true} duration={500} className="navButton">About</a>
+                        <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton">Destinations</Link>
+                        <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
+                        <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
+                        <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
+                        <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
+                        <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
+                        <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
+                        <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Contact</Link>
+                        <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
+                        <a href="/about" spy={true} smooth={true} duration={500} className="navButton">About</a>
                     </div>
                     <div>
                         {/* Conditionally render the sign-in button */}
                         {!authToken && !userRole && <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>}
+                        {/* Render signout button if authToken and userRole exist */}
+                        {authToken && userRole && <button onClick={handleSignout}>Sign Out</button>}
                     </div>
-                    
+
                 </div>
             </div>
 
@@ -116,7 +124,7 @@ function Newlanding() {
                     <div className="item">
                         <img src={Img2} alt="carousel item" />
                         <div className="content">
-                        <div className="author">Sri Lanka</div>
+                            <div className="author">Sri Lanka</div>
                             <div className="title">Welcome To..</div>
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
@@ -129,7 +137,7 @@ function Newlanding() {
                     <div className="item">
                         <img src={Img3} alt="carousel item" />
                         <div className="content">
-                        <div className="author">Sri Lanka</div>
+                            <div className="author">Sri Lanka</div>
                             <div className="title">Welcome To..</div>
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
@@ -142,7 +150,7 @@ function Newlanding() {
                     <div className="item">
                         <img src={Img4} alt="carousel item" />
                         <div className="content">
-                        <div className="author">Sri Lanka</div>
+                            <div className="author">Sri Lanka</div>
                             <div className="title">Welcome To..</div>
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
@@ -152,7 +160,7 @@ function Newlanding() {
                             </div>
                         </div>
                     </div>
-        
+
                     {/* Add more carousel items as needed */}
                 </div>
                 <div className="thumbnail">
@@ -198,4 +206,3 @@ function Newlanding() {
 }
 
 export default Newlanding;
-
