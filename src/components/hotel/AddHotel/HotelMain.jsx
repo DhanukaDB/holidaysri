@@ -51,7 +51,7 @@ const Hotels = () => {
   const [filteredHotels, setFilteredHotels] = useState([]);
 
   const filterHotels = () => {
-    const filtered = hotels.filter((hotel) => hotel.category === "hotel");
+    const filtered = hotels.filter((hotel) => hotel.category === "hotel" && hotel.location === locationName);
     setFilteredHotels(filtered);
   };
 

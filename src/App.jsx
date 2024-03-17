@@ -35,6 +35,7 @@ import Allmarcketplace from "./pages/marcketplace/Allmarcketplace";
 import Addpackage from "./pages/Packages/Addpackage";
 import Allpackages from "./pages/Packages/Allpackages";
 import Packagedata from "./pages/Packages/Packagedata";
+import HotelMain from "./components/hotel/AddHotel/HotelMain";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -83,6 +84,7 @@ function App() {
         <Route path="/food/:id/:locationName" element={<Food/>}/>
         <Route path="/tourguide/:id/:locationName" element={<TourGuide/>}/>
         <Route path="/partner/:id/:locationName" element={<Partner/>}/>
+        <Route path="/Hotelmain/:id/:locationName" element={<HotelMain/>}/>
         <Route path="/package" element={<Packagedata/>} />
 
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
