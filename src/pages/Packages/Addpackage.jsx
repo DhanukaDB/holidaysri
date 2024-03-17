@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react";
-import { Box, Button, Typography, Modal, Grid } from "@mui/material";
+import { Box, Button, Typography, Modal, Grid ,Select,} from "@mui/material";
+import MenuItem from '@mui/material/MenuItem';
 import Customtextfield from "../../components/hotel/Login/Customtextfield";
 import axios from "axios"; 
 const style = {
@@ -7,11 +8,13 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: { lg: 630, xs: 250 },
+  width: { lg: 640, xs: 250 },
+  maxHeight: "80vh", // Set maximum height to 80% of the viewport height
   bgcolor: "background.paper",
   boxShadow: 24,
   borderRadius: "8px",
   p: 4,
+  overflowY: "auto", // Enable vertical scrolling
 };
 const Addpackage = (props) => {
   const [openlocation, setOpenlocation] = React.useState(false);
@@ -42,6 +45,9 @@ const Addpackage = (props) => {
   };
 
 
+  const handleChange = (event) => {
+    setLocation(event.target.value);
+  };
 
 
 
@@ -187,7 +193,20 @@ if(r ==true){
         >
           <Box sx={style}>
         
-            <Customtextfield label="Location " value={location} onChange={(e) => setLocation(e.target.value)}  marginTop="8px" />
+            <Typography marginTop="16px" >Select Location</Typography>
+        <Select
+        sx={{width:'60%',marginTop:'8px'}}
+          id="demo-simple-select"
+          value={location}
+          onChange={handleChange}
+        > 
+          <MenuItem value={"Kandy"}>Kandy</MenuItem>
+          <MenuItem value={"Colombo"}>Colombo</MenuItem>
+          <MenuItem value={"Galle"}>Galle</MenuItem>
+          <MenuItem value={"Nuwara eliya"}>Nuwara eliya</MenuItem>
+          <MenuItem value={"Anuradhapura"}>Anuradhapura</MenuItem>
+        </Select>
+            
             <Customtextfield label="Package name"  value={packageName} onChange={(e) => setpackageName(e.target.value)}  marginTop="8px" />
             <div>
               <input

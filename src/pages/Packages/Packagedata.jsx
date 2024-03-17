@@ -99,7 +99,7 @@ function Packagedata() {
                 marginTop: { lg: "-60px", xs: "-30px" },
               }}
             >
-              <h2 className="h2 section-title"> Packages in {locationname}</h2>
+              <h2 className="h2 section-title"> Packages in {locationname} </h2>
             </Grid>
 
             <ul className="package-list">
@@ -128,7 +128,7 @@ function Packagedata() {
                               </figure>
                               <div className="card-content">
                                 <h3 className="h3 card-title">
-                                  {partner.packageName}
+                                  {partner.packageName} 
                                 </h3>
                                 <p className="card-text">
                                   {partner.description}
