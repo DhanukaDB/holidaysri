@@ -49,67 +49,116 @@ const LocalVehicleForm = (props) => {
     setGender(event.target.value);
   };
 
-  const handleFileChange = (event) => {
-    const selectedImages = Array.from(event.target.files);
-    setImages(selectedImages);
-  };
 
-  const handleEdit = (vehicle) => {
-    setEditingVehicle(vehicle);
-    setVehicleNumber(vehicle.vehicleNumber);
-    setVehiclecategory(vehicle.Vehiclecategory);
-    setLocation(vehicle.location);
-    setContactNumber(vehicle.contactNumber);
-    setPrice(vehicle.price);
-    setNic(vehicle.nic);
-    setDescription(vehicle.description);
-    setPromoCode(vehicle.promoCode);
-    setGender(vehicle.gender);
-    setOpen(true);
-  };
+const handleEdit = (vehicle) => {
+  setEditingVehicle(vehicle);
+  setVehicleNumber(vehicle.vehicleNumber);
+  setVehiclecategory(vehicle.Vehiclecategory);
+  setLocation(vehicle.location);
+  setContactNumber(vehicle.contactNumber);
+  setPrice(vehicle.price);
+  setNic(vehicle.nic);
+  setDescription(vehicle.description);
+  setPromoCode(vehicle.promoCode);
+  setGender(vehicle.gender);
+  
+  
+  setOpen(true);
+};
 
-  const handleAddVehicle = (e) => {
-    e.preventDefault();
-  
-    const newVehicle = {
-      vehicleNumber,
-      Vehiclecategory,
-      location,
-      contactNumber,
-      price,
-      nic,
-      description,
-      promoCode,
-      gender,
-    };
-  
-    if (editingVehicle) {
-      // If editing vehicle exists, update the existing vehicle
-      axios
-        .put(
-          `https://holidaysri-backend.onrender.com/vehicle/update/${editingVehicle._id}`,
-          newVehicle
-        )
-        .then(() => {
-          alert("The Vehicle was Successfully updated");
-          window.location.reload(); // Reload the page after update
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } else {
-      // Otherwise, add a new vehicle
-      axios
-        .post("https://holidaysri-backend.onrender.com/vehicle/add", newVehicle)
-        .then(() => {
-          alert("The New Vehicle was Successfully saved");
-          window.location.reload(); // Reload the page after adding
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
+const handleFileChange = async (event) => {
+  if (!event.target.files) {
+    // Handle case where files are not selected
+    console.error("No files selected");
+    return;
   }
+
+  const formData = new FormData();
+  const selectedImages = Array.from(event.target.files);
+  setImages(selectedImages); // Update state with selected images
+ 
+  // Loop through selected images and append them to formData
+  selectedImages.forEach((selectedImage) => {
+    formData.append("file", selectedImage);
+  });
+  
+  formData.append("upload_preset", "aahllisc");
+
+  try {
+    const response = await axios.post(
+      "https://api.cloudinary.com/v1_1/daa9e83as/image/upload",
+      formData
+    );
+    
+    const images = response.data.secure_url;
+    // Call a function to handle adding the vehicle with the image URL
+     handleAddVehicle(images);
+  } catch (error) {
+    console.error("Error uploading image:", error);
+    throw new Error("Failed to upload image to Cloudinary");
+  }
+};
+
+
+const handleAddVehicle = async (images) => { 
+  try {
+  const newVehicle = {
+    vehicleNumber,
+    Vehiclecategory,
+    location,
+    contactNumber,
+    price,
+    nic,
+    description,
+    promoCode,
+    gender,
+    images: images // Pass the uploaded image URL to the backend
+  }
+
+
+  if (editingVehicle) {
+    // If editing vehicle exists, update the existing vehicle
+    axios
+      .put(
+        `https://holidaysri-backend.onrender.com/vehicle/update/${editingVehicle._id}`,
+        newVehicle
+      )
+      .then(() => {
+        alert("The Vehicle was Successfully updated");
+        window.location.reload(); // Reload the page after update
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  } else{
+    const response = await axios.post("http://localhost:8000/vehicle/add/", newVehicle);
+  
+  }
+
+  } catch (error) {
+    console.error("Error adding new vehicle:", error);
+    alert("Failed to add new vehicle");
+  }
+};
+
+const handleAddButtonClick = async () => {
+  try {
+    // Call handleAddVehicle only when the Add button is clicked
+    await handleAddVehicle(images);
+    alert("The New Vehicle was Successfully saved");
+    window.location = `/add-vehicle`;
+  } catch (error) {
+    console.error("Error adding new vehicle:", error);
+    alert("Failed to add new vehicle");
+  }
+};
+
+/*
+const handleAddButtonClick = () => {
+  // Call handleAddVehicle when the Add button is clicked
+  handleAddVehicle();
+};
+*/
 
 
 
@@ -231,8 +280,11 @@ function handleDeleteVehicle(id){
           <MenuItem value={20}>Female</MenuItem>
         </Select>
 
+       
+            <Customtextfield label="Description" value={description} onChange={(e) => setDescription(e.target.value)} marginTop="8px" />
             <div>
               <input
+               
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
@@ -276,7 +328,8 @@ function handleDeleteVehicle(id){
                 ))}
               </div>
             </div>
-            <Customtextfield label="Description" value={description} onChange={(e) => setDescription(e.target.value)} marginTop="8px" />
+            
+            
             <Button
               variant="outlined"
               onClick={handleClose}
@@ -315,7 +368,7 @@ function handleDeleteVehicle(id){
                   boxShadow: "none",
                 },
               }}
-              onClick={handleAddVehicle}
+              onClick={handleAddButtonClick}
             >
               Add
             </Button>
@@ -394,6 +447,17 @@ function handleDeleteVehicle(id){
                       marginTop: "8px",
                     }}
                   >
+                    Location: {vehicle.location}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      fontWeight: "400",
+                      fontSize: { lg: "16px", xs: "16px" },
+                      textAlign: "left",
+                      marginTop: "8px",
+                    }}
+                  >
                     Contact Number: {vehicle.contactNumber}
                   </Typography>
                   <Typography
@@ -459,9 +523,7 @@ function handleDeleteVehicle(id){
                       borderRadius: "30px",
                       marginTop: "16px",
                     }}
-                    handleEdit
-                    onClick = {() => handleEdit(vehicle)}
-
+                    onClick={() => handleEdit(vehicle)} 
                   >
                     Edit
                   </Button>{" "}
