@@ -6,6 +6,7 @@ import {
   Typography,
   Card,
   CardContent,
+  CircularProgress
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -14,6 +15,7 @@ const TourGuide = () => {
   const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [loading, setLoding] = useState(true);
 
   const { id, locationName } = useParams();
 
@@ -24,8 +26,10 @@ const TourGuide = () => {
           "https://holidaysri-backend.onrender.com/api/guide/allGuideProfiles"
         );
         setPartners(res.data);
+        setLoding(false);
       } catch (error) {
         console.error("Error fetching partners:", error);
+        setLoding(false);
         alert("Error fetching partners: " + error.message);
       }
     }
@@ -90,7 +94,8 @@ const TourGuide = () => {
           Tour Guides to connect in {locationName}
         </Typography>
         <center>
-          <Grid
+       {loading?<><CircularProgress sx={{color:'green',marginTop:'16px'}}/></>:<>
+       <Grid
             container
             width={{ lg: "90%" }}
             sx={{ marginTop: { lg: "32px", xs: "24px" } }}
@@ -98,6 +103,7 @@ const TourGuide = () => {
             paddingLeft={{ lg: "0px", xs: "8px" }}
             paddingRight={{ lg: "0px", xs: "8px" }}
           >
+             
             {filteredPartners.length > 0 ? (
               filteredPartners.map((partner, index) => (
                 <Grid item xs={12} lg={3} key={index}>
@@ -189,6 +195,8 @@ const TourGuide = () => {
               </>
             )}
           </Grid>
+       </>}
+         
         </center>
       </Grid>
     </Grid>

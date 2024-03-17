@@ -1,7 +1,14 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Grid, Box, Button, Typography, Modal } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Button,
+  Typography,
+  Modal,
+  CircularProgress,
+} from "@mui/material";
 import axios from "axios";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -18,10 +25,11 @@ const Vehicle = () => {
   const gridRef = useRef(null);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const id = queryParams.get('id');
+  const id = queryParams.get("id");
   console.log(id);
   const [open, setOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [loading, setLoding] = useState(true);
 
   const [vehicleDetails, setVehicleDetails] = useState([]);
 
@@ -32,9 +40,11 @@ const Vehicle = () => {
           "https://holidaysri-backend.onrender.com/vehicle/"
         );
         setVehicleDetails(res.data);
+        setLoding(false);
         console.log(vehicleDetails);
       } catch (error) {
         console.error("Error fetching vehicles:", error);
+        setLoding(false);
         alert("Error fetching vehicles: " + error.message);
       }
     }
@@ -79,7 +89,7 @@ const Vehicle = () => {
     >
       <Grid item xs={12}>
         <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-          <a  href={`/destination/${id}`} style={{ textDecoration: "none" }}>
+          <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
               sx={{
@@ -93,7 +103,6 @@ const Vehicle = () => {
           </a>
         </Box>
         <Box textAlign="center" marginTop={{ lg: "2%", xs: "3%" }}>
-         
           <Typography
             sx={{
               color: "white",
@@ -122,97 +131,108 @@ const Vehicle = () => {
             </Typography>
           </Box>
           {/* .filter((event) => event.location === "GALLE")*/}
-          {
-  vehicleDetails.some(event => event.location === locationname) ? (
-    vehicleDetails.map((event, index) => {
-      if (event.location === locationname) {
-        return (
-          <Box
-            key={event._id}
-            sx={{
-              width: { lg: "1100px", xs: "280px" },
-              borderColor: "black",
-              borderRadius: "30px",
-              backgroundColor: "rgba(255,255,255, 0.3)",
-              padding: "24px",
-              marginTop: { lg: "16px", xs: "16px" },
-            }}
-          >
-            <Grid container spacing={2}>
-              <Grid item xs={12} lg={4}>
-                <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
-                  <img
-                    src={event.images}
-                    width="100%"
-                    height="100%"
-                    style={{ borderRadius: "30px" }}
-                    alt="vehicle"
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <Typography
-                  sx={{
-                    color: "white",
-                    fontWeight: "400",
-                    fontSize: { lg: "24px", xs: "20px" },
-                    textAlign: "left",
-                  }}
-                >
-                  {event.Vehiclecategory} 
-                </Typography>
-                <Typography
-                  sx={{
-                    color: "white",
-                    fontWeight: "400",
-                    fontSize: { lg: "16px", xs: "16px" },
-                    textAlign: "left",
-                    marginTop: "8px",
-                  }}
-                >
-                  {event.description}
-                </Typography>
-                <Button
-                  onClick={() => handleOpen(event)}
-                  variant="outlined"
-                  sx={{
-                    color: "white",
-                    borderColor: "white",
-                    borderRadius: "30px",
-                    marginTop: "16px",
-                  }}
-                >
-                  View More
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-        );
-      }
-      return null; 
-    })
-  ) : (
-    <Box
-            sx={{
-              width: { lg: "1100px", xs: "280px" },
-              borderColor: "black",
-              borderRadius: "30px",
-              backgroundColor: "rgba(255,255,255, 0.3)",
-              padding: "24px",
-              marginTop: { lg: "16px", xs: "16px" },
-            }}
-          >
-            <Typography sx={{
-                    color: "black",
-                    fontWeight: "400",
-                    fontSize: { lg: "18px", xs: "16px" },
-                    textAlign: "left",
-                    marginTop: "8px",
-                  }}>No Vehicles in your area right now :/</Typography>
-          </Box>
-    
-  )
-}
+
+          {loading ? (
+            <>
+              <CircularProgress sx={{ color: "green", marginTop: "16px" }} />
+            </>
+          ) : (
+            <>
+            {vehicleDetails.some((event) => event.location === locationname) ? (
+            vehicleDetails.map((event, index) => {
+              if (event.location === locationname) {
+                return (
+                  <Box
+                    key={event._id}
+                    sx={{
+                      width: { lg: "1100px", xs: "280px" },
+                      borderColor: "black",
+                      borderRadius: "30px",
+                      backgroundColor: "rgba(255,255,255, 0.3)",
+                      padding: "24px",
+                      marginTop: { lg: "16px", xs: "16px" },
+                    }}
+                  >
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} lg={4}>
+                        <Box width={{ lg: "100%" }} height={{ lg: "100%" }}>
+                          <img
+                            src={event.images}
+                            width="100%"
+                            height="100%"
+                            style={{ borderRadius: "30px" }}
+                            alt="vehicle"
+                          />
+                        </Box>
+                      </Grid>
+                      <Grid item xs={12} lg={6}>
+                        <Typography
+                          sx={{
+                            color: "white",
+                            fontWeight: "400",
+                            fontSize: { lg: "24px", xs: "20px" },
+                            textAlign: "left",
+                          }}
+                        >
+                          {event.Vehiclecategory}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: "white",
+                            fontWeight: "400",
+                            fontSize: { lg: "16px", xs: "16px" },
+                            textAlign: "left",
+                            marginTop: "8px",
+                          }}
+                        >
+                          {event.description}
+                        </Typography>
+                        <Button
+                          onClick={() => handleOpen(event)}
+                          variant="outlined"
+                          sx={{
+                            color: "white",
+                            borderColor: "white",
+                            borderRadius: "30px",
+                            marginTop: "16px",
+                          }}
+                        >
+                          View More
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </Box>
+                );
+              }
+              return null;
+            })
+          ) : (
+            <Box
+              sx={{
+                width: { lg: "1100px", xs: "280px" },
+                borderColor: "black",
+                borderRadius: "30px",
+                backgroundColor: "rgba(255,255,255, 0.3)",
+                padding: "24px",
+                marginTop: { lg: "16px", xs: "16px" },
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "black",
+                  fontWeight: "400",
+                  fontSize: { lg: "18px", xs: "16px" },
+                  textAlign: "left",
+                  marginTop: "8px",
+                }}
+              >
+                No Vehicles in your area right now :/
+              </Typography>
+            </Box>
+          )}
+            </>
+          )}
+          
           <Modal
             open={open}
             onClose={handleClose}

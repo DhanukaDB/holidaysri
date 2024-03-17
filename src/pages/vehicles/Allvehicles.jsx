@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Grid, Box, Button, Typography, Modal } from "@mui/material";
+import { Grid, Box, Button, Typography, Modal,CircularProgress } from "@mui/material";
 import axios from "axios";
 
 const style = {
@@ -52,6 +52,7 @@ const Allvehicles = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const [vehicleDetails, setVehicleDetails] = useState([]);
+  const [loading, setLoding] = useState(true);
 
   useEffect(() => {
     async function getAllVehicles() {
@@ -60,9 +61,11 @@ const Allvehicles = () => {
           "https://holidaysri-backend.onrender.com/vehicle/"
         );
         setVehicleDetails(res.data);
+        setLoding(false);
         console.log(vehicleDetails);
       } catch (error) {
         console.error("Error fetching vehicles:", error);
+        setLoding(false);
         alert("Error fetching vehicles: " + error.message);
       }
     }

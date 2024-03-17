@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { Grid, Box, Button, Typography, Modal } from "@mui/material";
+import { Grid, Box, Button, Typography, Modal,CircularProgress  } from "@mui/material";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const Marcketplace = () => {
   const [vehicleDetails, setVehicleDetails] = useState([]);
   const [product, setproduct] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoding] = useState(true);
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -49,9 +49,11 @@ const Marcketplace = () => {
           "https://holidaysri-backend.onrender.com/product/"
         );
         setproduct(res.data);
+        setLoding(false);
         console.log(product);
       } catch (error) {
         console.error("Error fetching vehicles:", error);
+        setLoding(false);
         alert("Error fetching vehicles: " + error.message);
       }
     }
@@ -379,7 +381,11 @@ const handleFilter = (category) => {
           </Box>
 
           {filteredProducts.length === 0 ? (
-            <Box
+            <>
+             {loading?<>
+            <CircularProgress sx={{color:'green'}}/>
+            </>:<>
+             <Box
               key={product._id}
               sx={{
                 borderColor: "black",
@@ -392,9 +398,14 @@ const handleFilter = (category) => {
               <Typography
                 sx={{ color: "white", fontSize: { lg: "20px", xs: "18px" } }}
               >
-                No Added {selected}, Come back later :)
+                No Added {selected} Data, Come back later :)
               </Typography>
             </Box>
+            </>
+            }
+            </>
+           
+           
           ) : (
             filteredProducts.map((product, index) => (
               <Box

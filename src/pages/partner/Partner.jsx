@@ -6,6 +6,7 @@ import {
   Typography,
   Card,
   CardContent,
+  CircularProgress
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -14,6 +15,7 @@ const Partner = () => {
   const [partners, setPartners] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [loading, setLoding] = useState(true);
 
   const { id, locationName } = useParams();
 
@@ -24,8 +26,10 @@ const Partner = () => {
           "https://holidaysri-backend.onrender.com/api/partner/allPartnerProfiles"
         );
         setPartners(res.data);
+        setLoding(false);
       } catch (error) {
         console.error("Error fetching partners:", error);
+        setLoding(false);
         alert("Error fetching partners: " + error.message);
       }
     }
@@ -90,7 +94,8 @@ const Partner = () => {
           Travel partners to connect in {locationName}
         </Typography>
         <center>
-          <Grid
+        {loading?<><CircularProgress sx={{color:'green',marginTop:'16px'}}/></>:<>
+        <Grid
             container
             width={{ lg: "90%" }}
             sx={{ marginTop: { lg: "32px", xs: "24px" } }}
@@ -189,6 +194,9 @@ const Partner = () => {
               </>
             )}
           </Grid>
+        
+        </>}
+          
         </center>
       </Grid>
     </Grid>

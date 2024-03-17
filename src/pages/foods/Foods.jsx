@@ -5,7 +5,7 @@ import {
   Button,
   Typography,
   Card,
-  CardContent,
+  CardContent,CircularProgress
 } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -14,6 +14,7 @@ const Food = () => {
   const [products, setProducts] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [loading, setLoding] = useState(true);
 
   const { id, locationName } = useParams();
   useEffect(() => {
@@ -23,8 +24,10 @@ const Food = () => {
           "https://holidaysri-backend.onrender.com/product/"
         );
         setProducts(res.data);
+        setLoding(false);
       } catch (error) {
         console.error("Error fetching products:", error);
+        setLoding(false);
         alert("Error fetching products: " + error.message);
       }
     }
@@ -71,7 +74,19 @@ const Food = () => {
      
     >
       <Grid item xs={12}>
-        <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+       
+
+        <Grid container justifyContent="center" >
+            <Grid container style={{
+            backgroundImage: location ? `url(${location.backgroundImage})` : "",
+            backgroundSize: "cover",
+            backgroundPosition: "bottom",
+            minHeight: {lg:"30vh",xs:"10vh"},
+            paddingBottom: "16px",
+           
+          }}
+          >
+         <Grid xs={12} marginBottom="0px" marginTop="16px" marginLeft="32px">
           <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
@@ -84,19 +99,7 @@ const Food = () => {
               Back
             </Button>{" "}
           </a>
-        </Box>
-
-        <Grid container justifyContent="center" >
-            <Grid container style={{
-            backgroundImage: location ? `url(${location.backgroundImage})` : "",
-            backgroundSize: "cover",
-            backgroundPosition: "bottom",
-            minHeight: {lg:"30vh",xs:"10vh"},
-            paddingBottom: "16px",
-           
-          }}
-          >
-        
+        </Grid>
             <Typography
               sx={{
                 color: "white",
@@ -110,6 +113,9 @@ const Food = () => {
               
             >
               Foods All Around {locationName}
+
+
+              {loading?<><CircularProgress sx={{color:'green',marginLeft:{lg:'32px',xs:'8px'}}}/></>:<>
               {filteredProducts.length === 0 && (
             <Box
               sx={{
@@ -127,6 +133,8 @@ const Food = () => {
               </Typography>
             </Box>
             )}
+              </>}
+             
             </Typography>
         
 
