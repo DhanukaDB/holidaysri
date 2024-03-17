@@ -165,28 +165,28 @@ function Newlanding() {
                 </div>
                 <div className="thumbnail">
                     {/* Your thumbnail items go here */}
-                    <div className="item">
+                    <div className="item" onClick={next}>
                         <img src={Img2} alt="thumbnail item" />
                         <div className="content">
                             <div className="title">Book Vehicle</div>
                             <div className="description">View Products</div>
                         </div>
                     </div>
-                    <div className="item">
+                    <div className="item" onClick={next}>
                         <img src={Img3} alt="thumbnail item" />
                         <div className="content">
                             <div className="title">Book your Hotel</div>
                             <div className="description">View Hotel</div>
                         </div>
                     </div>
-                    <div className="item">
+                    <div className="item" onClick={next}>
                         <img src={Img4} alt="thumbnail item" />
                         <div className="content">
                             <div className="title">View Events</div>
                             <div className="description">Hire Guides</div>
                         </div>
                     </div>
-                    <div className="item">
+                    <div className="item" onClick={next}>
                         <img src={Img1} alt="thumbnail item" />
                         <div className="content">
                             <div className="title">Local Travel Agent</div>
