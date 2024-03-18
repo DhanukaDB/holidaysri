@@ -128,8 +128,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Be a travel agent and earn money!Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <a href="/local-dashboard">Local Travel Agent</a>
-                                <a href="/foreign-dashboard">Foreign Travel Agent</a>
+                                <a>Book your Hotel</a>
+                                <a>View Hotel</a>
                             </div>
                         </div>
                     </div>
@@ -154,8 +154,8 @@ function Newlanding() {
                             <div className="topic">HOLIDAY SRI</div>
                             <div className="des">Travel is the act of moving from one place to another, typically for leisure, exploration, business, or cultural exchange. It is a fundamental aspect of human experience, dating back to ancient times when people traversed vast distances on foot, by animal, or by sea to discover new lands, trade goods, or establish connections with distant communities.</div>
                             <div className="buttons">
-                                <a>Book your Hotel</a>
-                                <a>View Hotel</a>
+                                <a href="/local-dashboard">Local Travel Agent</a>
+                                <a href="/foreign-dashboard">Foreign Travel Agent</a>
                             </div>
                         </div>
                     </div>
@@ -187,8 +187,8 @@ function Newlanding() {
                     <div className="item" onClick={next}>
                         <img src={Img3} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Book your Hotel</div>
-                            <div className="description">View Hotel</div>
+                            <div className="title">Local Travel Agent</div>
+                            <div className="description">Foreign Travel Agent</div>
                         </div>
                     </div>
                     <div className="item" onClick={next}>
@@ -201,8 +201,8 @@ function Newlanding() {
                     <div className="item" onClick={next}>
                         <img src={Img1} alt="thumbnail item" />
                         <div className="content">
-                            <div className="title">Local Travel Agent</div>
-                            <div className="description">Foreign Travel Agent</div>
+                            <div className="title">Book your Hotel</div>
+                            <div className="description">View Hotel</div>
                         </div>
                     </div>
                     {/* Add more thumbnail items as needed */}
