@@ -4,6 +4,8 @@ import Img2 from '../../../assets/img2.jpg';
 import Img3 from '../../../assets/img3.jpg';
 import Img4 from '../../../assets/img4.jpg';
 import Logo from '../../../assets/Hsllogo.png';
+import { MdOutlineMenu } from "react-icons/md";
+import { IoIosCloseCircle } from "react-icons/io";
 import './Newlanding.css';
 import AOS from 'aos';
 import { Link } from "react-scroll";
@@ -79,28 +81,38 @@ function Newlanding() {
     return (
         <div className='mainhomebg' data-aos="fade">
             <div className='bgnheader'>
+                <div className='mainlogoo'>
+                    <img src={Logo} alt="mainlogoo" />
+                </div>
+
+                <input type="checkbox" id="check" />
+                <label for="check" className="iconsnav">
+                     <i id='menu-ico'><MdOutlineMenu /></i>
+                     <i id='close-ico'><IoIosCloseCircle /></i>
+                </label>
+
                 <div className='newnavbar'>
-                    <div className='mainlogoo'>
-                        <img src={Logo} alt="mainlogoo" />
-                    </div>
+                    
                     <div>
-                        <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton">Destinations</Link>
-                        <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton">Hotels</Link>
-                        <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton">Tour Packages</Link>
-                        <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton">Vehicles</Link>
-                        <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton">Travel Partner</Link>
-                        <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton">Tour Guide</Link>
-                        <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton">Market Place</Link>
-                        <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton">Contact</Link>
-                        <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton">Gallery</Link>
-                        <a href="/about" spy={true} smooth={true} duration={500} className="navButton">About</a>
-                    </div>
-                    <div>
+                        <Link to="deswithhomecontainer" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 0 }}>Destinations</Link>
+                        <Link to="hotels" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 1 }}>Hotels</Link>
+                        <Link to="tour-packages" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 2 }}>Tour Packages</Link>
+                        <Link to="vehicles" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 3 }}>Vehicles</Link>
+                        <Link to="travel-partner" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 4 }}>Travel Partner</Link>
+                        <Link to="tour-guide" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 5 }}>Tour Guide</Link>
+                        <Link to="market-place" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 6 }}>Market Place</Link>
+                        <Link to="CT-Gallery" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 7 }}>Contact</Link>
+                        <Link to="CT-Galleryto" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 8 }}>Gallery</Link>
+                        <a href="/about" spy={true} smooth={true} duration={500} className="navButton" style={{ '--i': 9 }}>About</a>
+
                         {/* Conditionally render the sign-in button */}
-                        {!authToken && !userRole && <a href="/login"> <span>Sign in <IoMdLogIn /></span></a>}
+                        {!authToken && !userRole && <a href="/login" style={{ '--i': 10 }}> <span>Sign in <IoMdLogIn /></span></a>}
                         {/* Render signout button if authToken and userRole exist */}
                         {authToken && userRole && <button onClick={handleSignout}>Sign Out</button>}
                     </div>
+                    
+                        
+                    
 
                 </div>
             </div>
