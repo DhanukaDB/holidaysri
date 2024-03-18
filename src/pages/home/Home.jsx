@@ -28,7 +28,7 @@ import About from "../../components/About/About";
 
 const Home = () => {
   return (
-    <div>
+    <div className="full-home-container">
       <Homepagemmain />
       <div className="main_container">
         <div className="homeContainer" id="deswithhomecontainer">

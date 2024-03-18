@@ -6,7 +6,7 @@ const FeaturedMarketPlace = () => {
 
   return (
     <div
-      className="gift-featured" data-aos="flip-down"
+      className="gift-featured" data-aos="zoom-in-down"
     >
       <div className="featuredItem">
         <img
