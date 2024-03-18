@@ -456,18 +456,17 @@ a{
     }
     .thumbnail{
         position: absolute;
-        bottom: 30px;
+        bottom: 55px;
     }
     .thumbnail .item:nth-child(1){
         margin-left: 35px;
     }
     .arrows{
-        top: 90%;
-        margin-top: 20px;
+        top: 85%;
     }
     .arrows button{
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
     .carousel .list .item .author{
         font-size: 10px;
