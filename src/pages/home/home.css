@@ -11,6 +11,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     font-family: Poppins;
+    overflow-x: auto;
 }
 
 .homeTitle {

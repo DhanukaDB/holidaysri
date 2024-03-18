@@ -30,6 +30,8 @@ const Home = () => {
   return (
     <div className="full-home-container">
       <Homepagemmain />
+
+
       <div className="main_container">
         <div className="homeContainer" id="deswithhomecontainer">
           <Newfeatured />
@@ -74,6 +76,8 @@ const Home = () => {
           <Gallery />
           </div>
         </div>
+
+
       <Footer />
     </div>
   );
