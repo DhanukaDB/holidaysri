@@ -13,15 +13,14 @@ import { useParams } from "react-router-dom";
 import Nav from "../../../pages/Nav/Nav";
 import { useLocation } from "react-router-dom";
 
-const Hotels = () => {
+const LocationHotel = () => {
   const [hotels, setHotels] = useState([]);
   const [location, setLocation] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const locations = useLocation();
   const queryParams = new URLSearchParams(locations.search);
-  const categ = queryParams.get("category");
-  console.log(categ);
-  const { id, locationName } = useParams();
+  const idd = queryParams.get("id");
+  console.log(idd);
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
@@ -40,7 +39,23 @@ const Hotels = () => {
     }
     getHotels();
   }, []);
-
+  const [hotellocationName, setlocationname] = useState([]);
+  const [background, setbackground] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://holidaysri-backend.onrender.com/location/get/${idd}`
+        );
+        setbackground(response.data.location.backgroundImage);
+        setlocationname(response.data.location.locationName);
+      } catch (error) {
+        console.error("Error fetching location:", error);
+        alert("Error fetching location: " + error.message);
+      }
+    };
+    fetchData();
+  }, [idd]);
   const [filteredHotels, setFilteredHotels] = useState([]);
 
   const filterHotels = () => {
@@ -73,8 +88,8 @@ const Hotels = () => {
             }}
           >
             <Nav />
-
-            {hotels.filter((hotel) => hotel.category === categ).length === 0 ? (
+            {hotels.filter((hotel) => hotel.location === hotellocationName)
+              .length === 0 ? (
               <>
                 <Box
                   marginBottom="0px"
@@ -94,42 +109,48 @@ const Hotels = () => {
                     </Button>{" "}
                   </a>
                 </Box>
-                {loading?<><CircularProgress sx={{color:'green'}}/></>:<>
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  sx={{
-                    marginTop: { lg: "0px", xs: "-120px" },
-                    marginLeft: { lg: "18%", xs: "10%" },
-                  }}
-                >
-                  <Card
-                    sx={{
-                      borderColor: "black",
-                      borderRadius: "30px",
-                      backgroundColor: "rgba(255,255,255, 0.3)",
-                      transition: "transform 0.3s",
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                      },
-                      width: { lg: "1000px", xs: "280px" },
-                      height: "80px",
-                    }}
-                    variant="outlined"
-                  >
-                    <CardContent>
-                      <center>
-                        <Typography sx={{ fontSize: "24px" }}>
-                          No {categ} data
-                        </Typography>
-                      </center>
-                    </CardContent>
-                  </Card>
-                </Grid>
-                </>}
-                
+                {loading ? (
+                  <>
+                    <CircularProgress sx={{ color: "green" }} />
+                  </>
+                ) : (
+                  <>
+                    {" "}
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      sx={{
+                        marginTop: { lg: "0px", xs: "-120px" },
+                        marginLeft: { lg: "18%", xs: "10%" },
+                      }}
+                    >
+                      <Card
+                        sx={{
+                          borderColor: "black",
+                          borderRadius: "30px",
+                          backgroundColor: "rgba(255,255,255, 0.3)",
+                          transition: "transform 0.3s",
+                          "&:hover": {
+                            transform: "scale(1.05)",
+                          },
+                          width: { lg: "1000px", xs: "280px" },
+                          height: "80px",
+                        }}
+                        variant="outlined"
+                      >
+                        <CardContent>
+                          <center>
+                            <Typography sx={{ fontSize: "24px" }}>
+                              No datas
+                            </Typography>
+                          </center>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  </>
+                )}
               </>
             ) : (
               <>
@@ -151,13 +172,13 @@ const Hotels = () => {
                   sx={{
                     color: "white",
                     fontFamily: "poppins",
-                    marginTop: { lg: "8px", xs: "60px" },
+                    marginTop: { lg: "8px", xs: "30px" },
                     fontSize: { lg: "50px", xs: "32px" },
-                    paddingLeft: { lg: "35%", xs: "0" },
-                    paddingTop: { lg: "80px", xs: "0" },
+                    paddingLeft: { lg: "35%", xs: "32px" },
+                    paddingTop: { lg: "80px", xs: "-80px" },
                   }}
                 >
-                  All Hotels
+                  All Hotels in {hotellocationName}
                 </Typography>
               </>
             )}
@@ -173,7 +194,7 @@ const Hotels = () => {
                   }}
                 >
                   {hotels
-                    .filter((hotel) => hotel.category === categ)
+                    .filter((hotel) => hotel.location === hotellocationName)
                     .map((hotel, index) => (
                       <Grid item xs={12} sm={6} md={6} key={hotel._id}>
                         <Card
@@ -235,4 +256,4 @@ const Hotels = () => {
   );
 };
 
-export default Hotels;
+export default LocationHotel;

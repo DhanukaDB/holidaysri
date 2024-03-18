@@ -372,7 +372,7 @@ const Destination2 = () => {
               borderColor: "white",
             }}
           >
-            <Link to={`/Hotelmain/${id}/${encodeURIComponent(locationname)}`} style={{ textDecoration: "none" }}>
+            <Link to={`/hotel?id=${id}`} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: { lg: "250px", xs: "150px" },
