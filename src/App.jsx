@@ -37,6 +37,7 @@ import Allpackages from "./pages/Packages/Allpackages";
 import Packagedata from "./pages/Packages/Packagedata";
 import HotelMain from "./components/hotel/AddHotel/HotelMain";
 import PrivecyPolicy from "./components/About/privecypolicy";
+import LocationHotel from "./components/hotel/AddHotel/LocationHotel";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -80,6 +81,7 @@ function App() {
         <Route path="/add-package" element={<Addpackage/>} />
 
         <Route path="/addhotel" eliment={<AddHotel />} />
+        <Route path="/add-hotel" element={<AddHotel/>} />
         <Route path="/about" element={<About />} />
         <Route path="/marcketplace" element={<Marcketplace/>} />
         <Route path="/all-marcketplace" element={<Allmarcketplace/>} />
@@ -88,6 +90,8 @@ function App() {
         <Route path="/partner/:id/:locationName" element={<Partner/>}/>
         <Route path="/Hotelmain/:id/:locationName" element={<HotelMain/>}/>
         <Route path="/package" element={<Packagedata/>} />
+        <Route path="/all-hotels" element={<HotelMain/>}/>
+        <Route path="/hotel" element={<LocationHotel/>}/>
 
         <Route path="/purchase-promo-code" element={<PurchasePromoCodePage />} />
         <Route path="/Checkout" element={<CheckoutPage />} />
