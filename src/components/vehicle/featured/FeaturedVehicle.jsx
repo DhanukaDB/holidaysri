@@ -8,7 +8,7 @@ const FeaturedVehicle = () => {
 
   return (
     <div
-      className="car-featured" data-aos="slide-right"
+      className="car-featured" data-aos="fade-left"
     >
       <div className="featuredItem">
         <img
