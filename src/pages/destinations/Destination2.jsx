@@ -17,39 +17,44 @@ const Destination2 = () => {
     setHoveredIndex(null);
   };
   const imageUrls = [
-    "https://res.cloudinary.com/iplus/image/upload/v1710534646/richard-de-ruijter-HoByPgtIbzk-unsplash_o1zbft.jpg",
+    
+    "https://media.istockphoto.com/id/1852190658/photo/young-man-on-safari-journey-by-off-road-car-in-sri-lanka.jpg?s=1024x1024&w=is&k=20&c=5opRombFqj3IylMb3pf3gZIOiTE-S54_aS9fHsSkOiE=",
+   
   ];
   const events = [
-    "https://res.cloudinary.com/iplus/image/upload/v1710535203/sonika-agarwal-PWfWtwSwZdQ-unsplash_nvzize.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710534649/yves-alarie-yaGheETUSK4-unsplash_gviugp.jpg",
+    "https://media.istockphoto.com/id/1474551631/photo/fire-dancers-at-esala-maha-perahera-kandy-sri-lanka.jpg?s=1024x1024&w=is&k=20&c=0ucdDzN6NEmdcKd-zrsYCCXrByZe0U4pT58dLwz-LFQ=",
+    "https://media.istockphoto.com/id/1295046526/photo/crowd-at-open-air-night-club.jpg?s=1024x1024&w=is&k=20&c=ipUmrPpnIHrnppGGDIOyl_W-ixLvdOX2q-DFEKRRuv4=",
   ];
   const hotels = [
-    "https://res.cloudinary.com/iplus/image/upload/v1710536670/sidath-vimukthi-KF9IS77n1TQ-unsplash_gg2jk7.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710536668/dinuka-lankaloka-KRezxB3pr5A-unsplash_kppsqd.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710536666/sidath-vimukthi-Kd16c7p50r4-unsplash_yxfkn4.jpg",
+    "https://media.istockphoto.com/id/188014849/photo/island-villa.jpg?s=1024x1024&w=is&k=20&c=fY02Bti3qOUKVW2-35bJiCW2BvScb2YJ8_2qULPNl8M=",
+    "https://images.pexels.com/photos/2373201/pexels-photo-2373201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   ];
 
   const foods = [
-    "https://res.cloudinary.com/iplus/image/upload/v1710537307/jessica-knowlden-lUpg5bCRPX8-unsplash_cbudpp.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710537309/dinuka-lankaloka-2KMQwHFvHew-unsplash_iiiril.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710537314/sandaru-muthuwadige-26gV0SPzQxE-unsplash_ca4vpk.jpg"
+    "https://images.pexels.com/photos/4099237/pexels-photo-4099237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/6289992/pexels-photo-6289992.jpeg"
   ];
 
   const tourguide = [
+    
     "https://res.cloudinary.com/iplus/image/upload/v1710538212/eddy-billard-EJLpBC6rUv8-unsplash_imo3l6.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710538735/gemmmm-FRTpkBIi-1Y-unsplash_mga0sh.jpg"
-  ];
+     ];
 
   const travelpartner = [
+   "https://media.istockphoto.com/id/1086841152/photo/friends-riding-bicycles-in-a-city.jpg?s=1024x1024&w=is&k=20&c=yNFE0Q0IfS6HgnOlPr6eXxqnMeGBe6B_iMX2_vRqYVM=",
+   "https://media.istockphoto.com/id/1166417486/photo/group-tourists-friends-peoples-mountain-top-look-sunset.jpg?s=1024x1024&w=is&k=20&c=K6QgN5gNAORtCXHNlzOpfvgLmvx5lPi96YWtIDFIeiw=",
     "https://res.cloudinary.com/iplus/image/upload/v1710538207/eddy-billard-JOoOPt8tTPY-unsplash_kx1epy.jpg",
-    "https://res.cloudinary.com/iplus/image/upload/v1710538783/kevin-olson-ScBHbYokiQE-unsplash_fixj1b.jpg"
+    
   ];
 
   const marcketplace = [
-    "https://res.cloudinary.com/iplus/image/upload/v1710538814/lahiru-supunchandra-_gTaZMhygVs-unsplash_lmiv9a.jpg",
+    
+    "https://media.istockphoto.com/id/621126788/photo/knitted-mittens-and-other-souvenirs-at-the-riga-christmas-market.jpg?s=1024x1024&w=is&k=20&c=_bY2KvUg2o7yDRrUqHkuI0_KI2-t7PYGGdvFSyJljoU=",
+    
   ];
 
   const packages = [
+    "https://media.istockphoto.com/id/522331772/photo/spa-couple-towels-with-candles-and-orchid.jpg?s=1024x1024&w=is&k=20&c=UJa1gk0KW3yPbORvIoI2UdfwTvu1c1rqQyQZe_KqkfA=",
     "https://res.cloudinary.com/iplus/image/upload/v1710538873/tom-paisley-v2zEiziFb44-unsplash_ywz80u.jpg",
     "https://res.cloudinary.com/iplus/image/upload/v1710538865/chaminda-keragala-Hp2LhkqyHww-unsplash_qinrbk.jpg"
   ];
@@ -372,7 +377,7 @@ const Destination2 = () => {
               borderColor: "white",
             }}
           >
-            <Link to={`/Hotelmain/${id}/${encodeURIComponent(locationname)}`} style={{ textDecoration: "none" }}>
+            <Link to={`/hotel?id=${id}`} style={{ textDecoration: "none" }}>
               <Box
                 sx={{
                   width: { lg: "250px", xs: "150px" },
