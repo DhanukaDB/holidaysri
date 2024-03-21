@@ -45,26 +45,26 @@ const Home = () => {
         <div className="vehicle" id="vehicles">
           <VehicleHeader />
         </div>
-        <div className="vehicleContiner" data-aos="fade">
+        <div className="vehicleContiner" >
           <FeaturedVehicle />
           <VehicleList />
         </div>
         <div className="travelPartner" id="travel-partner">
           <TravelPartnerHeader />
         </div>
-        <div className="travelPartnerContainer" data-aos="fade">
+        <div className="travelPartnerContainer" >
           <TravelPartnerFeatured />
         </div>
         <div className="tourGuide" id="tour-guide">
           <TourGuideHeader />
         </div>
-        <div className="tourGuideContainer" data-aos="fade">
+        <div className="tourGuideContainer" >
           <TourGuideFeatured />
         </div>
         <div className="marketplace" id="market-place">
           <MarketPlaceHeader />
         </div>
-        <div className="marketPlaceContainer" data-aos="fade">
+        <div className="marketPlaceContainer" >
           <FeaturedMarketPlace />
           <h1 className="homeTitle">Gifts guests love</h1>
           <FeaturedMarket />
