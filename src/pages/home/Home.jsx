@@ -75,7 +75,7 @@ const Home = () => {
           <div className="Ctgalaryto" id="CT-Galleryto">
           <Gallery />
           </div>
-        </div>
+      </div>
 
 
       <Footer />
