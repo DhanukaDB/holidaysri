@@ -7,7 +7,7 @@ const VehicleList = () => {
   AOS.init({ duration: 1000 });
   return (
     <div
-      className="vehicleList" data-aos="zoom-in-up"
+      className="vehicleList" data-aos="fade"
     >
       <div className="pListItem">
         <img

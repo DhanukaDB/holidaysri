@@ -31,7 +31,7 @@ function ProgressBar() {
         <div className='myProgressBar' id='progressbarAvailable'>
             <div className='honecontentdiv'>
             <h1 className="homeTitlen">Browse by property type :</h1>
-            <div className='myProgressBar-wrapper' data-aos="slide-up">
+            <div className='myProgressBar-wrapper' data-aos="fade">
             <Link to={`/all-hotels?category=${"hotels"}`} style={{ textDecoration: "none" }}>
 
             <div className='myProgressBar-container'>
