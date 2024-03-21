@@ -1,3 +1,6 @@
+.full-home-container{
+  overflow-x: hidden;
+}
 .homeContainer { 
   display: flex;
   flex-direction: column;
@@ -11,7 +14,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     font-family: Poppins;
-    overflow-x: hidden;
+    
 }
 
 .homeTitle {
