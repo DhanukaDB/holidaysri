@@ -60,7 +60,8 @@ const Events = () => {
     >
       <Nav/>
       <Grid item xs={12}>
-        <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+        <Box marginBottom="0px" marginTop={events.length === 0 ? {lg: "-306px", xs: "-250px"} : {lg: "-146px", xs: "-120px"}}
+ marginLeft="32px">
           <a
             href={`/destination/${location._id}`}
             style={{ textDecoration: "none" }}
@@ -82,7 +83,7 @@ const Events = () => {
           <Typography
             sx={{
               color: "white",
-              fontFamily: "mansalva",
+              fontFamily: "inter",
               marginTop: "8px",
               fontSize: { lg: "50px", xs: "32px" },
               letterSpacing: "20px",
@@ -108,6 +109,7 @@ const Events = () => {
                 fontSize={{ lg: "24px", xs: "22px" }}
                 sx={{ color: "white", fontFamily: "poppins" }}
                 marginTop="16px"
+                textAlign={{xs:'center',lg:'left'}}
               >
                 No Recent Events
               </Typography>

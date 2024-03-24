@@ -159,7 +159,7 @@ const Seller = (props) => {
           <Typography
             sx={{
               color: "white",
-              fontFamily: "mansalva",
+              fontFamily: "inter",
               fontSize: { lg: "50px", xs: "18px" },
               letterSpacing: "20px",
             }}

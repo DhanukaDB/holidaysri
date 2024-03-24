@@ -112,7 +112,7 @@ const Destination = () => {
             sx={{
               color: "white",
               fontWeight: "700",
-              fontFamily: "mansalva",
+              fontFamily: "inter",
               fontSize: { lg: "50px", xs: "32px" },
             }}
           >

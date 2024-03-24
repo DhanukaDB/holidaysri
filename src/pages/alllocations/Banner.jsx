@@ -1,10 +1,8 @@
 import React from "react";
 import "./Banner.css";
-import { Grid } from '@mui/material';
+import { Grid } from "@mui/material";
 
 export default function Banner() {
- 
-
   return (
     <div className="video-container">
       <video autoPlay muted loop>
@@ -14,13 +12,18 @@ export default function Banner() {
         />
       </video>
       <div className="content">
-      <Grid  display={{lg:'block',xs:'none'}}>
-      <h2 className="BannerHeader" >
-      Discover Paradise: Embark on a Journey Through Sri Lanka's Enchanting Beauty        </h2>
+        <Grid display={{ md: "block", xs: "none" }}>
+          <h2 style={{  textAlign: 'center',
+  fontFamily: 'inter', 
+  color: 'white',
+  marginTop: '430px',
+  marginBottom: '2px',
+  fontWeight: '500',}}>
+            Discover Paradise: Embark on a Journey Through Sri Lanka's
+            Enchanting Beauty{" "}
+          </h2>
         </Grid>
-        <Grid  display={{lg:'none',xs:'block'}}>
-      
-        </Grid>
+        <Grid display={{ lg: "none", xs: "block" }}></Grid>
       </div>
     </div>
   );
