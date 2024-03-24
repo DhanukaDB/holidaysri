@@ -12,7 +12,7 @@ function PopularDestinations() {
     <section className="popular" id="destination" data-aos="fade">
       <div className="container">
         <p className="section-subtitle">hOLIDAY SRI</p>
-        <h2 className="h2 section-title">Discover your perfect escape</h2>
+        <h2 className="h2 section-title">Discover your perfect Destination</h2>
         <p className="section-text">
           Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo, rutrum. Vestibulum cumque laudantium.
           Sit ornare mollitia tenetur, aptent.
