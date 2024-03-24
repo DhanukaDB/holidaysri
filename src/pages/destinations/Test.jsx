@@ -85,7 +85,7 @@ const Test = () => {
           <Typography
             sx={{
               color: "white",
-              fontFamily: "mansalva",
+              fontFamily: "inter",
               marginTop: "8px",
               fontSize: { lg: "50px", xs: "32px" },
               letterSpacing: "20px",
