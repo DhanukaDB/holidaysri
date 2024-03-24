@@ -78,7 +78,7 @@ function Packagedata() {
         }}
       >
         <section className="package" id="package" data-aos="fade">
-          <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
+          <Box marginBottom="0px" marginTop={{lg:"-70px",xs:'-30px'}} marginLeft="32px">
             <a href={`/destination/${id}`} style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
@@ -96,7 +96,7 @@ function Packagedata() {
             <Grid
               sx={{
                 marginBottom: "24px",
-                marginTop: { lg: "-60px", xs: "-30px" },
+                marginTop: { lg: "30px", xs: "20px" },
               }}
             >
               <h2 className="h2 section-title"> Packages in {locationname} </h2>

@@ -22,13 +22,11 @@
 
 .BannerHeader{
   text-align: center;
-  font-family: 'mansalva', sans-serif;
+  font-family: 'inter', sans-serif;
   color: white;
   margin-top: 28%;
   margin-bottom: 2px;
   font-weight: bolder;
-  
-
 }
 
 .BannerSearchBar{

@@ -96,7 +96,10 @@ const LocationHotel = () => {
                   marginTop={{ lg: "-60px", xs: "-100px" }}
                   marginLeft="32px"
                 >
-                  <a href="/" style={{ textDecoration: "none" }}>
+                 <a
+            href={`/destination/${idd}`}
+            style={{ textDecoration: "none" }}
+          >
                     <Button
                       variant="outlined"
                       sx={{
@@ -155,7 +158,7 @@ const LocationHotel = () => {
             ) : (
               <>
                 <Box marginBottom="0px" marginTop="16px" marginLeft="32px">
-                  <a href="/" style={{ textDecoration: "none" }}>
+                  <a href={`/destination/${idd}`} style={{ textDecoration: "none" }}>
                     <Button
                       variant="outlined"
                       sx={{
