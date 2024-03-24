@@ -4,7 +4,7 @@ import AOS from 'aos';
 function VehicleHeader() {
   AOS.init({ duration: 1000 });
   return (
-    <section className="cta" id="contact" data-aos="slide-left">
+    <section className="cta" id="contact" data-aos="fade">
       <div className="container">
         <div className="cta-content">
           <p className="section-subtitle">Rent a vehicle</p>

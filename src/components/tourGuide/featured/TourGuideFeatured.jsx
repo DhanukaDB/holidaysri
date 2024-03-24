@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const TourGuideFeatured = () => {
   return (
-    <div data-aos="zoom-in-right"
+    <div data-aos="fade"
       className="tourguidefeatured"
     >
       <div className="featuredItem">

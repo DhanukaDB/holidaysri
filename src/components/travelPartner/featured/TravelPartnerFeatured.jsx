@@ -5,7 +5,7 @@ import { useRef } from "react";
 const TravelPartnerFeatured = () => {
 
   return (
-    <div data-aos="zoom-in"
+    <div data-aos="fade"
       
       className="travelpartnerfeatured"
     >

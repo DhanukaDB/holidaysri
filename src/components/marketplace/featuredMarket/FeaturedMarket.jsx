@@ -5,7 +5,7 @@ import "./featuredMarket.css";
 const FeaturedMarket = () => {
   return (
     <div
-      className="fp" data-aos="zoom-in-down"
+      className="fp" data-aos="fade"
     >
       <div className="fpItem">
         <img
