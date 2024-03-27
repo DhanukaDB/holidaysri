@@ -43,6 +43,7 @@ const LocalVehicleForm = (props) => {
   const [description, setDescription] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [vehicleDetails, setVehicleDetails] = useState([]);
+  const [uploadEnabled, setUploadEnabled] = useState(false); // State to track upload button enable/disable
  
 
  
@@ -51,8 +52,35 @@ const LocalVehicleForm = (props) => {
   };
 
 
-  
+   // Function to check if all required fields are filled
+   const checkRequiredFields = () => {
+    return (
+      vehicleNumber &&
+      Vehiclecategory &&
+      location &&
+      contactNumber &&
+      price &&
+      nic &&
+      description &&
+      promoCode &&
+      gender 
+    );
+  };
+
+  // Effect to enable/disable upload button based on required fields
+  useEffect(() => {
+    setUploadEnabled(checkRequiredFields());
+  }, [vehicleNumber, Vehiclecategory, location, contactNumber, price, nic, description, promoCode, gender]);
+
+
+
 const handleFileChange = async (event) => {
+   // Only allow file upload if all required fields are filled
+   if (!checkRequiredFields()) {
+    alert("Please fill all required fields before uploading images.");
+    return;
+  }
+
   if (!event.target.files) {
     // Handle case where files are not selected
     console.error("No files selected");
@@ -79,7 +107,7 @@ const handleFileChange = async (event) => {
     const images = response.data.secure_url;
     // Call a function to handle adding the vehicle with the image URL
    
-    handleAddVehicle(images);
+    handleAddButtonClick(images);
     
   } catch (error) {
     console.error("Error uploading image:", error);
@@ -87,64 +115,34 @@ const handleFileChange = async (event) => {
   }
 };
 
-  const handleAddVehicle = (images) => {
-   
-
-    const newVehicle = {
-      vehicleNumber,
-      Vehiclecategory,
-      location,
-      contactNumber,
-      price,
-      nic,
-      description,
-      promoCode,
-      gender,
-      images:images
-    };
-
-    if (editingVehicle) {
-      // If editing product exists, update the existing product
-      axios
-        .put(
-          `https://holidaysri-backend.onrender.com/vehicle/update/${editingVehicle._id}`,
-          newVehicle
-        )
-        .then(() => {
-          alert("The Vehicle was Successfully updated");
-          window.location.reload(); // Reload the page after update
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    } else {
-      // Otherwise, add a new product
-      axios
-        .post("https://holidaysri-backend.onrender.com/vehicle/add", newVehicle)
-        .then(() => {
-          alert("The New vehicle was Successfully saved");
-          window.location.reload(); // Reload the page after adding
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }
-  };
-  const handleEdit = (vehicle) => {
-    setEditingVehicle(vehicle);
-    setVehicleNumber(vehicle.vehicleNumber);
-    setVehiclecategory(vehicle.Vehiclecategory);
-    setLocation(vehicle.location);
-    setContactNumber(vehicle.contactNumber);
-    setPrice(vehicle.price);
-    setNic(vehicle.nic);
-    setDescription(vehicle.description);
-    setPromoCode(vehicle.promoCode);
-    setGender(vehicle.gender);
+const handleAddVehicle = async (newVehicle) => { 
  
-     
-    setOpen(true);
-  };
+
+  const response = await axios.post("https://holidaysri-backend.onrender.com/vehicle/add/", newVehicle);
+  alert("The New Vehicle was Successfully saved");
+  window.location = `/add-vehicle`;
+
+};
+
+const handleAddButtonClick = async (images) => {
+
+const newVehicle = {
+  vehicleNumber,
+  Vehiclecategory,
+  location,
+  contactNumber,
+  price,
+  nic,
+  description,
+  promoCode,
+  gender,
+  images: images // Pass the uploaded image URL to the backend
+}
+  handleAddVehicle(newVehicle);
+
+};
+
+
 
 
 
@@ -379,7 +377,7 @@ const handleFileChange = async (event) => {
                   boxShadow: "none",
                 },
               }}
-              onClick={handleAddVehicle}
+              onClick={handleAddButtonClick}
             >
               Add
             </Button>
@@ -674,7 +672,7 @@ const handleFileChange = async (event) => {
                 boxShadow: "none",
               },
             }}
-            onClick={handleAddVehicle}
+            onClick={handleAddButtonClick}
           >
             Add
           </Button>
